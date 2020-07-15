@@ -12,13 +12,18 @@
     "build-dev": "parcel build index.html --no-minify --public-url ./",
     "prebuild": "shx rm -rf dist/*",
     "build": "parcel build index.html --public-url ./",
-    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --force --cleanup --verbose"
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --force --cleanup --verbose",
+    "test": "jest --watch"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.4",
+    "@types/mocha": "^8.0.0",
     "@types/react": "^16.9.43",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
+    "ts-jest": "^26.1.2",
     "typescript": "^3.9.6"
   },
   "dependencies": {
