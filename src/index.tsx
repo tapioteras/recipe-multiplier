@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import items from "../mock/test-data.json";
 import { CSSReset, ThemeProvider, theme } from "@chakra-ui/core";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RecipeScreen from "./recipe-screen";
 import RecipesScreen from "./recipes-screen";
 

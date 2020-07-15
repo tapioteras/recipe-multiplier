@@ -39,8 +39,7 @@ const IngredientRow: React.FC<IngredientRowProps> = ({
     </React.Fragment>
   );
 };
-const RecipeScreen: React.FC<RecipeScreenProps> = () => {
-  const { id } = useParams();
+const RecipeScreen: React.FC = () => {
   const {
     state: {
       recipe: { name, description, portions = 1, ingredients, steps },
