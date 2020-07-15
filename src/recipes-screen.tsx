@@ -14,7 +14,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({ recipes = [] }) => (
   <List styleType="disc">
     <Text fontSize="6xl">This is recipes screen</Text>
     {[...recipes].map(({ name }, i) => (
-      <ListItem key={`list-item${i}`}>
+      <ListItem key={`list-item-${i}`}>
         <Link to="/recipe/:id">{name}</Link>
       </ListItem>
     ))}
