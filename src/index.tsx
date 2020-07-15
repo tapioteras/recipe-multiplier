@@ -16,7 +16,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path="/recipe/:id">
-          <RecipeScreen recipe={} />
+          <RecipeScreen />
         </Route>
         <Route path="/">
           <RecipesScreen recipes={items} />
