@@ -5,6 +5,14 @@
   "repository": "https://github.com/tapioteras/recipe-multiplier.git",
   "author": "Tapio Teras <tapio.teras@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "prebuild-dev": "shx rm -rf dist/*",
+    "build-dev": "parcel build index.html --no-minify --public-url ./",
+    "prebuild": "shx rm -rf dist/*",
+    "build": "parcel build index.html --public-url ./",
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
+  },
   "devDependencies": {
     "@types/react": "^16.9.43",
     "eslint-config-prettier": "^6.11.0",
@@ -20,8 +28,10 @@
     "@typescript-eslint/parser": "^3.6.1",
     "emotion-theming": "^10.0.27",
     "eslint": "^7.4.0",
+    "push-dir": "^0.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "shx": "^0.3.2"
   }
 }
