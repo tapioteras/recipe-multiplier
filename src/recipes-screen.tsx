@@ -10,7 +10,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({ recipes = [] }) => (
   <List styleType="disc">
     {[...recipes].map((recipe, i) => (
       <ListItem key={`list-item-${i}`}>
-        <Link to={{ pathname: `recipe/${recipe.name}`, state: { recipe } }}>
+        <Link to={{ pathname: `/recipe/${recipe.name}`, state: { recipe } }}>
           {recipe.name}
         </Link>
       </ListItem>
