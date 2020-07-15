@@ -54,8 +54,8 @@ const RecipeScreen: React.FC<RecipeScreenProps> = () => {
       </List>
       <Divider />
       <List as="ol" styleType="decimal">
-        {[...steps].map((step) => (
-          <ListItem>{step}</ListItem>
+        {[...steps].map((step, i) => (
+          <ListItem key={`step-${i}`}>{step}</ListItem>
         ))}
       </List>
     </>
