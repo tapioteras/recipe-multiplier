@@ -1,7 +1,7 @@
 import { List, ListItem } from "@chakra-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
-import { RecipeScreenProps } from "~recipe-screen";
+import { RecipeScreenProps } from "./recipe-screen";
 
 export interface RecipesScreenProps {
   recipes: RecipeScreenProps[];
