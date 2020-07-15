@@ -7,6 +7,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/core";
+import { calculatePortion } from "./utils";
 
 export interface RecipeScreenProps {
   name: string;
@@ -24,29 +25,6 @@ export interface IngredientRowProps {
   multipliedPortion: number;
 }
 
-interface CalculatedPortion {
-  amount?: number;
-  originalPortion: number;
-  multipliedPortion: number;
-}
-
-const round = (value) => Math.round(value * 100) / 100;
-
-const calculatePortion = ({
-  amount = 0,
-  originalPortion = 0,
-  multipliedPortion = 0,
-}: CalculatedPortion) => {
-  const difference = Math.abs(originalPortion - multipliedPortion);
-  if (originalPortion > multipliedPortion) {
-    return round(amount * (1 - difference));
-  } else if (originalPortion < multipliedPortion) {
-    return round(amount * (1 + difference));
-  } else {
-    return amount;
-  }
-};
-
 const IngredientRow: React.FC<IngredientRowProps> = ({
   name,
   unit,
@@ -55,10 +33,10 @@ const IngredientRow: React.FC<IngredientRowProps> = ({
 }) => {
   const calculatedAmount = calculatePortion({ ...{ amount }, ...rest });
   return (
-    <>
+    <React.Fragment>
       {amount && calculatedAmount}
       {unit && ` ${unit}`} {name.toLowerCase()}
-    </>
+    </React.Fragment>
   );
 };
 const RecipeScreen: React.FC<RecipeScreenProps> = () => {
