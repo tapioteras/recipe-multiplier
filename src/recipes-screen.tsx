@@ -8,7 +8,6 @@ export interface RecipesScreenProps {
 }
 const RecipesScreen: React.FC<RecipesScreenProps> = ({ recipes = [] }) => (
   <List styleType="disc">
-    <Text fontSize="6xl">This is recipes screen</Text>
     {[...recipes].map((recipe, i) => (
       <ListItem key={`list-item-${i}`}>
         <Link to={{ pathname: `/recipe/${recipe.name}`, state: { recipe } }}>
