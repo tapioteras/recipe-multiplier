@@ -1,12 +1,10 @@
 import { List, ListItem } from "@chakra-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Text } from "@chakra-ui/core";
-
-export interface RecipeProps {}
+import { RecipeScreenProps } from "~recipe-screen";
 
 export interface RecipesScreenProps {
-  recipes: RecipeProps[];
+  recipes: RecipeScreenProps[];
 }
 const RecipesScreen: React.FC<RecipesScreenProps> = ({ recipes = [] }) => (
   <List styleType="disc">
