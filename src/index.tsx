@@ -8,6 +8,20 @@ import RecipesScreen from "./recipes-screen";
 
 const themeOverrides = {
   ...theme,
+  breakpoints: ["30em", "48em", "62em", "80em"],
+  fonts: {
+    heading: '"Avenir Next", sans-serif',
+    body: "system-ui, sans-serif",
+    mono: "Menlo, monospace",
+  },
+  colors: {
+    ...theme.colors,
+    brand: {
+      900: "#1a365d",
+      800: "#153e75",
+      700: "#2a69ac",
+    },
+  },
 };
 
 ReactDOM.render(
