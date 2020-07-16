@@ -54,5 +54,100 @@
       "Kuumenna linseejä mikrossa kunnes ne lämpenevät",
       "Sekoita pastan joukkoon avokadoseos sekä linssit. Annostele lautaselle ja raasta vähän juustoa päälle."
     ]
+  },
+  {
+    "name": "Iso hedelmäsmoothie",
+    "ingredients": [
+      {
+        "unit": "kpl",
+        "amount": 2,
+        "name": "banaania"
+      },
+      {
+        "unit": "kpl",
+        "amount": 1,
+        "name": "appelsiini"
+      },
+      {
+        "unit": "dl",
+        "amount": 0.5,
+        "name": "kookosölyjä"
+      },
+      {
+        "unit": "dl",
+        "amount": 1,
+        "name": "proteiinijauhoa"
+      },
+      {
+        "unit": "dl",
+        "amount": 0.5,
+        "name": "chian siemeniä"
+      },
+      {
+        "unit": "rkl",
+        "amount": 2,
+        "name": "macajauhetta"
+      },
+      {
+        "unit": "pss",
+        "amount": 4,
+        "name": "pakastesmoothiehedelmiä"
+      },
+      {
+        "unit": "dl",
+        "amount": 0.5,
+        "name": "pala inkivääriä"
+      },
+      {
+        "unit": "l",
+        "amount": 0.5,
+        "name": "greippimehua"
+      }
+    ]
+  },
+  {
+    "name": "Pehmeät sämpylät",
+    "ingredients": [
+      {
+        "unit": "dl",
+        "amount": 3,
+        "name": "maitoa tai vettä"
+      },
+      {
+        "unit": "g",
+        "amount": 25,
+        "name": "hiivaa"
+      },
+      {
+        "unit": "tl",
+        "amount": 1,
+        "name": "suolaa"
+      },
+      {
+        "unit": "tl",
+        "amount": 1,
+        "name": "sokeria"
+      },
+      {
+        "unit": "dl",
+        "amount": 7,
+        "name": "vehnäjauhoja"
+      },
+      {
+        "unit": "g",
+        "amount": 60,
+        "name": "voita tai margariinia"
+      }
+    ],
+    "steps": [
+      "Lämmitä neste haaleaksi.",
+      "Liuota hiiva,suola ja sokeri nesteeseen.",
+      "Lisää vehnäjauhoja vähin erin.",
+      "Yhdistä pehmeä rasva ja vaivaa taikinaa,kunnes irtoaa astian reunoista.",
+      "Peitä liinalla ja anna kohota lämpimässä paikassa kaksinkertaiseksi.",
+      "Vaivaa taikinaa pöydällä,jaa 10 osaan ja leivo pitkänomaiseksi sämpylöiksi.",
+      "Jauhota sämpylät päältä ja jätä kohoamaan leivinpaperin päälle pellille,liinalla peitettynä.",
+      "Paista 250 asteessa 10-15 minuuttia."
+    ]
   }
 ]
