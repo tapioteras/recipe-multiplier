@@ -11,7 +11,6 @@ export const calculatePortion = ({
   originalPortion = 1,
   multipliedPortion = 0,
 }: CalculatedPortion) => {
-  const difference = Math.abs(originalPortion - multipliedPortion);
   const onePortion = amount / originalPortion;
   if (originalPortion > multipliedPortion) {
     return round(onePortion * multipliedPortion);
