@@ -3,12 +3,14 @@ import {
   List,
   ListItem,
   Text,
-  Divider,
   Heading,
   SliderProps,
   Box,
+  Flex,
+  Icon,
+  Button,
 } from "@chakra-ui/core";
-import { useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Slider,
   SliderTrack,
@@ -70,7 +72,34 @@ const RecipeScreen: React.FC = () => {
   useEffect(() => {}, [finalPortions]);
   return (
     <ScreenContainer>
-      <Heading>{name}</Heading>
+      <Flex alignItems="center">
+        <Link to="/recipes">
+          <Icon fontSize={50} name="chevron-left" />
+        </Link>
+        <Heading>{name}</Heading>
+      </Flex>
+      {description && (
+        <ContentBox>
+          <Text fontSize="xl">{description}</Text>
+        </ContentBox>
+      )}
+      {description && portions && <Box paddingTop={2} />}
+      <Flex justifyContent="space-between" alignSelf="flext-start">
+        {portions && (
+          <Text fontSize="2xl">{`${finalPortions} ${
+            finalPortions === 1 ? "annos" : "annosta"
+          }`}</Text>
+        )}
+        {finalPortions !== portions && (
+          <Button
+            variant="link"
+            onClick={() => setFinalPortions(portions)}
+            color="white"
+          >
+            Reset
+          </Button>
+        )}
+      </Flex>
       <Slider
         {...slideDefaultProps}
         onChange={(newPortion) => {
@@ -82,17 +111,6 @@ const RecipeScreen: React.FC = () => {
         <SliderFilledTrack bg="white" />
         <SliderThumb size={6} />
       </Slider>
-      {description && (
-        <ContentBox>
-          <Text fontSize="xl">{description}</Text>
-        </ContentBox>
-      )}
-      {description && portions && <Box paddingTop={2} />}
-      {portions && (
-        <Text fontSize="2xl">{`${finalPortions} ${
-          finalPortions === 1 ? "annos" : "annosta"
-        }`}</Text>
-      )}
       {ingredients && (
         <Heading paddingTop={4} fontSize="2xl">
           Ainekset
