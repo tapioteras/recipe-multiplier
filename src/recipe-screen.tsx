@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, Text, Divider } from "@chakra-ui/core";
+import { List, ListItem, Text, Divider, Heading } from "@chakra-ui/core";
 import { useParams, useLocation } from "react-router-dom";
 import {
   Slider,
@@ -8,6 +8,7 @@ import {
   SliderThumb,
 } from "@chakra-ui/core";
 import { calculatePortion } from "./utils";
+import ScreenContainer from "./ScreenContainer";
 
 export interface RecipeScreenProps {
   name: string;
@@ -48,8 +49,8 @@ const RecipeScreen: React.FC = () => {
   const [finalPortions, setFinalPortions] = useState(portions);
   useEffect(() => {}, [finalPortions]);
   return (
-    <>
-      <Text fontSize="6xl">{name}</Text>
+    <ScreenContainer>
+      <Heading>{name}</Heading>
       <Slider
         onChange={(newPortion) => {
           setFinalPortions(newPortion);
@@ -87,7 +88,7 @@ const RecipeScreen: React.FC = () => {
           <ListItem key={`step-${i}`}>{step}</ListItem>
         ))}
       </List>
-    </>
+    </ScreenContainer>
   );
 };
 export default RecipeScreen;
