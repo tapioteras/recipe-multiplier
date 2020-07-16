@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, Text, Divider, Heading } from "@chakra-ui/core";
+import {
+  List,
+  ListItem,
+  Text,
+  Divider,
+  Heading,
+  SliderProps,
+  Box,
+} from "@chakra-ui/core";
 import { useParams, useLocation } from "react-router-dom";
 import {
   Slider,
@@ -26,6 +34,12 @@ export interface IngredientRowProps {
   multipliedPortion: number;
 }
 
+const ContentBox: React.FC = ({ children }) => (
+  <Box p={5} shadow="lg" bg="white" color="black" borderWidth="1px">
+    {children}
+  </Box>
+);
+
 const IngredientRow: React.FC<IngredientRowProps> = ({
   name,
   unit,
@@ -40,6 +54,12 @@ const IngredientRow: React.FC<IngredientRowProps> = ({
     </React.Fragment>
   );
 };
+const slideDefaultProps: SliderProps = {
+  step: 0.1,
+  min: 0.1,
+  max: 15,
+};
+
 const RecipeScreen: React.FC = () => {
   const {
     state: {
@@ -52,42 +72,59 @@ const RecipeScreen: React.FC = () => {
     <ScreenContainer>
       <Heading>{name}</Heading>
       <Slider
+        {...slideDefaultProps}
         onChange={(newPortion) => {
           setFinalPortions(newPortion);
         }}
-        step={0.1}
-        min={0.1}
-        max={15}
         defaultValue={finalPortions}
       >
-        <SliderTrack />
-        <SliderFilledTrack />
-        <SliderThumb />
+        <SliderTrack bg="white" />
+        <SliderFilledTrack bg="white" />
+        <SliderThumb size={6} />
       </Slider>
-      {description && <Text fontSize="2xl">{description}</Text>}
+      {description && (
+        <ContentBox>
+          <Text fontSize="xl">{description}</Text>
+        </ContentBox>
+      )}
+      {description && portions && <Box paddingTop={2} />}
       {portions && (
         <Text fontSize="2xl">{`${finalPortions} ${
           finalPortions === 1 ? "annos" : "annosta"
-        }.`}</Text>
+        }`}</Text>
       )}
-      <Divider />
-      <List styleType="disc">
-        {[...ingredients].map((ingredient) => (
-          <ListItem fontSize="xl">
-            <IngredientRow
-              originalPortion={portions}
-              multipliedPortion={finalPortions}
-              {...ingredient}
-            />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List as="ol" styleType="decimal">
-        {[...steps].map((step, i) => (
-          <ListItem key={`step-${i}`}>{step}</ListItem>
-        ))}
-      </List>
+      {ingredients && (
+        <Heading paddingTop={4} fontSize="2xl">
+          Ainekset
+        </Heading>
+      )}
+      {ingredients && (
+        <List styleType="disc">
+          {[...ingredients].map((ingredient) => (
+            <ListItem fontSize="xl">
+              <IngredientRow
+                originalPortion={portions}
+                multipliedPortion={finalPortions}
+                {...ingredient}
+              />
+            </ListItem>
+          ))}
+        </List>
+      )}
+      {steps && (
+        <Heading paddingTop={4} fontSize="2xl">
+          Valmistus
+        </Heading>
+      )}
+      {steps && (
+        <List as="ol" styleType="decimal">
+          {[...steps].map((step, i) => (
+            <ListItem fontSize="xl" key={`step-${i}`}>
+              {step}
+            </ListItem>
+          ))}
+        </List>
+      )}
     </ScreenContainer>
   );
 };
