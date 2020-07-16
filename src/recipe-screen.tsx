@@ -72,12 +72,12 @@ const RecipeScreen: React.FC = () => {
   useEffect(() => {}, [finalPortions]);
   return (
     <ScreenContainer>
-      <Flex alignItems="center">
-        <Link to="/recipes">
+      <Link to="/recipes">
+        <Flex alignItems="center"paddingBottom={5}>
           <Icon fontSize={50} name="chevron-left" />
-        </Link>
-        <Heading>{name}</Heading>
-      </Flex>
+          <Heading paddingLeft={6}>{name}</Heading>
+        </Flex>
+      </Link>
       {description && (
         <ContentBox>
           <Text fontSize="xl">{description}</Text>
