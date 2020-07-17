@@ -94,17 +94,17 @@ const RecipeScreen: React.FC = () => {
     <ScreenContainer>
       <Flex alignItems="center" flexWrap="wrap" paddingBottom={5}>
         <Link to="/recipes">
-          <Flex flexDirection="row" alignItems="center">
+          <Flex alignItems="center">
             <Icon fontSize={50} name="chevron-left" />
-            <Heading paddingLeft={6} paddingRight={5}>
+            <Heading fontSize={["md", "2xl", "2xl", "2xl"]} paddingX={5}>
               {name}
             </Heading>
           </Flex>
         </Link>
         {categoryName && (
           <Flex
-            paddingTop={[5, 0, 0, 0]}
-            flexDirection={["row", "row-reverse", "row-reverse", "row-reverse"]}
+            alignContent="center"
+            flexDirection={["row-reverse", "row-reverse", "row-reverse", "row-reverse"]}
             flexGrow={2}
           >
             <Tag size="md" variantColor="gray">
