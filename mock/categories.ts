@@ -1,7 +1,13 @@
+export enum CATEGORY {
+  DAILY_FOOD = 2,
+  CAKES = 1,
+  OTHER = 3,
+}
+
 const categories = [
-  { id: 1, name: "Leivonnaiset" },
-  { id: 2, name: "Arkiruoat" },
-  { id: 3, name: "Muut" },
+  { id: CATEGORY.CAKES, name: "Leivonnaiset" },
+  { id: CATEGORY.DAILY_FOOD, name: "Arkiruoat" },
+  { id: CATEGORY.OTHER, name: "Muut" },
 ];
 
 export default categories;
