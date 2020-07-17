@@ -129,6 +129,11 @@ const RecipeScreen: React.FC = () => {
       </Flex>
       <Slider
         {...sliderDefaultProps}
+        max={
+          portions >= sliderDefaultProps.max
+            ? portions * 2
+            : sliderDefaultProps.max
+        }
         onChange={(newPortion) => {
           setFinalPortions(newPortion);
         }}
