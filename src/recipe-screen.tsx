@@ -202,7 +202,7 @@ const RecipeScreen: React.FC = () => {
         </Heading>
       )}
       {steps?.length > 1 && (
-        <List as={"ol"} styleType="decimal">
+        <List spacing={5} as={"ol"} styleType="decimal">
           {[...steps].map((step, i) => (
             <ListItem fontSize="xl" key={`step-${i}`}>
               {step}
