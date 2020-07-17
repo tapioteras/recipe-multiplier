@@ -9,6 +9,7 @@ import {
   Flex,
   Icon,
   Button,
+  Tag,
 } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -19,6 +20,7 @@ import {
 } from "@chakra-ui/core";
 import { calculatePortion } from "./utils";
 import ScreenContainer from "./ScreenContainer";
+import categories from "../mock/categories";
 
 export interface RecipeScreenProps {
   name: string;
@@ -66,10 +68,11 @@ const slideDefaultProps: SliderProps = {
 const RecipeScreen: React.FC = () => {
   const {
     state: {
-      recipe: { name, description, portions = 1, ingredients, steps },
+      recipe: { name, description, portions = 1, ingredients, steps, category },
     },
   } = useLocation();
   const [finalPortions, setFinalPortions] = useState(portions);
+  const categoryName = categories.find((id) => category)?.name;
   useEffect(() => {}, [finalPortions]);
   return (
     <ScreenContainer>
@@ -77,6 +80,16 @@ const RecipeScreen: React.FC = () => {
         <Flex alignItems="center" paddingBottom={5}>
           <Icon fontSize={50} name="chevron-left" />
           <Heading paddingLeft={6}>{name}</Heading>
+          {categoryName && (
+            <Flex flexDirection="row-reverse" flexGrow={1}>
+              <Tag
+                size="md"
+                variantColor="gray"
+              >
+                {categoryName}
+              </Tag>
+            </Flex>
+          )}
         </Flex>
       </Link>
       {description && (
