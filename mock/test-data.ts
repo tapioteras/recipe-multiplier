@@ -314,6 +314,73 @@ const testData = [
       "Paista 200-asteisen uunin keskitasolla noin 20 minuuttia. Tarkista kalan kypsyys. Tarjoa tillipestolla kuorrutettu uunikala perunasoseen kanssa.",
     ],
   },
+  {
+    category: 2,
+    name: "keltainen sei-katkarapuruukku",
+    ingredients: [
+      {
+        unit: "g",
+        amount: 300,
+        name: "seitä tai turskaa pakasteena",
+      },
+      {
+        unit: "dl",
+        amount: 2,
+        name: "vettä",
+      },
+      {
+        unit: "kpl",
+        amount: 0.5,
+        name: "kalaliemikuutioita",
+      },
+      {
+        unit: "rkl",
+        amount: 2,
+        name: "sitruunamehua",
+      },
+      {
+        unit: "kpl",
+        amount: 1,
+        name: "valkosipulinkynsi",
+      },
+      {
+        unit: "tl",
+        amount: 0.5,
+        name: "kuivattua rakuunaa",
+      },
+      {
+        unit: "tlk (320 g)",
+        amount: 1,
+        name: "smetanaa",
+      },
+      {
+        unit: "ps (á 250 g)",
+        amount: 2,
+        name: "kasvissauikaleita (pakaste)",
+      },
+      {
+        unit: "ps (180g)",
+        amount: 1,
+        name: "katkarapuja (pakaste)",
+      },
+      {
+        unit: "tl",
+        amount: 0.5,
+        name: "suolaa",
+      },
+      {
+        unit: "dl",
+        amount: 0.5,
+        name: "tilliä hienonnettuna",
+      },
+    ],
+    steps: [
+      "sulata kalafileet kohmeisiksi, jos käytät pakastettua kalaa",
+      "kuumenna paistokasarissa vesi ja lisää puolikas liemikuutio, sitruunamehu, hienonnettu valkosipuli, rakuuna ja smetana. kiehauta seos.",
+      "lisää kasvissuikaleet ja kuullota kala. kuumenna kiehuvaksi. anna hautua miedolla lämmöllä n. 5 min.",
+      "lisää katkaravut jäisinä ja kuumenna, mutta älä keitä enää. mausta suolalla ja sekoita joukkoon tilli. tarjoa keitetyn riisin kanssa. voit tarjota myös sellaisenaan leivän kanssa. silloin annos riittää useammalle.",
+    ],
+  },
 ];
 
 export default testData;
