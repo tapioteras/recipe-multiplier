@@ -234,6 +234,41 @@ const testData = [
       "Vaahdota margariini ja sokeri. Lisää munat yksitellen vatkaten. Yhdistä kuivat aineet ja lisää sekoittaen vuorotellen maidon kanssa taikinaan. Levitä taikina leivinpaperilla vuorattuun uunivuokaan (n. 25 x 35 cm). Paista 175-asteisen uunin keskitasolla noin 25 minuuttia. Anna pohjan jäähtyä. Mittaa korkealaitaiseen kattilaan kerma ja fariinisokeri. Keitä noin 10 minuuttia välillä sekoittaen. Tee pisarakoe. Tiputa pisara kinuskia lasilliseen kylmää vettä. Jos kinuski jähmettyy, se on valmista. Sekoita joukkoon nokare margariinia. Rouhi pähkinät ja ripottele torttupohjalle. Valuta kinuski pinnalle. Leikkaa paloiksi.",
     ],
   },
+  {
+    name: "Koskenlaskija-uunikala",
+    category: 2,
+    ingredientsCategories: [{ id: 1, name: "Kastike" }],
+    ingredients: [
+      {
+        unit: "pkt (400 g)",
+        amount: 1,
+        name: "Pirkka alaskanseitiö annospaloina (pakaste)",
+      },
+      { unit: "tl", amount: 0.5, name: "suolaa" },
+      { name: "mustapippuria" },
+      { category: 1, unit: "rkl", amount: 2, name: "voita tai margariinia" },
+      { category: 1, unit: "rkl", amount: 3, name: "vehnäjauhoja" },
+      {
+        category: 1,
+        unit: "dl",
+        amount: 4,
+        name: "valio koskenlaskija-sulatejuustoa, perinteinen",
+      },
+      {
+        category: 1,
+        unit: "pkt (250 g)",
+        amount: 0.5,
+        name: "tilliä hienonnettuna",
+      },
+      { category: 1, unit: "tl", amount: 0.5, name: "suolaa" },
+      { category: 1, name: "mustapippuria" },
+    ],
+    steps: [
+      "sulata kala pakkausohjeen mukaan ja valuta sulamisvesi pois. kuutioi kala. laita palat voideltuun uunivuokaan ja mausta.",
+      "sulata rasva pinnoitetussa kattilassa ja sekoita joukkon vehnäjauhot. anna kiehahtaa. lisää joukkon maito koko ajan sekoittaen. kiehauta. lisää kastikkeen joukkoon sulatejuusto pieninä nokareina ja sekoita tasaiseksi. mausta ja kaada kastike kalapalojen päälle vuokaan.",
+      "paista 175-asteisessa uunissa 25-30 minuuttia. tarjoa keitettyjen perunoiden ja salaatin kanssa.",
+    ],
+  },
 ];
 
 export default testData;
