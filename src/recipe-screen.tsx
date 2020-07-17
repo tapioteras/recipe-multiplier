@@ -104,7 +104,12 @@ const RecipeScreen: React.FC = () => {
         {categoryName && (
           <Flex
             alignContent="center"
-            flexDirection={["row-reverse", "row-reverse", "row-reverse", "row-reverse"]}
+            flexDirection={[
+              "row-reverse",
+              "row-reverse",
+              "row-reverse",
+              "row-reverse",
+            ]}
             flexGrow={2}
           >
             <Tag size="md" variantColor="gray">
