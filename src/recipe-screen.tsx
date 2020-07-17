@@ -72,7 +72,7 @@ const RecipeScreen: React.FC = () => {
     },
   } = useLocation();
   const [finalPortions, setFinalPortions] = useState(portions);
-  const categoryName = categories.find((id) => category)?.name;
+  const categoryName = [...categories].find(({ id }) => id === category)?.name;
   useEffect(() => {}, [finalPortions]);
   return (
     <ScreenContainer>
@@ -82,10 +82,7 @@ const RecipeScreen: React.FC = () => {
           <Heading paddingLeft={6}>{name}</Heading>
           {categoryName && (
             <Flex flexDirection="row-reverse" flexGrow={1}>
-              <Tag
-                size="md"
-                variantColor="gray"
-              >
+              <Tag size="md" variantColor="gray">
                 {categoryName}
               </Tag>
             </Flex>
