@@ -10,6 +10,8 @@ import {
   Icon,
   Button,
   Tag,
+  VisuallyHidden,
+  ControlBox,
 } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -118,6 +120,27 @@ const RecipeScreen: React.FC = () => {
           </Flex>
         )}
       </Flex>
+      <Box>
+        <label>
+          <VisuallyHidden as="input" type="checkbox" />
+          <ControlBox
+            borderWidth="2px"
+            size="30px"
+            rounded="sm"
+            _checked={{
+              bg: "red.700",
+              color: "white",
+              borderColor: "red.700",
+            }}
+            _focus={{ borderColor: "red.600", boxShadow: "outline" }}
+          >
+            <Icon name="check" size="16px" />
+          </ControlBox>
+          <Box as="span" verticalAlign="top" ml={3}>
+            Tehty tänään
+          </Box>
+        </label>
+      </Box>
       {description && (
         <ContentBox>
           <Text fontSize="xl">{description}</Text>
