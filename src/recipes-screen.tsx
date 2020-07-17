@@ -37,11 +37,13 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                       state: { recipe },
                     }}
                   >
-                    <Flex alignItems="center" justifyContent="space-between">
+                    <Flex w="100%" alignItems="center">
                       <Heading size="lg" paddingLeft={5}>
                         {recipe.name}
                       </Heading>
-                      <ListIcon fontSize={50} icon="chevron-right" />
+                      <Flex flexGrow={2} flexDirection="row-reverse">
+                        <ListIcon fontSize={50} icon="chevron-right" />
+                      </Flex>
                     </Flex>
                   </Link>
                 </ListItem>

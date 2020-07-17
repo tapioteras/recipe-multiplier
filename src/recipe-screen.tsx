@@ -92,19 +92,27 @@ const RecipeScreen: React.FC = () => {
   useEffect(() => {}, [finalPortions]);
   return (
     <ScreenContainer>
-      <Link to="/recipes">
-        <Flex alignItems="center" paddingBottom={5}>
-          <Icon fontSize={50} name="chevron-left" />
-          <Heading paddingLeft={6}>{name}</Heading>
-          {categoryName && (
-            <Flex flexDirection="row-reverse" flexGrow={1}>
-              <Tag size="md" variantColor="gray">
-                {categoryName}
-              </Tag>
-            </Flex>
-          )}
-        </Flex>
-      </Link>
+      <Flex alignItems="center" flexWrap="wrap" paddingBottom={5}>
+        <Link to="/recipes">
+          <Flex flexDirection="row" alignItems="center">
+            <Icon fontSize={50} name="chevron-left" />
+            <Heading paddingLeft={6} paddingRight={5}>
+              {name}
+            </Heading>
+          </Flex>
+        </Link>
+        {categoryName && (
+          <Flex
+            paddingTop={[5, 0, 0, 0]}
+            flexDirection={["row", "row-reverse", "row-reverse", "row-reverse"]}
+            flexGrow={2}
+          >
+            <Tag size="md" variantColor="gray">
+              {categoryName}
+            </Tag>
+          </Flex>
+        )}
+      </Flex>
       {description && (
         <ContentBox>
           <Text fontSize="xl">{description}</Text>
