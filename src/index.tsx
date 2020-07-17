@@ -14,6 +14,7 @@ const themeOverrides = {
     body: "system-ui, sans-serif",
     mono: "Menlo, monospace",
   },
+  breakpoints: ["30em", "48em", "62em", "80em"],
   colors: {
     ...theme.colors,
   },
