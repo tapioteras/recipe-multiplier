@@ -5,8 +5,8 @@ export enum CATEGORY {
 }
 
 const categories = [
-  { id: CATEGORY.CAKES, name: "Leivonnaiset" },
   { id: CATEGORY.DAILY_FOOD, name: "Arkiruoat" },
+  { id: CATEGORY.CAKES, name: "Leivonnaiset" },
   { id: CATEGORY.OTHER, name: "Muut" },
 ];
 
