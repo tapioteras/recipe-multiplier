@@ -22,11 +22,19 @@ import { calculatePortion } from "./utils";
 import ScreenContainer from "./ScreenContainer";
 import categories from "../mock/categories";
 
+export const INGREDIENT_CATEGORY_OTHER = 999;
+
+export interface IngredientCategoryProps {
+  id: number;
+  name: string;
+}
+
 export interface RecipeScreenProps {
   name: string;
   description?: string;
   portions?: string;
   ingredients: IngredientRowProps[];
+  ingredientsCategories?: IngredientCategoryProps[];
   steps?: string[];
   category?: number;
 }
@@ -68,7 +76,15 @@ const slideDefaultProps: SliderProps = {
 const RecipeScreen: React.FC = () => {
   const {
     state: {
-      recipe: { name, description, portions = 1, ingredients, steps, category },
+      recipe: {
+        name,
+        description,
+        portions = 1,
+        ingredients,
+        ingredientsCategories,
+        steps,
+        category,
+      },
     },
   } = useLocation();
   const [finalPortions, setFinalPortions] = useState(portions);
@@ -127,7 +143,34 @@ const RecipeScreen: React.FC = () => {
           Ainekset
         </Heading>
       )}
-      {ingredients && (
+      {ingredientsCategories &&
+        ingredientsCategories?.length &&
+        [
+          ...ingredientsCategories,
+          { id: INGREDIENT_CATEGORY_OTHER, name: "Muut" },
+        ].map(({ id, name }) => (
+          <Box>
+            <Heading paddingTop={4} fontSize="2xl">
+              {name}
+            </Heading>
+            <List styleType="disc">
+              {[...ingredients]
+                .filter(
+                  ({ category = INGREDIENT_CATEGORY_OTHER }) => category === id
+                )
+                .map((ingredient) => (
+                  <ListItem fontSize="xl">
+                    <IngredientRow
+                      originalPortion={portions}
+                      multipliedPortion={finalPortions}
+                      {...ingredient}
+                    />
+                  </ListItem>
+                ))}
+            </List>
+          </Box>
+        ))}
+      {!ingredientsCategories && ingredients && (
         <List styleType="disc">
           {[...ingredients].map((ingredient) => (
             <ListItem fontSize="xl">

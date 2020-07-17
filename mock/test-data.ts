@@ -154,6 +154,85 @@ const testData = [
       "Paista 250 asteessa 10-15 minuuttia.",
     ],
   },
+  {
+    name: "Kinuski-suolapähkinäpalat",
+    portions: 15,
+    ingredientsCategories: [
+      { id: 1, name: "Pohja" },
+      { id: 2, name: "Kuorrutus" },
+    ],
+    ingredients: [
+      {
+        category: 1,
+        unit: "g",
+        amount: 200,
+        name: "margariinia",
+      },
+      {
+        category: 1,
+        unit: "dl",
+        amount: 2.5,
+        name: "sokeria",
+      },
+      {
+        category: 1,
+        unit: "kpl",
+        amount: 3,
+        name: "kananmunaa",
+      },
+      {
+        category: 1,
+        unit: "dl",
+        amount: 5,
+        name: "vehnäjauhoja",
+      },
+      {
+        category: 1,
+        unit: "tl",
+        amount: 2,
+        name: "leivinjauhetta",
+      },
+      {
+        category: 1,
+        unit: "tl",
+        amount: 2,
+        name: "vanilijasokeria",
+      },
+      {
+        category: 1,
+        unit: "dl",
+        amount: 2,
+        name: "maitoa",
+      },
+      {
+        category: 2,
+        unit: "dl",
+        amount: 2,
+        name: "kuohukermaa",
+      },
+      {
+        category: 2,
+        unit: "dl",
+        amount: 2,
+        name: "fariinisokeria",
+      },
+      {
+        category: 2,
+        unit: "rkl",
+        amount: 1,
+        name: "margariinia",
+      },
+      {
+        category: 2,
+        unit: "dl",
+        amount: 2.5,
+        name: "suolapähkinöitä",
+      },
+    ],
+    steps: [
+      "Vaahdota margariini ja sokeri. Lisää munat yksitellen vatkaten. Yhdistä kuivat aineet ja lisää sekoittaen vuorotellen maidon kanssa taikinaan. Levitä taikina leivinpaperilla vuorattuun uunivuokaan (n. 25 x 35 cm). Paista 175-asteisen uunin keskitasolla noin 25 minuuttia. Anna pohjan jäähtyä. Mittaa korkealaitaiseen kattilaan kerma ja fariinisokeri. Keitä noin 10 minuuttia välillä sekoittaen. Tee pisarakoe. Tiputa pisara kinuskia lasilliseen kylmää vettä. Jos kinuski jähmettyy, se on valmista. Sekoita joukkoon nokare margariinia. Rouhi pähkinät ja ripottele torttupohjalle. Valuta kinuski pinnalle. Leikkaa paloiksi.",
+    ],
+  },
 ];
 
 export default testData;
