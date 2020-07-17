@@ -193,8 +193,8 @@ const RecipeScreen: React.FC = () => {
           Valmistus
         </Heading>
       )}
-      {steps && (
-        <List as="ol" styleType="decimal">
+      {steps?.length > 1 && (
+        <List as={"ol"} styleType="decimal">
           {[...steps].map((step, i) => (
             <ListItem fontSize="xl" key={`step-${i}`}>
               {step}
@@ -202,6 +202,7 @@ const RecipeScreen: React.FC = () => {
           ))}
         </List>
       )}
+      {steps?.length === 1 && <Text fontSize="xl">{steps[0]}</Text>}
     </ScreenContainer>
   );
 };
