@@ -67,7 +67,7 @@ const IngredientRow: React.FC<IngredientRowProps> = ({
     </React.Fragment>
   );
 };
-const slideDefaultProps: SliderProps = {
+const sliderDefaultProps: SliderProps = {
   step: 0.1,
   min: 0.1,
   max: 15,
@@ -128,7 +128,7 @@ const RecipeScreen: React.FC = () => {
         )}
       </Flex>
       <Slider
-        {...slideDefaultProps}
+        {...sliderDefaultProps}
         onChange={(newPortion) => {
           setFinalPortions(newPortion);
         }}
