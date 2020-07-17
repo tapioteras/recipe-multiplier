@@ -269,6 +269,51 @@ const testData = [
       "paista 175-asteisessa uunissa 25-30 minuuttia. tarjoa keitettyjen perunoiden ja salaatin kanssa.",
     ],
   },
+  {
+    category: 2,
+    name: "Tillipestolla kuorrutettu uunikala",
+    portions: 4,
+    ingredientsCategories: [
+      { id: 1, name: "Tillipesto" },
+      { id: 2, name: "Pinnalle" },
+    ],
+    ingredients: [
+      {
+        unit: "pkt (400 g)",
+        amount: 1,
+        name: "Pirkka alaskanseitiä annospaloina (pakaste)",
+      },
+      { unit: "tl", amount: 0.5, name: "suolaa" },
+      {
+        category: 1,
+        unit: "nippu (50g)",
+        amount: 1,
+        name: "tilliä",
+      },
+      {
+        category: 1,
+        unit: "g",
+        amount: 100,
+        name: "emmetalia raastettuna",
+      },
+      {
+        category: 1,
+        unit: "dl",
+        amount: 1,
+        name: "mantelilastuja",
+      },
+      { category: 1, unit: "rkl", amount: 1, name: "rypsiöljyä" },
+      { category: 1, unit: "rkl", amount: 2, name: "vettä" },
+      { category: 1, unit: "tl", amount: 0.25, name: "suolaa" },
+      { category: 1, name: "mustapippuria" },
+      { category: 2, unit: "dl", amount: 0.25, name: "mantelilastuja" },
+    ],
+    steps: [
+      "Lado pakkauksen ohjeen mukaan sulatetut kalapalat voideltuun uunivuokaan. Ripottele kalojen pintaan suolaa. Hienonna tillinvarret.",
+      "Soseuta peston ainekset keskenään tasaiseksi tahnaksi sauvasekoittimella. Levitä pesto kalapaloille ja ripottele pinnalle mantelilastut.",
+      "Paista 200-asteisen uunin keskitasolla noin 20 minuuttia. Tarkista kalan kypsyys. Tarjoa tillipestolla kuorrutettu uunikala perunasoseen kanssa.",
+    ],
+  },
 ];
 
 export default testData;
