@@ -157,6 +157,7 @@ const testData = [
   {
     name: "Kinuski-suolapähkinäpalat",
     portions: 15,
+    category: 1,
     ingredientsCategories: [
       { id: 1, name: "Pohja" },
       { id: 2, name: "Kuorrutus" },
