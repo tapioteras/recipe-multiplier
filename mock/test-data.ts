@@ -1,5 +1,6 @@
 const testData = [
   {
+    category: 2,
     name: "Avokado-linssipasta",
     description:
       "Kokeilin lisätä linssejä avokadopastaan ja toimi yllättävän hyvin!",
@@ -57,6 +58,7 @@ const testData = [
     ],
   },
   {
+    category: 3,
     name: "Iso hedelmäsmoothie",
     ingredients: [
       {
@@ -107,6 +109,7 @@ const testData = [
     ],
   },
   {
+    category: 1,
     name: "Pehmeät sämpylät",
     ingredients: [
       {

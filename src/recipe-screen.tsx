@@ -26,6 +26,7 @@ export interface RecipeScreenProps {
   portions?: string;
   ingredients: IngredientRowProps[];
   steps?: string[];
+  category?: number;
 }
 
 export interface IngredientRowProps {
@@ -73,7 +74,7 @@ const RecipeScreen: React.FC = () => {
   return (
     <ScreenContainer>
       <Link to="/recipes">
-        <Flex alignItems="center"paddingBottom={5}>
+        <Flex alignItems="center" paddingBottom={5}>
           <Icon fontSize={50} name="chevron-left" />
           <Heading paddingLeft={6}>{name}</Heading>
         </Flex>

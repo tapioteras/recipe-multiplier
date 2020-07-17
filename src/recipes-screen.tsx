@@ -4,10 +4,19 @@ import { Link } from "react-router-dom";
 import { RecipeScreenProps } from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 
+export interface CategoryProps {
+  id: number;
+  name: string;
+}
+
 export interface RecipesScreenProps {
   recipes: RecipeScreenProps[];
+  categories: CategoryProps[];
 }
-const RecipesScreen: React.FC<RecipesScreenProps> = ({ recipes = [] }) => (
+const RecipesScreen: React.FC<RecipesScreenProps> = ({
+  recipes = [],
+  categories = [],
+}) => (
   <ScreenContainer>
     <List spacing={5}>
       {[...recipes].map((recipe, i) => (
