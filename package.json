@@ -35,6 +35,7 @@
     "@typescript-eslint/parser": "^3.6.1",
     "emotion-theming": "^10.0.27",
     "eslint": "^7.4.0",
+    "moment": "^2.27.0",
     "push-dir": "^0.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
