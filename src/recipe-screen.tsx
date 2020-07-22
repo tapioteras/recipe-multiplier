@@ -23,6 +23,7 @@ import {
 import { calculatePortion } from "./utils";
 import ScreenContainer from "./ScreenContainer";
 import categories from "../mock/categories";
+import moment from "moment";
 
 export const INGREDIENT_CATEGORY_OTHER = 999;
 
@@ -89,9 +90,42 @@ const RecipeScreen: React.FC = () => {
       },
     },
   } = useLocation();
+  const itemsMadeToday = JSON.parse(
+    localStorage.getItem("itemsMadeToday") || "[]"
+  );
+  const maybeIsMadeToday = itemsMadeToday.find(
+    ({ name: nameToFind }) => name === nameToFind
+  )?.madeAt;
   const [finalPortions, setFinalPortions] = useState(portions);
+  const [isMadeToday, setIsMadeToday] = useState(
+    maybeIsMadeToday ? moment().isSame(maybeIsMadeToday, "day") : false
+  );
   const categoryName = [...categories].find(({ id }) => id === category)?.name;
   useEffect(() => {}, [finalPortions]);
+  useEffect(() => {
+    const itemsButNotTheCurrentOne = itemsMadeToday.filter(
+      ({ name: nameToFind }) => {
+        return nameToFind !== name;
+      }
+    );
+    if (isMadeToday) {
+      localStorage.setItem(
+        "itemsMadeToday",
+        JSON.stringify([
+          ...itemsButNotTheCurrentOne,
+          {
+            name,
+            madeAt: moment().format(),
+          },
+        ])
+      );
+    } else {
+      localStorage.setItem(
+        "itemsMadeToday",
+        JSON.stringify([...itemsButNotTheCurrentOne])
+      );
+    }
+  }, [isMadeToday]);
   return (
     <ScreenContainer>
       <Flex alignItems="center" flexWrap="wrap" paddingBottom={5}>
@@ -122,7 +156,12 @@ const RecipeScreen: React.FC = () => {
       </Flex>
       <Box>
         <label>
-          <VisuallyHidden as="input" type="checkbox" />
+          <VisuallyHidden
+            onChange={() => setIsMadeToday(!isMadeToday)}
+            as="input"
+            type="checkbox"
+            defaultChecked={isMadeToday}
+          />
           <ControlBox
             borderWidth="2px"
             size="30px"
