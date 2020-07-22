@@ -100,6 +100,11 @@ const RecipeScreen: React.FC = () => {
   const [isMadeToday, setIsMadeToday] = useState(
     maybeIsMadeToday ? moment().isSame(maybeIsMadeToday, "day") : false
   );
+  const [madeLatest] = useState(
+    !isMadeToday && (maybeIsMadeToday?.madeAt || false)
+      ? maybeIsMadeToday.madeAt
+      : null
+  );
   const categoryName = [...categories].find(({ id }) => id === category)?.name;
   useEffect(() => {}, [finalPortions]);
   useEffect(() => {
@@ -180,6 +185,13 @@ const RecipeScreen: React.FC = () => {
           </Box>
         </label>
       </Box>
+      {madeLatest && (
+        <Box>
+          {`Tehty viimeksi ${moment(madeLatest).format("DD.MM.YYYY")} (${moment(
+            madeLatest
+          ).diff(moment(), "days")} päivää sitten)`}
+        </Box>
+      )}
       {description && (
         <ContentBox>
           <Text fontSize="xl">{description}</Text>
