@@ -397,6 +397,35 @@ const testData = [
       "paista 200-asteisen uunin keskitasolla 20-30 minuuttia. kypsymisaika riippuu fileen paksuudesta. koristele tuoreella tillillä ja sitruunalohkoilla. tarjoa perunasoseen kanssa.",
     ],
   },
+  {
+    portions: 6,
+    name: "kalapuikot ja pinaattikastike",
+    category: 2,
+    ingredientsCategories: [
+      { id: 1, name: "kastike" },
+      { id: 2, name: "perunamuusi" },
+    ],
+    ingredients: [
+      { unit: "kpl", amount: 16, name: "kalapuikkoa" },
+      { unit: "l", amount: 1, name: "maitoa", category: 1 },
+      { unit: "ps", amount: 1, name: "pinaattia (pakaste)", category: 1 },
+      { name: "suolaa", category: 1 },
+      { name: "vehnäjauhoja", category: 1 },
+      { name: "rasvaa", category: 1 },
+      { unit: "ps", amount: 1, name: "perunaa", category: 2 },
+      { unit: "kpl", amount: 1, name: "valkosipulinkynsi", category: 2 },
+      { name: "suolaa", category: 2 },
+      { unit: "kpl", amount: 1, name: "sipulia", category: 2 },
+      { name: "rasvaa", category: 2 },
+      { name: "maitoa", category: 2 },
+    ],
+    steps: [
+      "kuori ja pilko perunat ja laita ne kiehumaan kattilaan. kuutioi sipuli ja lisää perunoiden joukkoon kiehumaan. älä lisää valkosipulia vielä",
+      "tee kastikkeelle suurus rasvasta ja jauhoista. lisää kastikkeeseen maitoa vaiheittain. lisää suola ja pinaatti. anna kiehua niin kauan, että pinaatti on täysin liuennut kastikkeeseen",
+      "paista kalapuikot",
+      "kun muusi on valmista, murskaa perunat survimella ja murskaa valkosipuli sekaan. lisää myös rasva ja maitoa oman maun mukaan",
+    ],
+  },
 ];
 
 export default testData;
