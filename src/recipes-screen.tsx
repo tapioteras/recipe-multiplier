@@ -185,6 +185,13 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           <Heading>{name}</Heading>
           <List spacing={5}>
             {[...recipesWithCategories]
+              .filter((recipe) =>
+                filters.length > 0
+                  ? [...(recipe?.tags || [])].find((t) =>
+                      filters.find((f) => f === t)
+                    )
+                  : true
+              )
               .filter((r) => r.category === id)
               .map((recipe, i) => (
                 <ListItem key={`list-item-${i}`}>
