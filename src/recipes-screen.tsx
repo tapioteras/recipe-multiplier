@@ -12,6 +12,8 @@ import {
   ListIcon,
   ListItem,
   Scale,
+  Stack,
+  Tag,
   Text,
 } from "@chakra-ui/core";
 import moment from "moment";
@@ -109,6 +111,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   );
   const btnRef = React.useRef();
   const cancelRef = React.useRef();
+  const [filters, setFilters] = useState([]);
   const recipesWithCategories = [
     ...recipes,
   ].map(({ category = CATEGORY.OTHER, ...rest }) => ({ category, ...rest }));
@@ -116,12 +119,34 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   return (
     <ScreenContainer>
       <Button
-        variantColor="tomato"
         variant="outline"
         onClick={() => setIsWhatToDoNextDialogOpen(true)}
       >
         Mitä ruokaa voisi tehdä seuraavaksi?
       </Button>
+      <Stack spacing={4} isInline>
+        {[...recipes]
+          .flatMap(({ tags = [] }) => tags)
+          .filter((value, index, self) => self.indexOf(value) === index)
+          .reduce((a, b) => [...a, b], [])
+          .map((tag, i) => (
+            <Tag size="md" key={`filter-${i}`}>
+              <Button
+                key={tag}
+                variant="link"
+                onClick={() => {
+                  setFilters(
+                    !![...filters].find((f) => f === tag)
+                      ? [...filters].filter((f) => f !== tag)
+                      : [...filters, tag]
+                  );
+                }}
+              >
+                {tag}
+              </Button>
+            </Tag>
+          ))}
+      </Stack>
       <Scale in={isWhatToDoNextDialogOpen}>
         {(styles) => (
           <AlertDialog
@@ -140,8 +165,8 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           </AlertDialog>
         )}
       </Scale>
-      {[...categories].map(({ id, name }) => (
-        <Box paddingBottom={5}>
+      {[...categories].map(({ id, name }, i) => (
+        <Box paddingBottom={5} key={`category-${i}`}>
           <Heading>{name}</Heading>
           <List spacing={5}>
             {[...recipesWithCategories]
