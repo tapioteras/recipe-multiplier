@@ -381,6 +381,22 @@ const testData = [
       "lisää katkaravut jäisinä ja kuumenna, mutta älä keitä enää. mausta suolalla ja sekoita joukkoon tilli. tarjoa keitetyn riisin kanssa. voit tarjota myös sellaisenaan leivän kanssa. silloin annos riittää useammalle.",
     ],
   },
+  {
+    name: "Smetana-uunilohi",
+    category: 2,
+    ingredients: [
+      { unit: "g", amount: 580, name: "kirjolohifilee (1% suolaa)" },
+      { unit: "prk (120g)", amount: 1, name: "smetanaa" },
+      { unit: "rkl", amount: 0.5, name: "sitruunamehua" },
+      { unit: "dl", amount: 0.75, name: "tilliä hienonnettuna" },
+      { name: "suolaa" },
+    ],
+    steps: [
+      "pyyhi filee talouspaperilla ja nosta uunivuokaan nahkapuoli alaspäin",
+      "sekoita kulhossa smetana, sitruunamehu, tilli ja ripaus suolaa. levitä seos kalan päälle raidoiksi",
+      "paista 200-asteisen uunin keskitasolla 20-30 minuuttia. kypsymisaika riippuu fileen paksuudesta. koristele tuoreella tillillä ja sitruunalohkoilla. tarjoa perunasoseen kanssa.",
+    ],
+  },
 ];
 
 export default testData;
