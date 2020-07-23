@@ -58,17 +58,18 @@ const getDialogTextContents = (recipes = []) => {
               state: { recipe: oldestRecipe },
             }}
           >
-            {` ${oldestRecipe.name}`}
+            {" "}
+            {oldestRecipe.name}.
           </Link>
           <Text>{`${
             daysSinceLastCreation > 0
               ? `${moment(oldestRecipe.madeAt).format("D.M.Y")}`
-              : "tänään"
+              : ""
           }${
             daysSinceLastCreation > 0
-              ? ` (${daysSinceLastCreation} päivää sitten)`
+              ? ` (${daysSinceLastCreation} päivää sitten).`
               : ""
-          }. Kokeilepa tehdä tätä!`}</Text>
+          }Kokeilepa tehdä tätä!`}</Text>
         </Text>
       </Box>
     );
