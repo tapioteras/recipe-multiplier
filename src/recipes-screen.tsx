@@ -16,6 +16,7 @@ import {
   Stack,
   Tag,
   Text,
+  useToast,
 } from "@chakra-ui/core";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -124,10 +125,12 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
     }
   }, [isWhatToDoNextDialogOpen]);
   const [filters, setFilters] = useState([]);
+  const [kRuokaFetchStatus, setKRuokaFetchStatus] = useState("init");
   const recipesWithCategories = [
     ...recipes,
   ].map(({ category = CATEGORY.OTHER, ...rest }) => ({ category, ...rest }));
   const onClose = () => setIsWhatToDoNextDialogOpen(false);
+  const toast = useToast();
   return (
     <ScreenContainer>
       <Button
@@ -137,16 +140,34 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         Mitä ruokaa voisi tehdä seuraavaksi?
       </Button>
       <Button
-        onClick={async () => {
-          const results = await KRuokaApi.searchRecipes("avokado");
-          console.log(results);
+        variant="outline"
+        isLoading={kRuokaFetchStatus === "loading"}
+        onClick={() => {
+          setKRuokaFetchStatus("loading");
+          setRecipesFromKRuoka({})
+          KRuokaApi.searchRecipes(
+            "avokado",
+            (data) => {
+              setKRuokaFetchStatus("loaded");
+              setRecipesFromKRuoka(data.result);
+            },
+            (error) => {
+              setKRuokaFetchStatus("error");
+              toast({
+                position: "top-left",
+                render: () => (
+                  <Box m={3} color="white" p={3} bg="red.500">
+                    Virhe haettaessa reseptejä K-Ruoasta
+                  </Box>
+                ),
+              });
+            }
+          );
         }}
       >
         Hae reseptejä K-Ruoasta
       </Button>
-      <Box>
-        {JSON.stringify(recipesFromKRuoka)}
-      </Box>
+      <Box>{JSON.stringify(recipesFromKRuoka)}</Box>
       <Stack spacing={4} isInline>
         {[...recipes]
           .flatMap(({ tags = [] }) => tags)
