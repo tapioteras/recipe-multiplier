@@ -132,7 +132,9 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           .map((tag, i) => (
             <Tag size="md" key={`filter-${i}`}>
               <Button
-                key={tag}
+                variantColor={
+                  filters.find((f) => f === tag) ? "black" : undefined
+                }
                 variant="link"
                 onClick={() => {
                   setFilters(
@@ -146,6 +148,19 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
               </Button>
             </Tag>
           ))}
+        {filters.length > 0 && (
+          <Tag size="md" key={`filter-reset`}>
+            <Button
+              variant="link"
+              variantColor="red"
+              onClick={() => {
+                setFilters([]);
+              }}
+            >
+              reset
+            </Button>
+          </Tag>
+        )}
       </Stack>
       <Scale in={isWhatToDoNextDialogOpen}>
         {(styles) => (
