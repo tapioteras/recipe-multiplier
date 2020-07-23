@@ -12,6 +12,7 @@ import {
   Tag,
   VisuallyHidden,
   ControlBox,
+  Stack,
 } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -40,6 +41,7 @@ export interface RecipeScreenProps {
   ingredientsCategories?: IngredientCategoryProps[];
   steps?: string[];
   category?: number;
+  tags?: string[];
 }
 
 export interface IngredientRowProps {
@@ -86,7 +88,8 @@ const RecipeScreen: React.FC = () => {
         ingredients,
         ingredientsCategories,
         steps,
-        category,
+        category = INGREDIENT_CATEGORY_OTHER,
+        tags = [],
       },
     },
   } = useLocation();
@@ -153,9 +156,13 @@ const RecipeScreen: React.FC = () => {
             ]}
             flexGrow={2}
           >
-            <Tag size="md" variantColor="gray">
-              {categoryName}
-            </Tag>
+            <Stack spacing={4} isInline>
+              {[...tags, categoryName].map((tag) => (
+                <Tag size="md" variantColor="gray">
+                  {tag}
+                </Tag>
+              ))}
+            </Stack>
           </Flex>
         )}
       </Flex>

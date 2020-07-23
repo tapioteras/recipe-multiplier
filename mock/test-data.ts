@@ -235,6 +235,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kala"],
     name: "Koskenlaskija-uunikala",
     category: 2,
     ingredientsCategories: [{ id: 1, name: "Kastike" }],
@@ -315,6 +316,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kala", "äyriäiset"],
     category: 2,
     name: "keltainen sei-katkarapuruukku",
     ingredients: [
@@ -382,6 +384,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kala", "lohi"],
     name: "Smetana-uunilohi",
     category: 2,
     ingredients: [
@@ -398,6 +401,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kala"],
     portions: 6,
     name: "kalapuikot ja pinaattikastike",
     category: 2,
