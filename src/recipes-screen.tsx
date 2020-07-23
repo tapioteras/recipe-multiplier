@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import { RecipeScreenProps } from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
+import KRuokaApi from "./api/KRuokaApi";
 
 export interface CategoryProps {
   id: number;
@@ -115,6 +116,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   );
   const btnRef = React.useRef();
   const cancelRef = React.useRef();
+  const [recipesFromKRuoka, setRecipesFromKRuoka] = useState({});
   const [dialogToggleCount, setDialogToggleCount] = useState(0);
   useEffect(() => {
     if (isWhatToDoNextDialogOpen) {
@@ -134,6 +136,17 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       >
         Mitä ruokaa voisi tehdä seuraavaksi?
       </Button>
+      <Button
+        onClick={async () => {
+          const results = await KRuokaApi.searchRecipes("avokado");
+          console.log(results);
+        }}
+      >
+        Hae reseptejä K-Ruoasta
+      </Button>
+      <Box>
+        {JSON.stringify(recipesFromKRuoka)}
+      </Box>
       <Stack spacing={4} isInline>
         {[...recipes]
           .flatMap(({ tags = [] }) => tags)
