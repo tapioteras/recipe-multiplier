@@ -3,6 +3,7 @@ import {
   AlertDialogBody,
   AlertDialogCloseButton,
   AlertDialogContent,
+  AlertDialogHeader,
   AlertDialogOverlay,
   Box,
   Button,
@@ -17,7 +18,7 @@ import {
   Text,
 } from "@chakra-ui/core";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RecipeScreenProps } from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
@@ -43,17 +44,19 @@ const getOldestRecipe = (recipes = []) => {
 const getRandomRecipe = (recipes = []) =>
   recipes[Math.floor(Math.random() * recipes.length)];
 
-const getDialogTextContents = (recipes = []) => {
+const getDialogTextContents = (recipes = [], forceRandom = false) => {
   const oldestRecipe = getOldestRecipe(recipes);
-  if (oldestRecipe) {
+  if (oldestRecipe && !forceRandom) {
     const daysSinceLastCreation = moment(oldestRecipe.madeAt).diff(
       moment(),
       "days"
     );
     return (
       <Box>
-        <Text>
-          Teit viimeksi ruoan
+        <Text paddingBottom={3}>
+          Siitä on kauan, kun teit viimeksi tämän ruoan:
+        </Text>
+        <Button>
           <Link
             to={{
               pathname: `/recipe/${oldestRecipe.name}`,
@@ -61,18 +64,18 @@ const getDialogTextContents = (recipes = []) => {
             }}
           >
             {" "}
-            {oldestRecipe.name}.
+            {oldestRecipe.name}
           </Link>
-          <Text>{`${
-            daysSinceLastCreation > 0
-              ? `${moment(oldestRecipe.madeAt).format("D.M.Y")}`
-              : ""
-          }${
-            daysSinceLastCreation > 0
-              ? ` (${daysSinceLastCreation} päivää sitten).`
-              : ""
-          }Kokeilepa tehdä tätä!`}</Text>
-        </Text>
+        </Button>
+        <Text paddingTop={3}>{`${
+          daysSinceLastCreation > 0
+            ? `${moment(oldestRecipe.madeAt).format("D.M.Y")}`
+            : ""
+        }${
+          daysSinceLastCreation > 0
+            ? ` (${daysSinceLastCreation} päivää sitten).`
+            : ""
+        }Kokeilepa tehdä tätä!`}</Text>
       </Box>
     );
   } else {
@@ -80,16 +83,17 @@ const getDialogTextContents = (recipes = []) => {
     if (randomRecipe) {
       return (
         <Box>
-          <Text>Mikset kokeilisi</Text>
-          <Link
-            to={{
-              pathname: `/recipe/${randomRecipe.name}`,
-              state: { recipe: randomRecipe },
-            }}
-          >
-            {` ${randomRecipe.name}`}
-          </Link>
-          <Text>?</Text>
+          <Text paddingBottom={3}>Mikset kokeilisi tehdä ruokaa?</Text>
+          <Button marginBottom={4}>
+            <Link
+              to={{
+                pathname: `/recipe/${randomRecipe.name}`,
+                state: { recipe: randomRecipe },
+              }}
+            >
+              {` ${randomRecipe.name}`}
+            </Link>
+          </Button>
         </Box>
       );
     } else {
@@ -111,6 +115,12 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   );
   const btnRef = React.useRef();
   const cancelRef = React.useRef();
+  const [dialogToggleCount, setDialogToggleCount] = useState(0);
+  useEffect(() => {
+    if (isWhatToDoNextDialogOpen) {
+      setDialogToggleCount(dialogToggleCount + 1);
+    }
+  }, [isWhatToDoNextDialogOpen]);
   const [filters, setFilters] = useState([]);
   const recipesWithCategories = [
     ...recipes,
@@ -172,9 +182,15 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           >
             <AlertDialogOverlay opacity={styles.opacity} />
             <AlertDialogContent {...styles}>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                Mitä tekisi seuraavaksi?
+              </AlertDialogHeader>
               <AlertDialogCloseButton />
               <AlertDialogBody>
-                {getDialogTextContents(recipes)}
+                {getDialogTextContents(
+                  recipes,
+                  Math.floor(Math.random() * dialogToggleCount) % 2 === 0
+                )}
               </AlertDialogBody>
             </AlertDialogContent>
           </AlertDialog>
