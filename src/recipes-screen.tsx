@@ -9,6 +9,7 @@ import {
   Button,
   Flex,
   Heading,
+  Input,
   List,
   ListIcon,
   ListItem,
@@ -131,6 +132,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   ].map(({ category = CATEGORY.OTHER, ...rest }) => ({ category, ...rest }));
   const onClose = () => setIsWhatToDoNextDialogOpen(false);
   const toast = useToast();
+  const [kRuokaSearch, setKRuokaSearch] = useState("");
   return (
     <ScreenContainer>
       <Button
@@ -139,14 +141,23 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       >
         Mitä ruokaa voisi tehdä seuraavaksi?
       </Button>
+      <Input
+        isDisabled={kRuokaFetchStatus === "loading"}
+        color="black"
+        placeholder="kirjoita hakusana..."
+        value={kRuokaSearch}
+        onChange={(e) =>
+          setKRuokaSearch(e.target.value);
+        }
+      />
       <Button
         variant="outline"
         isLoading={kRuokaFetchStatus === "loading"}
         onClick={() => {
           setKRuokaFetchStatus("loading");
-          setRecipesFromKRuoka({})
+          setRecipesFromKRuoka({});
           KRuokaApi.searchRecipes(
-            "avokado",
+            kRuokaSearch,
             (data) => {
               setKRuokaFetchStatus("loaded");
               setRecipesFromKRuoka(data.result);
