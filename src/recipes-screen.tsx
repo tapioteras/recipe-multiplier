@@ -258,7 +258,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                       ...doc.body.querySelectorAll(
                         ".recipe-instructions__steps li"
                       ),
-                    ].map((step) => step.innerHTML);
+                    ].map((step) => step?.innerHTML);
 
                     console.log("final", {
                       name,
