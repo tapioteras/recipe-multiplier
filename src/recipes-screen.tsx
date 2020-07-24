@@ -276,6 +276,8 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   setKRuokaFetchStatus(LOADING_STATUS.ERROR);
                   toast({
                     position: "top-left",
+                    duration: 3000,
+                    isClosable: true,
                     render: () => (
                       <Box m={3} color="white" p={3} bg="red.500">
                         Virhe haettaessa reseptejä K-Ruoasta
@@ -319,6 +321,8 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                           (error) => {
                             toast({
                               position: "top-left",
+                              duration: 3000,
+                              isClosable: true,
                               render: () => (
                                 <Box m={3} color="white" p={3} bg="red.500">
                                   Virhe reseptin käsittelyssä
