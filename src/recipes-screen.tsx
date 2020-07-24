@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/core";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { RecipeScreenProps } from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
@@ -131,6 +131,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   const [isWhatToDoNextDialogOpen, setIsWhatToDoNextDialogOpen] = useState(
     false
   );
+  let history = useHistory()
   const btnRef = React.useRef();
   const cancelRef = React.useRef();
   const [recipesFromKRuoka, setRecipesFromKRuoka] = useState([]);
@@ -260,12 +261,17 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                       ),
                     ].map((step) => step?.innerHTML);
 
-                    console.log("final", {
+                    const recipe = {
                       name,
                       portions,
                       ingredients: parsedIngredients,
                       steps: parsedSteps,
-                    });
+                    }
+
+                    history.push({
+                      pathname: `/recipe/${recipe.name}`,
+                      state: { recipe },
+                    })
                   },
                   (error) => {
                     console.log("failure", error);
