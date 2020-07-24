@@ -6,7 +6,7 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Box,
-  Button,
+  Button, CloseButton,
   Flex,
   Heading,
   Input,
@@ -150,6 +150,10 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           setKRuokaSearch(e.target.value);
         }
       />
+      {kRuokaFetchStatus === "loaded" && <CloseButton onClick={() => {
+        setKRuokaFetchStatus("init")
+        setRecipesFromKRuoka({})
+      }} />}
       <Button
         variant="outline"
         isLoading={kRuokaFetchStatus === "loading"}
