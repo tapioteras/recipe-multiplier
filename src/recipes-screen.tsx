@@ -205,7 +205,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         <Heading>Ei hakutuloksia hakusanalla "{kRuokaSearch}"</Heading>
       )}
       <List bg="red.600" spacing={3}>
-        {[...recipesFromKRuoka].map(({ Name, Url }: RecipeFromKRuoka) => (
+        {[...recipesFromKRuoka].map(({ Name: name, Url }: RecipeFromKRuoka) => (
           <ListItem padding={1}>
             <Button
               color="white"
@@ -215,6 +215,11 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   (html) => {
                     var parser = new DOMParser();
                     var doc = parser.parseFromString(html, "text/html");
+                    const portionParts = doc.body
+                      .querySelector(".recipe-subsection-info span")
+                      ?.innerHTML.split(" ");
+                    const portions =
+                      portionParts.length > 0 ? portionParts[0] : 1;
                     const parsedIngredients = [
                       ...doc.body.querySelectorAll(
                         ".recipe-subsection-ingredient"
@@ -249,7 +254,22 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                       }
                     });
 
-                    console.log("parsedIngredients", parsedIngredients)
+                    const parsedSteps = [
+                      ...doc.body.querySelectorAll(
+                        ".recipe-instructions__steps"
+                      ),
+                    ].map((step) => {
+                      console.log(step);
+                    });
+
+                    console.log("parsedIngredients", parsedIngredients);
+
+                    console.log("final", {
+                      name,
+                      portions,
+                      ingredients: parsedIngredients,
+                      steps: [],
+                    });
                   },
                   (error) => {
                     console.log("failure", error);
@@ -258,7 +278,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
               }}
               variant="link"
             >
-              {Name}
+              {name}
             </Button>
           </ListItem>
         ))}
