@@ -26,6 +26,10 @@ import ScreenContainer from "./ScreenContainer";
 import categories from "../mock/categories";
 import moment from "moment";
 
+export enum LOCAL_STORAGE_KEY {
+  RECIPE_MADE_TODAY = "itemsMadeToday",
+}
+
 export const INGREDIENT_CATEGORY_OTHER = 999;
 
 export interface IngredientCategoryProps {
@@ -94,7 +98,7 @@ const RecipeScreen: React.FC = () => {
     },
   } = useLocation();
   const itemsMadeToday = JSON.parse(
-    localStorage.getItem("itemsMadeToday") || "[]"
+    localStorage.getItem(LOCAL_STORAGE_KEY.RECIPE_MADE_TODAY) || "[]"
   );
   const maybeIsMadeToday = itemsMadeToday.find(
     ({ name: nameToFind }) => name === nameToFind
@@ -118,7 +122,7 @@ const RecipeScreen: React.FC = () => {
     );
     if (isMadeToday) {
       localStorage.setItem(
-        "itemsMadeToday",
+        LOCAL_STORAGE_KEY.RECIPE_MADE_TODAY,
         JSON.stringify([
           ...itemsButNotTheCurrentOne,
           {
@@ -129,7 +133,7 @@ const RecipeScreen: React.FC = () => {
       );
     } else {
       localStorage.setItem(
-        "itemsMadeToday",
+        LOCAL_STORAGE_KEY.RECIPE_MADE_TODAY,
         JSON.stringify([...itemsButNotTheCurrentOne])
       );
     }
