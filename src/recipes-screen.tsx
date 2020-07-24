@@ -294,9 +294,21 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           </Button>
           {recipesFromKRuoka.length > 0 && <Divider />}
           {recipesFromKRuoka.length > 0 && (
-            <Heading as="h3" size="md">
-              Haulla löytyi seuraavia reseptejä:
-            </Heading>
+            <Flex alignItems="center" justifyContent="space-between">
+              <Heading as="h3" size="md">
+                Haulla löytyi seuraavia reseptejä:
+              </Heading>
+              <Flex flexGrow={2} flexDirection="row-reverse">
+                <CloseButton
+                  color="white"
+                  onClick={() => {
+                    setKRuokaFetchStatus(LOADING_STATUS.INIT);
+                    setRecipesFromKRuoka([]);
+                    setKRuokaSearch("");
+                  }}
+                />
+              </Flex>
+            </Flex>
           )}
           {kRuokaRecipeLoadingStatus === LOADING_STATUS.LOADING && (
             <Spinner marginLeft={5} color="white" />
