@@ -11,7 +11,13 @@ class KRuokaApi {
         mode: "cors",
       }
     )
-      .then(response => response.json())
+      .then((response) => response.json())
+      .then(onSuccess)
+      .catch(onFailure);
+  }
+  fetchRecipe(url, onSuccess: (data) => void, onFailure: (error) => void) {
+    fetch(`https://cors-anywhere.herokuapp.com/${url}`)
+      .then((response) => response.text())
       .then(onSuccess)
       .catch(onFailure);
   }
