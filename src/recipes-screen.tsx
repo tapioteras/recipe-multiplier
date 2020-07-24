@@ -59,6 +59,59 @@ export interface RecipesScreenProps {
   categories: CategoryProps[];
 }
 
+export const parseKRuokaRecipe = (html: string): RecipeScreenProps => {
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(html, "text/html");
+  const portionParts = doc.body
+    .querySelector(".recipe-subsection-info span")
+    ?.innerHTML.split(" ");
+  const portions = portionParts.length > 0 ? portionParts[0] : 1;
+  const parsedIngredients = [
+    ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
+  ].map((elem) => {
+    const amount = elem.querySelector(
+      ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
+    ).innerHTML;
+    const unit = elem.querySelector(
+      ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
+    ).innerHTML;
+    const name = elem.querySelector(
+      ".recipe-subsection-ingredient .recipe-ingredient-name"
+    ).innerHTML;
+
+    const nameInsideA = elem.querySelector(
+      ".recipe-subsection-ingredient .recipe-ingredient-name a"
+    )?.innerHTML;
+
+    if (amount && unit) {
+      return {
+        amount,
+        unit: amount && unit ? unit : "kpl",
+        name: nameInsideA ? nameInsideA : name,
+      };
+    } else {
+      return {
+        amount: !amount ? 1 : amount,
+        unit: amount && unit ? unit : "kpl",
+        name: nameInsideA ? nameInsideA : name,
+      };
+    }
+  });
+
+  const parsedSteps = [
+    ...doc.body.querySelectorAll(".recipe-instructions__steps li"),
+  ].map((step) => step?.innerHTML);
+
+  const recipe: RecipeScreenProps = {
+    name,
+    portions,
+    ingredients: parsedIngredients,
+    steps: parsedSteps,
+  };
+
+  return recipe;
+};
+
 const getOldestRecipe = (recipes = []) => {
   const sortedRecipes = [...recipes].sort((a, b) =>
     moment(a.madeAt).diff(moment(b.madeAt))
@@ -224,60 +277,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                 KRuokaApi.fetchRecipe(
                   Url,
                   (html) => {
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(html, "text/html");
-                    const portionParts = doc.body
-                      .querySelector(".recipe-subsection-info span")
-                      ?.innerHTML.split(" ");
-                    const portions =
-                      portionParts.length > 0 ? portionParts[0] : 1;
-                    const parsedIngredients = [
-                      ...doc.body.querySelectorAll(
-                        ".recipe-subsection-ingredient"
-                      ),
-                    ].map((elem) => {
-                      const amount = elem.querySelector(
-                        ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
-                      ).innerHTML;
-                      const unit = elem.querySelector(
-                        ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
-                      ).innerHTML;
-                      const name = elem.querySelector(
-                        ".recipe-subsection-ingredient .recipe-ingredient-name"
-                      ).innerHTML;
-
-                      const nameInsideA = elem.querySelector(
-                        ".recipe-subsection-ingredient .recipe-ingredient-name a"
-                      )?.innerHTML;
-
-                      if (amount && unit) {
-                        return {
-                          amount,
-                          unit: amount && unit ? unit : "kpl",
-                          name: nameInsideA ? nameInsideA : name,
-                        };
-                      } else {
-                        return {
-                          amount: !amount ? 1 : amount,
-                          unit: amount && unit ? unit : "kpl",
-                          name: nameInsideA ? nameInsideA : name,
-                        };
-                      }
-                    });
-
-                    const parsedSteps = [
-                      ...doc.body.querySelectorAll(
-                        ".recipe-instructions__steps li"
-                      ),
-                    ].map((step) => step?.innerHTML);
-
-                    const recipe = {
-                      name,
-                      portions,
-                      ingredients: parsedIngredients,
-                      steps: parsedSteps,
-                    };
-
+                    const recipe = parseKRuokaRecipe(html);
                     history.push({
                       pathname: `/recipe/${recipe.name}`,
                       state: { recipe },
