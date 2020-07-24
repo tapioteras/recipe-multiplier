@@ -11,6 +11,8 @@ import {
   Flex,
   Heading,
   Input,
+  InputGroup,
+  InputRightElement,
   List,
   ListIcon,
   ListItem,
@@ -213,56 +215,64 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   const [kRuokaSearch, setKRuokaSearch] = useState("");
   return (
     <ScreenContainer>
-      <Button
-        variant="outline"
-        onClick={() => setIsWhatToDoNextDialogOpen(true)}
-      >
-        Mitä ruokaa voisi tehdä seuraavaksi?
-      </Button>
-      <Input
-        isDisabled={kRuokaFetchStatus === LOADING_STATUS.LOADING}
-        color="black"
-        placeholder="kirjoita hakusana..."
-        value={kRuokaSearch}
-        onChange={(e) => setKRuokaSearch(e.target.value)}
-      />
-      {kRuokaSearch.length > 0 && (
-        <CloseButton
-          onClick={() => {
-            setKRuokaFetchStatus(LOADING_STATUS.INIT);
-            setRecipesFromKRuoka([]);
-            setKRuokaSearch("");
-          }}
-        />
-      )}
-      <Button
-        variant="outline"
-        isLoading={kRuokaFetchStatus === LOADING_STATUS.LOADING}
-        onClick={() => {
-          setKRuokaFetchStatus(LOADING_STATUS.LOADING);
-          setRecipesFromKRuoka([]);
-          KRuokaApi.searchRecipes(
-            kRuokaSearch,
-            (data) => {
-              setKRuokaFetchStatus(LOADING_STATUS.LOADED);
-              setRecipesFromKRuoka(data.result);
-            },
-            (error) => {
-              setKRuokaFetchStatus(LOADING_STATUS.ERROR);
-              toast({
-                position: "top-left",
-                render: () => (
-                  <Box m={3} color="white" p={3} bg="red.500">
-                    Virhe haettaessa reseptejä K-Ruoasta
-                  </Box>
-                ),
-              });
+      <Stack spacing={5} maxWidth={["100%", "100%", 500, 500]}>
+        <Button
+          variant="outline"
+          onClick={() => setIsWhatToDoNextDialogOpen(true)}
+        >
+          Mitä ruokaa voisi tehdä seuraavaksi?
+        </Button>
+        <InputGroup>
+          <Input
+            isDisabled={kRuokaFetchStatus === LOADING_STATUS.LOADING}
+            color="black"
+            placeholder="kirjoita hakusana..."
+            value={kRuokaSearch}
+            onChange={(e) => setKRuokaSearch(e.target.value)}
+          />
+          <InputRightElement
+            children={
+              <CloseButton
+                visibility={kRuokaSearch.length === 0 && "hidden"}
+                color="black"
+                onClick={() => {
+                  setKRuokaFetchStatus(LOADING_STATUS.INIT);
+                  setRecipesFromKRuoka([]);
+                  setKRuokaSearch("");
+                }}
+              />
             }
-          );
-        }}
-      >
-        Hae reseptejä K-Ruoasta
-      </Button>
+          />
+        </InputGroup>
+        <Button
+          variant="outline"
+          isLoading={kRuokaFetchStatus === LOADING_STATUS.LOADING}
+          onClick={() => {
+            setKRuokaFetchStatus(LOADING_STATUS.LOADING);
+            setRecipesFromKRuoka([]);
+            KRuokaApi.searchRecipes(
+              kRuokaSearch,
+              (data) => {
+                setKRuokaFetchStatus(LOADING_STATUS.LOADED);
+                setRecipesFromKRuoka(data.result);
+              },
+              (error) => {
+                setKRuokaFetchStatus(LOADING_STATUS.ERROR);
+                toast({
+                  position: "top-left",
+                  render: () => (
+                    <Box m={3} color="white" p={3} bg="red.500">
+                      Virhe haettaessa reseptejä K-Ruoasta
+                    </Box>
+                  ),
+                });
+              }
+            );
+          }}
+        >
+          Hae reseptejä K-Ruoasta
+        </Button>
+      </Stack>
       {recipesFromKRuoka.length > 0 && <Heading>Reseptit K-Ruoasta</Heading>}
       {recipesFromKRuoka.length === 0 &&
         kRuokaFetchStatus === LOADING_STATUS.LOADED && (
