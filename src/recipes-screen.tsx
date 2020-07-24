@@ -215,7 +215,31 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   (html) => {
                     var parser = new DOMParser();
                     var doc = parser.parseFromString(html, "text/html");
-                    console.log("recipe", doc);
+                    [
+                      ...doc.body.querySelectorAll(
+                        ".recipe-subsection-ingredient"
+                      ),
+                    ].forEach((elem) => {
+                      const amount = elem.querySelector(
+                        ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
+                      ).innerHTML;
+                      const unit = elem.querySelector(
+                        ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
+                      ).innerHTML;
+                      const name = elem.querySelector(
+                        ".recipe-subsection-ingredient .recipe-ingredient-name"
+                      ).innerHTML;
+
+                      const nameInsideA = elem.querySelector(
+                        ".recipe-subsection-ingredient .recipe-ingredient-name a"
+                      )?.innerHTML;
+
+                      console.log(
+                        amount,
+                        unit,
+                        nameInsideA ? nameInsideA : name
+                      );
+                    });
                   },
                   (error) => {
                     console.log("failure", error);
