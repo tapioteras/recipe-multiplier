@@ -256,19 +256,15 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
 
                     const parsedSteps = [
                       ...doc.body.querySelectorAll(
-                        ".recipe-instructions__steps"
+                        ".recipe-instructions__steps li"
                       ),
-                    ].map((step) => {
-                      console.log(step);
-                    });
-
-                    console.log("parsedIngredients", parsedIngredients);
+                    ].map((step) => step.innerHTML);
 
                     console.log("final", {
                       name,
                       portions,
                       ingredients: parsedIngredients,
-                      steps: [],
+                      steps: parsedSteps,
                     });
                   },
                   (error) => {
