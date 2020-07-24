@@ -63,7 +63,12 @@ export interface RecipesScreenProps {
   categories: CategoryProps[];
 }
 
-export const parseKRuokaRecipe = (html: string, name: string): RecipeScreenProps => {
+const fractionStrToDecimal = (str) => str.split("/").reduce((p, c) => p / c);
+
+export const parseKRuokaRecipe = (
+  html: string,
+  name: string
+): RecipeScreenProps => {
   var parser = new DOMParser();
   var doc = parser.parseFromString(html, "text/html");
   const portionParts = doc.body
@@ -73,9 +78,16 @@ export const parseKRuokaRecipe = (html: string, name: string): RecipeScreenProps
   const parsedIngredients = [
     ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
   ].map((elem) => {
-    const amount = elem.querySelector(
+    let amount = elem.querySelector(
       ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
     ).innerHTML;
+
+    if (amount.includes("/")) {
+      amount = fractionStrToDecimal(amount);
+    } else if (amount.includes("-")) {
+      amount = amount.split("-")[0];
+    }
+
     const unit = elem.querySelector(
       ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
     ).innerHTML;
@@ -221,10 +233,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   return (
     <ScreenContainer>
       <Stack spacing={5} maxWidth={["100%", "100%", 500, 500]}>
-        <Button
-          color="black"
-          onClick={() => setIsWhatToDoNextDialogOpen(true)}
-        >
+        <Button color="black" onClick={() => setIsWhatToDoNextDialogOpen(true)}>
           Mitä ruokaa voisi tehdä seuraavaksi?
         </Button>
         <Stack spacing={4} padding={4} bg="gray.600">
@@ -280,39 +289,47 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
             Hae reseptejä
           </Button>
           {recipesFromKRuoka.length > 0 && <Divider />}
-          {recipesFromKRuoka.length > 0 && <Heading as="h3" size="md">Haulla löytyi seuraavia reseptejä:</Heading>}
+          {recipesFromKRuoka.length > 0 && (
+            <Heading as="h3" size="md">
+              Haulla löytyi seuraavia reseptejä:
+            </Heading>
+          )}
           {kRuokaRecipeLoadingStatus === LOADING_STATUS.LOADING && (
             <Spinner marginLeft={5} color="white" />
           )}
-          {recipesFromKRuoka.length > 0 && <List spacing={3} >
-            {[...recipesFromKRuoka].map(({ Name: name, Url }: RecipeFromKRuoka) => (
-              <ListItem padding={3}>
-                <Button
-                  color="black"
-                  width="100%"
-                  onClick={() => {
-                    setKRuokaRecipeLoadingStatus(LOADING_STATUS.LOADING);
-                    KRuokaApi.fetchRecipe(
-                      Url,
-                      (html) => {
-                        const recipe = parseKRuokaRecipe(html, name);
-                        console.log(recipe)
-                        history.push({
-                          pathname: `/recipe/${recipe.name}`,
-                          state: { recipe },
-                        });
-                      },
-                      (error) => {
-                        console.log("failure", error);
-                      }
-                    );
-                  }}
-                >
-                  {name}
-                </Button>
-              </ListItem>
-            ))}
-          </List>}
+          {recipesFromKRuoka.length > 0 && (
+            <List spacing={3}>
+              {[...recipesFromKRuoka].map(
+                ({ Name: name, Url }: RecipeFromKRuoka) => (
+                  <ListItem padding={3}>
+                    <Button
+                      color="black"
+                      width="100%"
+                      onClick={() => {
+                        setKRuokaRecipeLoadingStatus(LOADING_STATUS.LOADING);
+                        KRuokaApi.fetchRecipe(
+                          Url,
+                          (html) => {
+                            const recipe = parseKRuokaRecipe(html, name);
+                            console.log(recipe);
+                            history.push({
+                              pathname: `/recipe/${recipe.name}`,
+                              state: { recipe },
+                            });
+                          },
+                          (error) => {
+                            console.log("failure", error);
+                          }
+                        );
+                      }}
+                    >
+                      {name}
+                    </Button>
+                  </ListItem>
+                )
+              )}
+            </List>
+          )}
           {recipesFromKRuoka.length > 0 && <Divider />}
         </Stack>
       </Stack>
