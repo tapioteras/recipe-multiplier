@@ -215,11 +215,11 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   (html) => {
                     var parser = new DOMParser();
                     var doc = parser.parseFromString(html, "text/html");
-                    [
+                    const parsedIngredients = [
                       ...doc.body.querySelectorAll(
                         ".recipe-subsection-ingredient"
                       ),
-                    ].forEach((elem) => {
+                    ].map((elem) => {
                       const amount = elem.querySelector(
                         ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
                       ).innerHTML;
@@ -234,12 +234,22 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                         ".recipe-subsection-ingredient .recipe-ingredient-name a"
                       )?.innerHTML;
 
-                      console.log(
-                        amount,
-                        unit,
-                        nameInsideA ? nameInsideA : name
-                      );
+                      if (amount && unit) {
+                        return {
+                          amount,
+                          unit: amount && unit ? unit : "kpl",
+                          name: nameInsideA ? nameInsideA : name,
+                        };
+                      } else {
+                        return {
+                          amount: !amount ? 1 : amount,
+                          unit: amount && unit ? unit : "kpl",
+                          name: nameInsideA ? nameInsideA : name,
+                        };
+                      }
                     });
+
+                    console.log("parsedIngredients", parsedIngredients)
                   },
                   (error) => {
                     console.log("failure", error);
