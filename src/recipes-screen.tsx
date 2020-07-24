@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   CloseButton,
+  Divider,
   Flex,
   Heading,
   Input,
@@ -17,6 +18,7 @@ import {
   ListIcon,
   ListItem,
   Scale,
+  Spinner,
   Stack,
   Tag,
   Text,
@@ -61,7 +63,7 @@ export interface RecipesScreenProps {
   categories: CategoryProps[];
 }
 
-export const parseKRuokaRecipe = (html: string): RecipeScreenProps => {
+export const parseKRuokaRecipe = (html: string, name: string): RecipeScreenProps => {
   var parser = new DOMParser();
   var doc = parser.parseFromString(html, "text/html");
   const portionParts = doc.body
@@ -104,7 +106,7 @@ export const parseKRuokaRecipe = (html: string): RecipeScreenProps => {
     ...doc.body.querySelectorAll(".recipe-instructions__steps li"),
   ].map((step) => step?.innerHTML);
 
-  const recipe: RecipeScreenProps = {
+  const recipe = {
     name,
     portions,
     ingredients: parsedIngredients,
@@ -204,6 +206,9 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
     }
   }, [isWhatToDoNextDialogOpen]);
   const [filters, setFilters] = useState([]);
+  const [kRuokaRecipeLoadingStatus, setKRuokaRecipeLoadingStatus] = useState(
+    LOADING_STATUS.INIT
+  );
   const [kRuokaFetchStatus, setKRuokaFetchStatus] = useState(
     LOADING_STATUS.INIT
   );
@@ -217,94 +222,105 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
     <ScreenContainer>
       <Stack spacing={5} maxWidth={["100%", "100%", 500, 500]}>
         <Button
-          variant="outline"
+          color="black"
           onClick={() => setIsWhatToDoNextDialogOpen(true)}
         >
           Mitä ruokaa voisi tehdä seuraavaksi?
         </Button>
-        <InputGroup>
-          <Input
-            isDisabled={kRuokaFetchStatus === LOADING_STATUS.LOADING}
-            color="black"
-            placeholder="kirjoita hakusana..."
-            value={kRuokaSearch}
-            onChange={(e) => setKRuokaSearch(e.target.value)}
-          />
-          <InputRightElement
-            children={
-              <CloseButton
-                visibility={kRuokaSearch.length === 0 && "hidden"}
-                color="black"
-                onClick={() => {
-                  setKRuokaFetchStatus(LOADING_STATUS.INIT);
-                  setRecipesFromKRuoka([]);
-                  setKRuokaSearch("");
-                }}
-              />
-            }
-          />
-        </InputGroup>
-        <Button
-          variant="outline"
-          isLoading={kRuokaFetchStatus === LOADING_STATUS.LOADING}
-          onClick={() => {
-            setKRuokaFetchStatus(LOADING_STATUS.LOADING);
-            setRecipesFromKRuoka([]);
-            KRuokaApi.searchRecipes(
-              kRuokaSearch,
-              (data) => {
-                setKRuokaFetchStatus(LOADING_STATUS.LOADED);
-                setRecipesFromKRuoka(data.result);
-              },
-              (error) => {
-                setKRuokaFetchStatus(LOADING_STATUS.ERROR);
-                toast({
-                  position: "top-left",
-                  render: () => (
-                    <Box m={3} color="white" p={3} bg="red.500">
-                      Virhe haettaessa reseptejä K-Ruoasta
-                    </Box>
-                  ),
-                });
+        <Stack spacing={4} padding={4} bg="gray.600">
+          <Heading>Hae K-Ruoasta</Heading>
+          <InputGroup>
+            <Input
+              isDisabled={kRuokaFetchStatus === LOADING_STATUS.LOADING}
+              color="black"
+              placeholder="kirjoita hakusana..."
+              value={kRuokaSearch}
+              onChange={(e) => setKRuokaSearch(e.target.value)}
+            />
+            <InputRightElement
+              children={
+                <CloseButton
+                  visibility={kRuokaSearch.length === 0 && "hidden"}
+                  color="gray.600"
+                  onClick={() => {
+                    setKRuokaFetchStatus(LOADING_STATUS.INIT);
+                    setRecipesFromKRuoka([]);
+                    setKRuokaSearch("");
+                  }}
+                />
               }
-            );
-          }}
-        >
-          Hae reseptejä K-Ruoasta
-        </Button>
+            />
+          </InputGroup>
+          <Button
+            color="gray.700"
+            isLoading={kRuokaFetchStatus === LOADING_STATUS.LOADING}
+            onClick={() => {
+              setKRuokaFetchStatus(LOADING_STATUS.LOADING);
+              setRecipesFromKRuoka([]);
+              KRuokaApi.searchRecipes(
+                kRuokaSearch,
+                (data) => {
+                  setKRuokaFetchStatus(LOADING_STATUS.LOADED);
+                  setRecipesFromKRuoka(data.result);
+                },
+                (error) => {
+                  setKRuokaFetchStatus(LOADING_STATUS.ERROR);
+                  toast({
+                    position: "top-left",
+                    render: () => (
+                      <Box m={3} color="white" p={3} bg="red.500">
+                        Virhe haettaessa reseptejä K-Ruoasta
+                      </Box>
+                    ),
+                  });
+                }
+              );
+            }}
+          >
+            Hae reseptejä
+          </Button>
+          {recipesFromKRuoka.length > 0 && <Divider />}
+          {recipesFromKRuoka.length > 0 && <Heading as="h3" size="md">Haulla löytyi seuraavia reseptejä:</Heading>}
+          {kRuokaRecipeLoadingStatus === LOADING_STATUS.LOADING && (
+            <Spinner marginLeft={5} color="white" />
+          )}
+          {recipesFromKRuoka.length > 0 && <List spacing={3} >
+            {[...recipesFromKRuoka].map(({ Name: name, Url }: RecipeFromKRuoka) => (
+              <ListItem padding={3}>
+                <Button
+                  color="black"
+                  width="100%"
+                  onClick={() => {
+                    setKRuokaRecipeLoadingStatus(LOADING_STATUS.LOADING);
+                    KRuokaApi.fetchRecipe(
+                      Url,
+                      (html) => {
+                        const recipe = parseKRuokaRecipe(html, name);
+                        console.log(recipe)
+                        history.push({
+                          pathname: `/recipe/${recipe.name}`,
+                          state: { recipe },
+                        });
+                      },
+                      (error) => {
+                        console.log("failure", error);
+                      }
+                    );
+                  }}
+                >
+                  {name}
+                </Button>
+              </ListItem>
+            ))}
+          </List>}
+          {recipesFromKRuoka.length > 0 && <Divider />}
+        </Stack>
       </Stack>
       {recipesFromKRuoka.length > 0 && <Heading>Reseptit K-Ruoasta</Heading>}
       {recipesFromKRuoka.length === 0 &&
         kRuokaFetchStatus === LOADING_STATUS.LOADED && (
           <Heading>Ei hakutuloksia hakusanalla "{kRuokaSearch}"</Heading>
         )}
-      <List bg="red.600" spacing={3}>
-        {[...recipesFromKRuoka].map(({ Name: name, Url }: RecipeFromKRuoka) => (
-          <ListItem padding={1}>
-            <Button
-              color="white"
-              onClick={() => {
-                KRuokaApi.fetchRecipe(
-                  Url,
-                  (html) => {
-                    const recipe = parseKRuokaRecipe(html);
-                    history.push({
-                      pathname: `/recipe/${recipe.name}`,
-                      state: { recipe },
-                    });
-                  },
-                  (error) => {
-                    console.log("failure", error);
-                  }
-                );
-              }}
-              variant="link"
-            >
-              {name}
-            </Button>
-          </ListItem>
-        ))}
-      </List>
       <Stack spacing={4} isInline>
         {[...recipes]
           .flatMap(({ tags = [] }) => tags)
