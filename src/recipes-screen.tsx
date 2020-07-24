@@ -86,6 +86,8 @@ export const parseKRuokaRecipe = (
       amount = fractionStrToDecimal(amount);
     } else if (amount.includes("-")) {
       amount = amount.split("-")[0];
+    } else if (isNaN(amount)) {
+      amount = "";
     }
 
     const unit = elem.querySelector(
