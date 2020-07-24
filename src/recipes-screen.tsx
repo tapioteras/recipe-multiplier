@@ -47,6 +47,13 @@ export interface RecipeFromKRuoka {
   Categories: KRuokaCategory[];
 }
 
+export enum LOADING_STATUS {
+  INIT = "init",
+  LOADING = "loading",
+  LOADED = "loaded",
+  ERROR = "error",
+}
+
 export interface RecipesScreenProps {
   recipes: RecipeScreenProps[];
   categories: CategoryProps[];
@@ -131,7 +138,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   const [isWhatToDoNextDialogOpen, setIsWhatToDoNextDialogOpen] = useState(
     false
   );
-  let history = useHistory()
+  let history = useHistory();
   const btnRef = React.useRef();
   const cancelRef = React.useRef();
   const [recipesFromKRuoka, setRecipesFromKRuoka] = useState([]);
@@ -142,7 +149,9 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
     }
   }, [isWhatToDoNextDialogOpen]);
   const [filters, setFilters] = useState([]);
-  const [kRuokaFetchStatus, setKRuokaFetchStatus] = useState("init");
+  const [kRuokaFetchStatus, setKRuokaFetchStatus] = useState(
+    LOADING_STATUS.INIT
+  );
   const recipesWithCategories = [
     ...recipes,
   ].map(({ category = CATEGORY.OTHER, ...rest }) => ({ category, ...rest }));
@@ -158,7 +167,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         Mitä ruokaa voisi tehdä seuraavaksi?
       </Button>
       <Input
-        isDisabled={kRuokaFetchStatus === "loading"}
+        isDisabled={kRuokaFetchStatus === LOADING_STATUS.LOADING}
         color="black"
         placeholder="kirjoita hakusana..."
         value={kRuokaSearch}
@@ -167,7 +176,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       {kRuokaSearch.length > 0 && (
         <CloseButton
           onClick={() => {
-            setKRuokaFetchStatus("init");
+            setKRuokaFetchStatus(LOADING_STATUS.INIT);
             setRecipesFromKRuoka([]);
             setKRuokaSearch("");
           }}
@@ -175,18 +184,18 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       )}
       <Button
         variant="outline"
-        isLoading={kRuokaFetchStatus === "loading"}
+        isLoading={kRuokaFetchStatus === LOADING_STATUS.LOADING}
         onClick={() => {
-          setKRuokaFetchStatus("loading");
+          setKRuokaFetchStatus(LOADING_STATUS.LOADING);
           setRecipesFromKRuoka([]);
           KRuokaApi.searchRecipes(
             kRuokaSearch,
             (data) => {
-              setKRuokaFetchStatus("loaded");
+              setKRuokaFetchStatus(LOADING_STATUS.LOADED);
               setRecipesFromKRuoka(data.result);
             },
             (error) => {
-              setKRuokaFetchStatus("error");
+              setKRuokaFetchStatus(LOADING_STATUS.ERROR);
               toast({
                 position: "top-left",
                 render: () => (
@@ -202,9 +211,10 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         Hae reseptejä K-Ruoasta
       </Button>
       {recipesFromKRuoka.length > 0 && <Heading>Reseptit K-Ruoasta</Heading>}
-      {recipesFromKRuoka.length === 0 && kRuokaFetchStatus === "loaded" && (
-        <Heading>Ei hakutuloksia hakusanalla "{kRuokaSearch}"</Heading>
-      )}
+      {recipesFromKRuoka.length === 0 &&
+        kRuokaFetchStatus === LOADING_STATUS.LOADED && (
+          <Heading>Ei hakutuloksia hakusanalla "{kRuokaSearch}"</Heading>
+        )}
       <List bg="red.600" spacing={3}>
         {[...recipesFromKRuoka].map(({ Name: name, Url }: RecipeFromKRuoka) => (
           <ListItem padding={1}>
@@ -266,12 +276,12 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                       portions,
                       ingredients: parsedIngredients,
                       steps: parsedSteps,
-                    }
+                    };
 
                     history.push({
                       pathname: `/recipe/${recipe.name}`,
                       state: { recipe },
-                    })
+                    });
                   },
                   (error) => {
                     console.log("failure", error);
