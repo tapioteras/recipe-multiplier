@@ -6,7 +6,8 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Box,
-  Button, CloseButton,
+  Button,
+  CloseButton,
   Flex,
   Heading,
   Input,
@@ -30,6 +31,20 @@ import KRuokaApi from "./api/KRuokaApi";
 export interface CategoryProps {
   id: number;
   name: string;
+}
+
+export interface KRuokaCategory {
+  MainName: string; // sesonki
+  MainId: number; // 1
+  SubId: string; // grillaus
+  subId: number; // 5
+}
+
+export interface RecipeFromKRuoka {
+  Name: string;
+  Id: number;
+  Url: string;
+  Categories: KRuokaCategory[];
 }
 
 export interface RecipesScreenProps {
@@ -118,7 +133,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   );
   const btnRef = React.useRef();
   const cancelRef = React.useRef();
-  const [recipesFromKRuoka, setRecipesFromKRuoka] = useState({});
+  const [recipesFromKRuoka, setRecipesFromKRuoka] = useState([]);
   const [dialogToggleCount, setDialogToggleCount] = useState(0);
   useEffect(() => {
     if (isWhatToDoNextDialogOpen) {
@@ -146,20 +161,23 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         color="black"
         placeholder="kirjoita hakusana..."
         value={kRuokaSearch}
-        onChange={(e) =>
-          setKRuokaSearch(e.target.value);
-        }
+        onChange={(e) => setKRuokaSearch(e.target.value)}
       />
-      {kRuokaFetchStatus === "loaded" && <CloseButton onClick={() => {
-        setKRuokaFetchStatus("init")
-        setRecipesFromKRuoka({})
-      }} />}
+      {kRuokaSearch.length > 0 && (
+        <CloseButton
+          onClick={() => {
+            setKRuokaFetchStatus("init");
+            setRecipesFromKRuoka([]);
+            setKRuokaSearch("");
+          }}
+        />
+      )}
       <Button
         variant="outline"
         isLoading={kRuokaFetchStatus === "loading"}
         onClick={() => {
           setKRuokaFetchStatus("loading");
-          setRecipesFromKRuoka({});
+          setRecipesFromKRuoka([]);
           KRuokaApi.searchRecipes(
             kRuokaSearch,
             (data) => {
@@ -182,7 +200,35 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       >
         Hae reseptejä K-Ruoasta
       </Button>
-      <Box>{JSON.stringify(recipesFromKRuoka)}</Box>
+      {recipesFromKRuoka.length > 0 && <Heading>Reseptit K-Ruoasta</Heading>}
+      {recipesFromKRuoka.length === 0 && kRuokaFetchStatus === "loaded" && (
+        <Heading>Ei hakutuloksia hakusanalla "{kRuokaSearch}"</Heading>
+      )}
+      <List bg="red.600" spacing={3}>
+        {[...recipesFromKRuoka].map(({ Name, Url }: RecipeFromKRuoka) => (
+          <ListItem padding={1}>
+            <Button
+              color="white"
+              onClick={() => {
+                KRuokaApi.fetchRecipe(
+                  Url,
+                  (html) => {
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(html, "text/html");
+                    console.log("recipe", doc);
+                  },
+                  (error) => {
+                    console.log("failure", error);
+                  }
+                );
+              }}
+              variant="link"
+            >
+              {Name}
+            </Button>
+          </ListItem>
+        ))}
+      </List>
       <Stack spacing={4} isInline>
         {[...recipes]
           .flatMap(({ tags = [] }) => tags)
