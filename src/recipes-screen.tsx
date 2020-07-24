@@ -311,14 +311,20 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                           Url,
                           (html) => {
                             const recipe = parseKRuokaRecipe(html, name);
-                            console.log(recipe);
                             history.push({
                               pathname: `/recipe/${recipe.name}`,
                               state: { recipe },
                             });
                           },
                           (error) => {
-                            console.log("failure", error);
+                            toast({
+                              position: "top-left",
+                              render: () => (
+                                <Box m={3} color="white" p={3} bg="red.500">
+                                  Virhe reseptin käsittelyssä
+                                </Box>
+                              ),
+                            });
                           }
                         );
                       }}
