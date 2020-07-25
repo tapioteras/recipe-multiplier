@@ -111,13 +111,13 @@ const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
   if (amount && unit) {
     return {
       amount,
-      unit: amount && unit ? unit : "kpl",
+      unit,
       name: nameInsideA ? nameInsideA : name,
     };
   } else {
     return {
       amount: !amount ? null : amount,
-      unit: unit ? unit : "kpl",
+      unit,
       name: nameInsideA ? nameInsideA : name,
     };
   }
