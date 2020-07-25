@@ -80,22 +80,33 @@ const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
     }
   } else if (amount.includes("-")) {
     amount = amount.split("-")[0];
+  } else if (amount.includes(",")) {
+    amount = amount.replace(",", ".");
   }
 
   if (isNaN(amount)) {
     amount = "";
   }
 
-  const unit = elem.querySelector(
-    ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
-  ).innerHTML;
-  const name = elem.querySelector(
-    ".recipe-subsection-ingredient .recipe-ingredient-name"
-  ).innerHTML;
+  const unit =
+    elem.querySelector(
+      ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
+    ).innerHTML ||
+    elem.querySelector(
+      ".alternative-ingredients .recipe-ingredient-amount-unit"
+    ).innerHTML;
+  const name =
+    elem.querySelector(".recipe-subsection-ingredient .recipe-ingredient-name")
+      .innerHTML ||
+    elem.querySelector(".alternative-ingredients .recipe-ingredient-name")
+      .innerHTML;
 
-  const nameInsideA = elem.querySelector(
-    ".recipe-subsection-ingredient .recipe-ingredient-name a"
-  )?.innerHTML;
+  const nameInsideA =
+    elem.querySelector(
+      ".recipe-subsection-ingredient .recipe-ingredient-name a"
+    )?.innerHTML ||
+    elem.querySelector(".alternative-ingredients .recipe-ingredient-name a")
+      ?.innerHTML;
 
   if (amount && unit) {
     return {
@@ -105,8 +116,8 @@ const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
     };
   } else {
     return {
-      amount: !amount ? 1 : amount,
-      unit: amount && unit ? unit : "kpl",
+      amount: !amount ? null : amount,
+      unit: unit ? unit : "kpl",
       name: nameInsideA ? nameInsideA : name,
     };
   }
@@ -123,7 +134,7 @@ export const parseKRuokaRecipe = (
   const originalPortions = doc.body
     .querySelector(".recipe-subsection-info span")
     ?.innerHTML.toString();
-  const portionParts = originalPortions.split(" ");
+  const portionParts = ("" + originalPortions).split(" ");
   let portions = portionParts.length > 0 ? portionParts[0] : 1;
 
   if (isNaN(portions)) {
@@ -174,7 +185,6 @@ export const parseKRuokaRecipe = (
     ingredients: parsedIngredients,
     steps: parsedSteps,
   };
-  console.log(recipe);
   return recipe;
 };
 
