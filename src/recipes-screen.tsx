@@ -186,7 +186,7 @@ export const parseKRuokaRecipe = (
       ingredientsCategories.length === 0 ? null : ingredientsCategories,
     ingredients: parsedIngredients,
     steps: parsedSteps,
-    tags: ["K-Ruoka"]
+    tags: ["K-Ruoka"],
   };
   return recipe;
 };
