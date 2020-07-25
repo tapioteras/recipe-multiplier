@@ -133,17 +133,44 @@ export const parseKRuokaRecipe = (
     }
   }
 
-  const parsedIngredients = [
-    ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
-  ].map(parseIngredient);
+  let parsedIngredients = [];
+  let ingredientsCategories = [];
+  const rawIngredientCategories = doc.body.querySelectorAll(
+    ".recipe-ingredients-section"
+  );
+  if (rawIngredientCategories.length > 1) {
+    [...rawIngredientCategories].forEach((rawCategory, id) => {
+      const categoryHeader = rawCategory.querySelector("h3")?.innerHTML;
+      if (categoryHeader) {
+        ingredientsCategories.push({ id, name: categoryHeader });
+        parsedIngredients = [
+          ...parsedIngredients,
+          ...[...rawCategory.querySelectorAll("li")]
+            .map(parseIngredient)
+            .map((r) => ({ ...r, category: id })),
+        ];
+      } else {
+        parsedIngredients = [
+          ...parsedIngredients,
+          ...[...rawCategory.querySelectorAll("li")].map(parseIngredient),
+        ];
+      }
+    });
+  } else {
+    const oneIngredientsGroup = [
+      ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
+    ];
+    parsedIngredients = [oneIngredientsGroup].map(parseIngredient);
+  }
 
   const parsedSteps = [
     ...doc.body.querySelectorAll(".recipe-instructions__steps li"),
-  ].map((step) => step?.innerHTML);
+  ].map((step) => step?.innerHTML.trim());
 
   const recipe = {
     name,
     portions,
+    ingredientsCategories,
     ingredients: parsedIngredients,
     steps: parsedSteps,
   };
