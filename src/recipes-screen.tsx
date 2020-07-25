@@ -495,13 +495,6 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         <Box paddingBottom={5} key={`category-${i}`}>
           <Heading>{name}</Heading>
           <List spacing={5}>
-            {!recipes.some((r) => r.category === id) && (
-              <ListItem>
-                <Heading size="lg" paddingLeft={5}>
-                  Ei reseptejä
-                </Heading>
-              </ListItem>
-            )}
             {[...recipesWithCategories]
               .filter((recipe) =>
                 filters.length > 0
