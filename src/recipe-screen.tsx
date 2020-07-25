@@ -83,7 +83,7 @@ const sliderDefaultProps: SliderProps = {
   max: 15,
 };
 
-const getSavedRecipes = () =>
+export const getSavedRecipes = () =>
   JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]");
 
 const RecipeScreen: React.FC = () => {
