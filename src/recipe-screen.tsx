@@ -83,6 +83,9 @@ const sliderDefaultProps: SliderProps = {
   max: 15,
 };
 
+const getSavedRecipes = () =>
+  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]");
+
 const RecipeScreen: React.FC = () => {
   const {
     state: {
@@ -140,6 +143,7 @@ const RecipeScreen: React.FC = () => {
       );
     }
   }, [isMadeToday]);
+  const isFromKRuoka = tags.find((t) => t === "K-Ruoka");
   return (
     <ScreenContainer>
       <Flex alignItems="center" flexWrap="wrap" paddingBottom={5}>
@@ -175,26 +179,29 @@ const RecipeScreen: React.FC = () => {
         )}
       </Flex>
       <Flex alignItems="center" justifyContent="flex-start">
-        <Button
-          color="black"
-          onClick={() => {
-            const recipesFromKRuoka = JSON.parse(
-              localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]"
-            );
-            localStorage.setItem(
-              LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
-              JSON.stringify([
-                ...recipesFromKRuoka.filter(
-                  ({ name: nameToFind }) => nameToFind !== name
-                ),
-                recipe,
-              ])
-            );
-          }}
-        >
-          Tallenna resepti
-        </Button>
-        <Box marginLeft={5}>
+        {isFromKRuoka && (
+          <Button
+            color="black"
+            onClick={() => {
+              localStorage.setItem(
+                LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+                JSON.stringify([
+                  ...getSavedRecipes().filter(
+                    ({ name: nameToFind }) => nameToFind !== name
+                  ),
+                  recipe,
+                ])
+              );
+            }}
+          >
+            {!!getSavedRecipes().find(
+              ({ name: nameToFind }) => nameToFind === name
+            )?.name
+              ? "Tallenna resepti"
+              : "Poista tallennettu resepti"}
+          </Button>
+        )}
+        <Box marginLeft={isFromKRuoka && 5}>
           <label>
             <VisuallyHidden
               onChange={() => setIsMadeToday(!isMadeToday)}
