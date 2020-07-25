@@ -92,7 +92,15 @@ export const parseKRuokaRecipe = (
     ).innerHTML;
 
     if (amount.includes("/")) {
-      amount = fractionStrToDecimal(amount);
+      if (amount.includes(" ")) {
+        amount = amount
+          .split(" ")
+          .map((p) => (p.includes("/") ? fractionStrToDecimal(p.trim()) : p))
+          .filter((p) => !isNaN(p))
+          .reduce((a, b) => parseFloat(a) + parseFloat(b), 0);
+      } else {
+        amount = fractionStrToDecimal(amount);
+      }
     } else if (amount.includes("-")) {
       amount = amount.split("-")[0];
     } else if (isNaN(amount)) {
