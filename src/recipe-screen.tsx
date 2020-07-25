@@ -13,6 +13,9 @@ import {
   VisuallyHidden,
   ControlBox,
   Stack,
+  Code,
+  CloseButton,
+  useClipboard,
 } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -102,6 +105,7 @@ const RecipeScreen: React.FC = () => {
       },
     },
   } = useLocation();
+  const [exportedJson, setExportedJson] = useState(null);
   const itemsMadeToday = JSON.parse(
     localStorage.getItem(LOCAL_STORAGE_KEY.RECIPE_MADE_TODAY) || "[]"
   );
@@ -151,6 +155,7 @@ const RecipeScreen: React.FC = () => {
       );
     }
   }, [isMadeToday]);
+  const { onCopy, hasCopied } = useClipboard(exportedJson);
   const isFromKRuoka = tags.find((t) => t === "K-Ruoka");
   return (
     <ScreenContainer>
@@ -218,6 +223,24 @@ const RecipeScreen: React.FC = () => {
             {isSaved ? "Poista tallennettu resepti" : "Tallenna resepti"}
           </Button>
         )}
+        {isSaved && (
+          <Button
+            marginLeft={5}
+            outline="link"
+            color="black"
+            onClick={() => {
+              setExportedJson(
+                JSON.stringify(
+                  getSavedRecipes().find(
+                    ({ name: nameToFind }) => name === nameToFind
+                  )
+                )
+              );
+            }}
+          >
+            Export JSON
+          </Button>
+        )}
         <Box marginLeft={isFromKRuoka && 5}>
           <label>
             <VisuallyHidden
@@ -256,6 +279,15 @@ const RecipeScreen: React.FC = () => {
         <ContentBox>
           <Text fontSize="xl">{description}</Text>
         </ContentBox>
+      )}
+      {exportedJson && (
+        <Box padding={2}>
+          <CloseButton onClick={() => setExportedJson(null)} />
+          <Button color="white" variant="link" onClick={onCopy}>
+            {hasCopied ? "Kopioitu leikepöydälle" : "Kopioi leikepöydälle"}
+          </Button>
+          <Code padding={2}>{exportedJson}</Code>
+        </Box>
       )}
       {description && portions && <Box paddingTop={2} />}
       <Flex justifyContent="space-between" alignSelf="flext-start">
