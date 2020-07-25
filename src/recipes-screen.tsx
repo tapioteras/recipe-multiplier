@@ -27,7 +27,11 @@ import {
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { IngredientRowProps, RecipeScreenProps } from "./recipe-screen";
+import {
+  getSavedRecipes,
+  IngredientRowProps,
+  RecipeScreenProps,
+} from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
 import KRuokaApi from "./api/KRuokaApi";
@@ -187,6 +191,7 @@ export const parseKRuokaRecipe = (
     ingredients: parsedIngredients,
     steps: parsedSteps,
     tags: ["K-Ruoka"],
+    category: CATEGORY.IMPORTED,
   };
   return recipe;
 };
@@ -289,6 +294,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   );
   const recipesWithCategories = [
     ...recipes,
+    ...getSavedRecipes(),
   ].map(({ category = CATEGORY.OTHER, ...rest }) => ({ category, ...rest }));
   const onClose = () => setIsWhatToDoNextDialogOpen(false);
   const toast = useToast();
