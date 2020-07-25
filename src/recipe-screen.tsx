@@ -28,6 +28,7 @@ import moment from "moment";
 
 export enum LOCAL_STORAGE_KEY {
   RECIPE_MADE_TODAY = "itemsMadeToday",
+  IMPORTED_RECIPES = "importedRecipes",
 }
 
 export const INGREDIENT_CATEGORY_OTHER = 999;
@@ -85,6 +86,7 @@ const sliderDefaultProps: SliderProps = {
 const RecipeScreen: React.FC = () => {
   const {
     state: {
+      recipe,
       recipe: {
         name,
         description,
@@ -194,6 +196,24 @@ const RecipeScreen: React.FC = () => {
           <Box as="span" verticalAlign="top" ml={3}>
             Tehty tänään
           </Box>
+          <Button
+            onClick={() => {
+              const recipesFromKRuoka = JSON.parse(
+                localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]"
+              );
+              localStorage.setItem(
+                LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+                JSON.stringify([
+                  ...recipesFromKRuoka.filter(
+                    ({ name: nameToFind }) => nameToFind !== name
+                  ),
+                  recipe,
+                ])
+              );
+            }}
+          >
+            Tallenna resepti
+          </Button>
         </label>
       </Box>
       {madeLatest && (
