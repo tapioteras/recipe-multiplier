@@ -112,6 +112,14 @@ const RecipeScreen: React.FC = () => {
   const [isMadeToday, setIsMadeToday] = useState(
     maybeIsMadeToday ? moment().isSame(maybeIsMadeToday, "day") : false
   );
+  const getLatestSaveStatus = () =>
+    !!getSavedRecipes().find(({ name: nameToFind }) => nameToFind === name)
+      ?.name;
+
+  const [isSaved, setIsSaved] = useState(getLatestSaveStatus());
+  useEffect(() => {
+    setIsSaved(getLatestSaveStatus());
+  }, [isSaved]);
   const [madeLatest] = useState(
     !isMadeToday && (maybeIsMadeToday?.madeAt || false)
       ? maybeIsMadeToday.madeAt
@@ -183,22 +191,31 @@ const RecipeScreen: React.FC = () => {
           <Button
             color="black"
             onClick={() => {
-              localStorage.setItem(
-                LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
-                JSON.stringify([
-                  ...getSavedRecipes().filter(
-                    ({ name: nameToFind }) => nameToFind !== name
-                  ),
-                  recipe,
-                ])
-              );
+              if (isSaved) {
+                localStorage.setItem(
+                  LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+                  JSON.stringify([
+                    ...getSavedRecipes().filter(
+                      ({ name: nameToFind }) => nameToFind !== name
+                    ),
+                  ])
+                );
+                setIsSaved(false);
+              } else {
+                localStorage.setItem(
+                  LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+                  JSON.stringify([
+                    ...getSavedRecipes().filter(
+                      ({ name: nameToFind }) => nameToFind !== name
+                    ),
+                    recipe,
+                  ])
+                );
+                setIsSaved(true);
+              }
             }}
           >
-            {!!getSavedRecipes().find(
-              ({ name: nameToFind }) => nameToFind === name
-            )?.name
-              ? "Tallenna resepti"
-              : "Poista tallennettu resepti"}
+            {isSaved ? "Poista tallennettu resepti" : "Tallenna resepti"}
           </Button>
         )}
         <Box marginLeft={isFromKRuoka && 5}>
