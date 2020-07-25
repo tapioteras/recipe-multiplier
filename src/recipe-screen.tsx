@@ -151,7 +151,7 @@ const RecipeScreen: React.FC = () => {
             </Heading>
           </Flex>
         </Link>
-        {(categoryName || tags && tags.length > 0) && (
+        {(categoryName || (tags && tags.length > 0)) && (
           <Flex
             alignContent="center"
             flexDirection={[
@@ -163,11 +163,13 @@ const RecipeScreen: React.FC = () => {
             flexGrow={2}
           >
             <Stack spacing={4} isInline>
-              {[...tags, categoryName].filter(t => !!t).map((tag) => (
-                <Tag size="md" variantColor="gray">
-                  {tag}
-                </Tag>
-              ))}
+              {[...tags, categoryName]
+                .filter((t) => !!t)
+                .map((tag) => (
+                  <Tag size="md" variantColor="gray">
+                    {tag}
+                  </Tag>
+                ))}
             </Stack>
           </Flex>
         )}
