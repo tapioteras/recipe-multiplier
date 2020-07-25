@@ -168,10 +168,11 @@ export const parseKRuokaRecipe = (
       }
     });
   } else {
-    const oneIngredientsGroup = [
-      ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
-    ];
-    parsedIngredients = [oneIngredientsGroup].map(parseIngredient);
+    parsedIngredients = parsedIngredients.concat(
+      [...doc.body.querySelectorAll(".recipe-subsection-ingredient")].map(
+        parseIngredient
+      )
+    );
   }
 
   const parsedSteps = [
@@ -181,7 +182,8 @@ export const parseKRuokaRecipe = (
   const recipe = {
     name,
     portions,
-    ingredientsCategories,
+    ingredientsCategories:
+      ingredientsCategories.length === 0 ? null : ingredientsCategories,
     ingredients: parsedIngredients,
     steps: parsedSteps,
   };
