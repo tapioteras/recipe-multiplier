@@ -71,10 +71,19 @@ export const parseKRuokaRecipe = (
 ): RecipeScreenProps => {
   var parser = new DOMParser();
   var doc = parser.parseFromString(html, "text/html");
-  const portionParts = doc.body
+  const originalPortions = doc.body
     .querySelector(".recipe-subsection-info span")
-    ?.innerHTML.split(" ");
-  const portions = portionParts.length > 0 ? portionParts[0] : 1;
+    ?.innerHTML.toString();
+  const portionParts = originalPortions.split(" ");
+  let portions = portionParts.length > 0 ? portionParts[0] : 1;
+
+  if (isNaN(portions)) {
+    portions = portionParts.map((p) => p.trim()).find((p) => !isNaN(p.trim()));
+    if (isNaN(portions)) {
+      portions = 1;
+    }
+  }
+
   const parsedIngredients = [
     ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
   ].map((elem) => {
