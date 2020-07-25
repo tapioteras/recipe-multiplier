@@ -27,7 +27,7 @@ import {
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { RecipeScreenProps } from "./recipe-screen";
+import { IngredientRowProps, RecipeScreenProps } from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
 import KRuokaApi from "./api/KRuokaApi";
@@ -63,6 +63,55 @@ export interface RecipesScreenProps {
   categories: CategoryProps[];
 }
 
+const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
+  let amount = elem.querySelector(
+    ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
+  ).innerHTML;
+
+  if (amount.includes("/")) {
+    if (amount.includes(" ")) {
+      amount = amount
+        .split(" ")
+        .map((p) => (p.includes("/") ? fractionStrToDecimal(p.trim()) : p))
+        .filter((p) => !isNaN(p))
+        .reduce((a, b) => parseFloat(a) + parseFloat(b), 0);
+    } else {
+      amount = fractionStrToDecimal(amount);
+    }
+  } else if (amount.includes("-")) {
+    amount = amount.split("-")[0];
+  }
+
+  if (isNaN(amount)) {
+    amount = "";
+  }
+
+  const unit = elem.querySelector(
+    ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
+  ).innerHTML;
+  const name = elem.querySelector(
+    ".recipe-subsection-ingredient .recipe-ingredient-name"
+  ).innerHTML;
+
+  const nameInsideA = elem.querySelector(
+    ".recipe-subsection-ingredient .recipe-ingredient-name a"
+  )?.innerHTML;
+
+  if (amount && unit) {
+    return {
+      amount,
+      unit: amount && unit ? unit : "kpl",
+      name: nameInsideA ? nameInsideA : name,
+    };
+  } else {
+    return {
+      amount: !amount ? 1 : amount,
+      unit: amount && unit ? unit : "kpl",
+      name: nameInsideA ? nameInsideA : name,
+    };
+  }
+};
+
 const fractionStrToDecimal = (str) => str.split("/").reduce((p, c) => p / c);
 
 export const parseKRuokaRecipe = (
@@ -86,54 +135,7 @@ export const parseKRuokaRecipe = (
 
   const parsedIngredients = [
     ...doc.body.querySelectorAll(".recipe-subsection-ingredient"),
-  ].map((elem) => {
-    let amount = elem.querySelector(
-      ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
-    ).innerHTML;
-
-    if (amount.includes("/")) {
-      if (amount.includes(" ")) {
-        amount = amount
-          .split(" ")
-          .map((p) => (p.includes("/") ? fractionStrToDecimal(p.trim()) : p))
-          .filter((p) => !isNaN(p))
-          .reduce((a, b) => parseFloat(a) + parseFloat(b), 0);
-      } else {
-        amount = fractionStrToDecimal(amount);
-      }
-    } else if (amount.includes("-")) {
-      amount = amount.split("-")[0];
-    }
-
-    if (isNaN(amount)) {
-      amount = "";
-    }
-
-    const unit = elem.querySelector(
-      ".recipe-subsection-ingredient .recipe-ingredient-amount-unit"
-    ).innerHTML;
-    const name = elem.querySelector(
-      ".recipe-subsection-ingredient .recipe-ingredient-name"
-    ).innerHTML;
-
-    const nameInsideA = elem.querySelector(
-      ".recipe-subsection-ingredient .recipe-ingredient-name a"
-    )?.innerHTML;
-
-    if (amount && unit) {
-      return {
-        amount,
-        unit: amount && unit ? unit : "kpl",
-        name: nameInsideA ? nameInsideA : name,
-      };
-    } else {
-      return {
-        amount: !amount ? 1 : amount,
-        unit: amount && unit ? unit : "kpl",
-        name: nameInsideA ? nameInsideA : name,
-      };
-    }
-  });
+  ].map(parseIngredient);
 
   const parsedSteps = [
     ...doc.body.querySelectorAll(".recipe-instructions__steps li"),
