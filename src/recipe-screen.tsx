@@ -174,50 +174,53 @@ const RecipeScreen: React.FC = () => {
           </Flex>
         )}
       </Flex>
-      <Box>
-        <label>
-          <VisuallyHidden
-            onChange={() => setIsMadeToday(!isMadeToday)}
-            as="input"
-            type="checkbox"
-            defaultChecked={isMadeToday}
-          />
-          <ControlBox
-            borderWidth="2px"
-            size="30px"
-            rounded="sm"
-            _checked={{
-              bg: "red.700",
-              color: "white",
-              borderColor: "red.700",
-            }}
-            _focus={{ borderColor: "red.600", boxShadow: "outline" }}
-          >
-            <Icon name="check" size="16px" />
-          </ControlBox>
-          <Box as="span" verticalAlign="top" ml={3}>
-            Tehty tänään
-          </Box>
-          <Button
-            onClick={() => {
-              const recipesFromKRuoka = JSON.parse(
-                localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]"
-              );
-              localStorage.setItem(
-                LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
-                JSON.stringify([
-                  ...recipesFromKRuoka.filter(
-                    ({ name: nameToFind }) => nameToFind !== name
-                  ),
-                  recipe,
-                ])
-              );
-            }}
-          >
-            Tallenna resepti
-          </Button>
-        </label>
-      </Box>
+      <Flex alignItems="center" justifyContent="flex-start">
+        <Button
+          color="black"
+          onClick={() => {
+            const recipesFromKRuoka = JSON.parse(
+              localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]"
+            );
+            localStorage.setItem(
+              LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+              JSON.stringify([
+                ...recipesFromKRuoka.filter(
+                  ({ name: nameToFind }) => nameToFind !== name
+                ),
+                recipe,
+              ])
+            );
+          }}
+        >
+          Tallenna resepti
+        </Button>
+        <Box marginLeft={5}>
+          <label>
+            <VisuallyHidden
+              onChange={() => setIsMadeToday(!isMadeToday)}
+              as="input"
+              type="checkbox"
+              defaultChecked={isMadeToday}
+            />
+            <ControlBox
+              borderWidth="2px"
+              size="30px"
+              rounded="sm"
+              _checked={{
+                bg: "red.700",
+                color: "white",
+                borderColor: "red.700",
+              }}
+              _focus={{ borderColor: "red.600", boxShadow: "outline" }}
+            >
+              <Icon name="check" size="16px" />
+            </ControlBox>
+            <Box as="span" verticalAlign="top" ml={3}>
+              Tehty tänään
+            </Box>
+          </label>
+        </Box>
+      </Flex>
       {madeLatest && (
         <Box>
           {`Tehty viimeksi ${moment(madeLatest).format("DD.MM.YYYY")} (${moment(
