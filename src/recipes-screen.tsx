@@ -143,17 +143,17 @@ export const parseKRuokaRecipe = (
       const categoryHeader = rawCategory.querySelector("h3")?.innerHTML;
       if (categoryHeader) {
         ingredientsCategories.push({ id, name: categoryHeader });
-        parsedIngredients = [
-          ...parsedIngredients,
-          ...[...rawCategory.querySelectorAll("li")]
+        parsedIngredients = parsedIngredients.concat(
+          [...rawCategory.querySelectorAll(".recipe-subsection-ingredient")]
             .map(parseIngredient)
-            .map((r) => ({ ...r, category: id })),
-        ];
+            .map((r) => ({ ...r, category: id }))
+        );
       } else {
-        parsedIngredients = [
-          ...parsedIngredients,
-          ...[...rawCategory.querySelectorAll("li")].map(parseIngredient),
-        ];
+        parsedIngredients = parsedIngredients.concat(
+          [
+            ...rawCategory.querySelectorAll(".recipe-subsection-ingredient"),
+          ].map(parseIngredient)
+        );
       }
     });
   } else {
@@ -174,7 +174,7 @@ export const parseKRuokaRecipe = (
     ingredients: parsedIngredients,
     steps: parsedSteps,
   };
-
+  console.log(recipe);
   return recipe;
 };
 
