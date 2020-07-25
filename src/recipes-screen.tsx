@@ -103,7 +103,9 @@ export const parseKRuokaRecipe = (
       }
     } else if (amount.includes("-")) {
       amount = amount.split("-")[0];
-    } else if (isNaN(amount)) {
+    }
+
+    if (isNaN(amount)) {
       amount = "";
     }
 
