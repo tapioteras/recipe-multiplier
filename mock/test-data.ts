@@ -430,6 +430,43 @@ const testData = [
       "kun muusi on valmista, murskaa perunat survimella ja murskaa valkosipuli sekaan. lisää myös rasva ja maitoa oman maun mukaan",
     ],
   },
+  {
+    category: 2,
+    name: "Soijamakaronilaatikko",
+    ingredientsCategories: [
+      { id: 1, name: "Munamaito" },
+      { id: 2, name: "soijarouhe" },
+    ],
+    ingredients: [
+      {
+        unit: "dl",
+        amount: 6,
+        name: "maitoa",
+        category: 1,
+      },
+      { name: "suolaa", category: 2 },
+      { name: "soijakastiketta", category: 2 },
+      { name: "paprikajauhetta", category: 2 },
+      { name: "gillausmaustetta", category: 2 },
+      { name: "valkopippuria", category: 1 },
+      { name: "kananmunaa", unit: "kpl", amount: 2 },
+      { name: "soijarouhetta", unit: "dl", amount: 3.5 },
+      { name: "makaronia", unit: "dl", amount: 5 },
+      { name: "sipuli", amount: 1, unit: "kpl", category: 2 },
+      { name: "valkosipulin kynsi", amount: 2, unit: "kpl", category: 2 },
+      { name: "rypsiöljyä (voiteluun)" },
+      { name: "juustoraastetta (valinnainen)" },
+    ],
+    steps: [
+      "keitä makaronit ja anna kiehua n. 7 min.",
+      "kaada soijarouhe ja pilkottu sipuli raakana kattilaan. lisää reilusti vettä. anna kiehua n. 10 min. lisää soijakastike kiehumisen alkuvaiheessa. lisää mausteet kiehumisen loppuvaiheessa. murskaa raaka valkosipuli kiehumisen jälkeen",
+      "sekoita munamaito ja lisää valkopippuri",
+      "sekoita turvotettu soija sekä makaronit keskenään",
+      "kaada seos voideltuun uunivuokaan",
+      "lisää juustoraastetta seoksen sekaan ja/tai pinnalle halutessasi",
+      "paista uunnissa 200 asteessa 45min - 1t",
+    ],
+  },
 ];
 
 export default testData;
