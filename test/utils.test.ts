@@ -63,11 +63,12 @@ describe("convert amount", () => {
   it("should convert various amounts", () => {
     expect(convertAmount("1/2")).toEqual(0.5);
     expect(convertAmount("n. 1/2")).toEqual(0.5);
-    expect(convertAmount("1")).toEqual("1");
+    expect(convertAmount("1")).toEqual(1);
     expect(convertAmount("ripaus")).toEqual("");
     expect(convertAmount("1 1/2")).toEqual(1.5);
     expect(convertAmount("n. 1 1/2")).toEqual(1.5);
-    expect(convertAmount("1,5")).toEqual("1.5");
+    expect(convertAmount("1,5")).toEqual(1.5);
     expect(convertAmount("")).toEqual("");
+    expect(convertAmount("n. 3")).toEqual(3);
   });
 });

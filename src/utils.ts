@@ -26,6 +26,9 @@ export const fractionStrToDecimal = (str) =>
 
 export const convertAmount = (amount: string): number | string => {
   let newAmount = amount;
+  if (newAmount.includes("n.")) {
+    newAmount = newAmount.replace("n.", "").trim();
+  }
   if (newAmount.includes("/")) {
     if (newAmount.includes(" ")) {
       newAmount = newAmount
@@ -42,8 +45,10 @@ export const convertAmount = (amount: string): number | string => {
     newAmount = newAmount.replace(",", ".");
   }
 
-  if (isNaN(newAmount)) {
+  if (isNaN(newAmount) || !newAmount.toString().length) {
     newAmount = "";
+  } else {
+    newAmount = parseFloat(newAmount)
   }
 
   return newAmount;
