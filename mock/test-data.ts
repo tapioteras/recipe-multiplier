@@ -471,6 +471,7 @@ const testData = [
   },
   {
     name: "pizzapohja",
+    portions: 8,
     category: 2,
     ingredients: [
       { name: "vettä", amount: 2, unit: "dl" },
@@ -484,6 +485,61 @@ const testData = [
       "lisää vesi ja vaivaa",
       "lisää öljy vaivauksen loppuvaiheessa",
       "hienosäädä jauhojen määrä tarvittaessa",
+      "lisää täytteet",
+      "paista uunissa 230 asteessa n. 15 min.",
+    ],
+  },
+  {
+    category: 2,
+    name: "lohipastagratiini",
+    portions: 6,
+    ingredientsCategories: [{ id: 1, name: "valkokastike" }],
+    ingredients: [
+      {
+        unit: "dl",
+        amount: 8,
+        name: "gnocchi-pastaa",
+      },
+      {
+        amount: 1,
+        unit: "rasia (300 g)",
+        name: "lohisuikaleita (marinoituna tai ilman maun mukaan)",
+      },
+      {
+        amount: 1,
+        unit: "tlk (420 g)",
+        name: "Pirkka tomaatti-oliivi-pastakastike",
+      },
+      {
+        category: 1,
+        name: "vehnäjauhoja",
+      },
+      {
+        category: 1,
+        name: "voita, öljyä tai kasvirasvasekoitetta",
+      },
+      {
+        category: 1,
+        name: "maitoa",
+        amount: 3,
+        unit: "dl",
+      },
+      {
+        amount: 3,
+        unit: "dl",
+        name: "juustoraastetta",
+      },
+    ],
+    steps: [
+      "keitä pasta pakkauksen ohjeen mukaan",
+      "tee valkokastike (pyri tekemään löysä koostumus)",
+      "kaada voidellun uunivuoan pohjalle sen verran keitettyä pastaa, että pohja peittyy",
+      "lusikoi lohisuikaleet vuokaan kerrokseksi pastan päälle",
+      "lisää tomaatti-oliivi-pastakastike lohikerroksen päälle uudeksi kerrokseksi",
+      "lisää loput pastat vuokaan",
+      "kaada valkokastike vuokaan mahdollisimman tasaisesti",
+      "lisää juustoraastetta päälle",
+      "paista uuninssa 200 asteessa n. 45 min.",
     ],
   },
 ];
