@@ -16,14 +16,12 @@ import {
   Code,
   CloseButton,
   useClipboard,
-} from "@chakra-ui/core";
-import { Link, useLocation } from "react-router-dom";
-import {
   Slider,
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
 } from "@chakra-ui/core";
+import { Link, useLocation } from "react-router-dom";
 import { calculatePortion } from "./utils";
 import ScreenContainer from "./ScreenContainer";
 import categories from "../mock/categories";
