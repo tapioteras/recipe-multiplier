@@ -170,9 +170,10 @@ const RecipeScreen: React.FC = () => {
         </Link>
         {(categoryName || (tags && tags.length > 0)) && (
           <Flex
-            alignContent="center"
+            marginY={[2, 0, 0, 0]}
+            marginLeft={[0, 5, 5, 5]}
             flexDirection={[
-              "row-reverse",
+              "column",
               "row-reverse",
               "row-reverse",
               "row-reverse",
@@ -191,9 +192,12 @@ const RecipeScreen: React.FC = () => {
           </Flex>
         )}
       </Flex>
-      <Flex alignItems="center" justifyContent="flex-start">
+      <Flex flexDirection={["column", "row", "row", "row"]}>
         {isFromKRuoka && (
           <Button
+            marginY={[2, 0, 0, 0]}
+            marginLeft={[0, 5, 5, 5]}
+            whiteSpace="normal"
             color="black"
             onClick={() => {
               if (isSaved) {
@@ -225,7 +229,8 @@ const RecipeScreen: React.FC = () => {
         )}
         {isSaved && (
           <Button
-            marginLeft={5}
+            marginY={[2, 0, 0, 0]}
+            marginLeft={[0, 5, 5, 5]}
             outline="link"
             color="black"
             onClick={() => {
@@ -241,7 +246,8 @@ const RecipeScreen: React.FC = () => {
             Export JSON
           </Button>
         )}
-        <Box marginLeft={isFromKRuoka && 5}>
+        <Box marginY={[2, 0, 0, 0]}
+             marginLeft={[0, 5, 5, 5]}>
           <label>
             <VisuallyHidden
               onChange={() => setIsMadeToday(!isMadeToday)}
