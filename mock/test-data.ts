@@ -447,6 +447,7 @@ const testData = [
       },
       { name: "suolaa", category: 2 },
       { name: "soijakastiketta", category: 2 },
+      { name: "vettä", category: 2 },
       { name: "paprikajauhetta", category: 2 },
       { name: "gillausmaustetta", category: 2 },
       { name: "valkopippuria", category: 1 },
@@ -466,6 +467,23 @@ const testData = [
       "kaada seos voideltuun uunivuokaan",
       "lisää juustoraastetta seoksen sekaan ja/tai pinnalle halutessasi",
       "paista uunnissa 200 asteessa 45min - 1t",
+    ],
+  },
+  {
+    name: "pizzapohja",
+    category: 2,
+    ingredients: [
+      { name: "vettä", amount: 2, unit: "dl" },
+      { name: "puolikarkeita vehnäjauhoja", amount: 5, unit: "dl" },
+      { name: "leivinjauhetta", amount: 3, unit: "tl" },
+      { name: "suolaa", amount: 0.5, unit: "tl" },
+      { name: "öljyä", amount: 0.5, unit: "dl" },
+    ],
+    steps: [
+      "sekoita jauhot, leivinjauhe ja suola keskenään",
+      "lisää vesi ja vaivaa",
+      "lisää öljy vaivauksen loppuvaiheessa",
+      "hienosäädä jauhojen määrä tarvittaessa",
     ],
   },
 ];
