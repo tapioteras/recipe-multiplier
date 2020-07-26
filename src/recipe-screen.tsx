@@ -56,6 +56,7 @@ export interface IngredientRowProps {
   amount?: number;
   originalPortion: number;
   multipliedPortion: number;
+  isToggleCheckbox?: boolean;
 }
 
 const ContentBox: React.FC = ({ children }) => (
@@ -68,11 +69,38 @@ const IngredientRow: React.FC<IngredientRowProps> = ({
   name,
   unit,
   amount,
+  isToggleCheckbox = false,
   ...rest
 }) => {
   const calculatedAmount = calculatePortion({ ...{ amount }, ...rest });
+  const [isChecked, setIsChecked] = useState(false);
   return (
     <React.Fragment>
+      {isToggleCheckbox && (
+        <label>
+          <VisuallyHidden
+            onChange={() => setIsChecked(!isChecked)}
+            as="input"
+            type="checkbox"
+            defaultChecked={isChecked}
+          />
+          <ControlBox
+            marginY={2}
+            marginRight={3}
+            borderWidth="2px"
+            size="30px"
+            rounded="sm"
+            _checked={{
+              bg: "red.700",
+              color: "white",
+              borderColor: "red.700",
+            }}
+            _focus={{ borderColor: "red.600", boxShadow: "outline" }}
+          >
+            <Icon name="check" size="16px" />
+          </ControlBox>
+        </label>
+      )}
       {amount && calculatedAmount}
       {unit && ` ${unit}`} {name.toLowerCase()}
     </React.Fragment>
@@ -103,6 +131,7 @@ const RecipeScreen: React.FC = () => {
       },
     },
   } = useLocation();
+  const [isToggleCheckbox, setToggleCheckbox] = useState(false);
   const [exportedJson, setExportedJson] = useState(null);
   const itemsMadeToday = JSON.parse(
     localStorage.getItem(LOCAL_STORAGE_KEY.RECIPE_MADE_TODAY) || "[]"
@@ -279,6 +308,15 @@ const RecipeScreen: React.FC = () => {
         >
           Tulosta
         </Button>
+        <Button
+          marginY={[2, 0, 0, 0]}
+          marginLeft={[0, 5, 5, 5]}
+          whiteSpace="normal"
+          color="black"
+          onClick={() => setToggleCheckbox(!isToggleCheckbox)}
+        >
+          {!isToggleCheckbox ? "Ostoslista" : "Resepti"}
+        </Button>
       </Flex>
       {madeLatest && (
         <Box>
@@ -350,7 +388,7 @@ const RecipeScreen: React.FC = () => {
             <Heading paddingTop={4} fontSize="2xl">
               {name}
             </Heading>
-            <List styleType="disc">
+            <List styleType={!isToggleCheckbox ? "disc" : "none"}>
               {[...ingredients]
                 .filter(
                   ({ category = INGREDIENT_CATEGORY_OTHER }) => category === id
@@ -358,6 +396,7 @@ const RecipeScreen: React.FC = () => {
                 .map((ingredient) => (
                   <ListItem fontSize="xl">
                     <IngredientRow
+                      {...{ isToggleCheckbox }}
                       originalPortion={portions}
                       multipliedPortion={finalPortions}
                       {...ingredient}
@@ -372,6 +411,7 @@ const RecipeScreen: React.FC = () => {
           {[...ingredients].map((ingredient) => (
             <ListItem fontSize="xl">
               <IngredientRow
+                {...{ isToggleCheckbox }}
                 originalPortion={portions}
                 multipliedPortion={finalPortions}
                 {...ingredient}
