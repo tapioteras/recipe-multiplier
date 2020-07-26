@@ -329,6 +329,7 @@ const RecipeScreen: React.FC = () => {
           setFinalPortions(newPortion);
         }}
         defaultValue={finalPortions}
+        value={finalPortions}
       >
         <SliderTrack bg="white" />
         <SliderFilledTrack bg="white" />
