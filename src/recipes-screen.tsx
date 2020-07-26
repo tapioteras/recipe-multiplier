@@ -67,30 +67,37 @@ export interface RecipesScreenProps {
   categories: CategoryProps[];
 }
 
-const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
-  let amount = elem.querySelector(
-    ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
-  ).innerHTML;
-
-  if (amount.includes("/")) {
-    if (amount.includes(" ")) {
-      amount = amount
+const convertAmount = (amount: string): number | string => {
+  let newAmount = amount;
+  if (newAmount.includes("/")) {
+    if (newAmount.includes(" ")) {
+      newAmount = newAmount
         .split(" ")
         .map((p) => (p.includes("/") ? fractionStrToDecimal(p.trim()) : p))
         .filter((p) => !isNaN(p))
         .reduce((a, b) => parseFloat(a) + parseFloat(b), 0);
     } else {
-      amount = fractionStrToDecimal(amount);
+      newAmount = fractionStrToDecimal(newAmount);
     }
-  } else if (amount.includes("-")) {
-    amount = amount.split("-")[0];
-  } else if (amount.includes(",")) {
-    amount = amount.replace(",", ".");
+  } else if (newAmount.includes("-")) {
+    newAmount = newAmount.split("-")[0];
+  } else if (newAmount.includes(",")) {
+    newAmount = newAmount.replace(",", ".");
   }
 
-  if (isNaN(amount)) {
-    amount = "";
+  if (isNaN(newAmount)) {
+    newAmount = "";
   }
+
+  return newAmount;
+};
+
+const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
+  let amount = elem.querySelector(
+    ".recipe-subsection-ingredient .recipe-ingredient-amount-number"
+  ).innerHTML;
+
+  amount = convertAmount(amount);
 
   const unit =
     elem.querySelector(
