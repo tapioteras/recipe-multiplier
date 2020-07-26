@@ -246,8 +246,7 @@ const RecipeScreen: React.FC = () => {
             Export JSON
           </Button>
         )}
-        <Box marginY={[2, 0, 0, 0]}
-             marginLeft={[0, 5, 5, 5]}>
+        <Box marginY={[2, 0, 0, 0]} marginLeft={[0, 5, 5, 5]}>
           <label>
             <VisuallyHidden
               onChange={() => setIsMadeToday(!isMadeToday)}
@@ -273,6 +272,15 @@ const RecipeScreen: React.FC = () => {
             </Box>
           </label>
         </Box>
+        <Button
+          marginY={[2, 0, 0, 0]}
+          marginLeft={[0, 5, 5, 5]}
+          whiteSpace="normal"
+          color="black"
+          onClick={() => window.print()}
+        >
+          Tulosta
+        </Button>
       </Flex>
       {madeLatest && (
         <Box>
