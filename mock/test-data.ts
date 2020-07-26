@@ -431,6 +431,7 @@ const testData = [
     ],
   },
   {
+    portions: 6,
     category: 2,
     name: "Soijamakaronilaatikko",
     ingredientsCategories: [
