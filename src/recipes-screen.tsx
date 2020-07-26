@@ -330,6 +330,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
             />
           </InputGroup>
           <Button
+            loadingText="Haetaan reseptejä..."
             color="gray.700"
             isLoading={kRuokaFetchStatus === LOADING_STATUS.LOADING}
             onClick={() => {
@@ -363,7 +364,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           {recipesFromKRuoka.length > 0 && (
             <Flex alignItems="center" justifyContent="space-between">
               <Heading as="h3" size="md">
-                Haulla löytyi seuraavia reseptejä:
+                Haulla löytyi seuraa:
               </Heading>
               <Flex flexGrow={2} flexDirection="row-reverse">
                 <CloseButton
