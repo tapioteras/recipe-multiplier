@@ -352,6 +352,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   color="white"
                   onClick={() => {
                     setKRuokaFetchStatus(LOADING_STATUS.INIT);
+                    setKRuokaRecipeLoadingStatus(LOADING_STATUS.INIT);
                     setRecipesFromKRuoka([]);
                     setKRuokaSearch("");
                   }}
