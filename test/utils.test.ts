@@ -1,4 +1,4 @@
-import { calculatePortion } from "../src/utils";
+import { calculatePortion, convertAmount } from "../src/utils";
 
 describe("calculate portion", () => {
   it("should calculate without difference", () =>
@@ -57,4 +57,17 @@ describe("calculate portion", () => {
         multipliedPortion: 1.9,
       })
     ).toEqual(190));
+});
+
+describe("convert amount", () => {
+  it("should convert various amounts", () => {
+    expect(convertAmount("1/2")).toEqual(0.5);
+    expect(convertAmount("n. 1/2")).toEqual(0.5);
+    expect(convertAmount("1")).toEqual("1");
+    expect(convertAmount("ripaus")).toEqual("");
+    expect(convertAmount("1 1/2")).toEqual(1.5);
+    expect(convertAmount("n. 1 1/2")).toEqual(1.5);
+    expect(convertAmount("1,5")).toEqual("1.5");
+    expect(convertAmount("")).toEqual("");
+  });
 });

@@ -35,6 +35,7 @@ import {
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
 import KRuokaApi from "./api/KRuokaApi";
+import { convertAmount } from "./utils";
 
 export interface CategoryProps {
   id: number;
@@ -66,31 +67,6 @@ export interface RecipesScreenProps {
   recipes: RecipeScreenProps[];
   categories: CategoryProps[];
 }
-
-const convertAmount = (amount: string): number | string => {
-  let newAmount = amount;
-  if (newAmount.includes("/")) {
-    if (newAmount.includes(" ")) {
-      newAmount = newAmount
-        .split(" ")
-        .map((p) => (p.includes("/") ? fractionStrToDecimal(p.trim()) : p))
-        .filter((p) => !isNaN(p))
-        .reduce((a, b) => parseFloat(a) + parseFloat(b), 0);
-    } else {
-      newAmount = fractionStrToDecimal(newAmount);
-    }
-  } else if (newAmount.includes("-")) {
-    newAmount = newAmount.split("-")[0];
-  } else if (newAmount.includes(",")) {
-    newAmount = newAmount.replace(",", ".");
-  }
-
-  if (isNaN(newAmount)) {
-    newAmount = "";
-  }
-
-  return newAmount;
-};
 
 const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
   let amount = elem.querySelector(
@@ -133,8 +109,6 @@ const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
     };
   }
 };
-
-const fractionStrToDecimal = (str) => str.split("/").reduce((p, c) => p / c);
 
 export const parseKRuokaRecipe = (
   html: string,
