@@ -491,6 +491,7 @@ const testData = [
   },
   {
     category: 2,
+    tags: ["kala"],
     name: "lohipastagratiini",
     portions: 6,
     ingredientsCategories: [{ id: 1, name: "valkokastike" }],
@@ -541,6 +542,32 @@ const testData = [
       "lisää juustoraastetta päälle",
       "paista uuninssa 200 asteessa n. 45 min.",
     ],
+  },
+  {
+    category: 2,
+    name: "hernekeitto",
+    portions: 2,
+    ingredients: [{ name: "hernekeittopurkki", unit: 500, amount: "g" }],
+  },
+  {
+    category: 2,
+    name: "kalakeitto",
+    tags: ["kala"],
+    portions: 6,
+    ingredients: [
+      { name: "kala" },
+      { name: "peruna" },
+      { name: "sipuli" },
+      { name: "kalaliemikuutio" },
+      { name: "herna-maissi-porkkana (pakaste)" },
+      { name: "valkosipuli" },
+      { name: "juustokerma tms. vastaava" },
+    ],
+  },
+  {
+    category: 2,
+    name: "tortillat",
+    ingredients: [],
   },
 ];
 
