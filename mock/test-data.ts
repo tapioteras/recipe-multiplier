@@ -596,6 +596,7 @@ const testData = [
     ],
   },
   {
+    category: 2,
     name: "Kukkakaalipihvit",
     portions: "8",
     ingredientsCategories: null,
@@ -619,6 +620,7 @@ const testData = [
     tags: ["K-Ruoka", "kukkakaali", "kasvis"],
   },
   {
+    category: 2,
     name: "Jonin katkarapupiirakka",
     portions: "8",
     ingredientsCategories: [
@@ -682,6 +684,7 @@ const testData = [
     tags: ["äyriäiset", "K-Ruoka"],
   },
   {
+    category: 2,
     name: "Värikäs kesäkeitto",
     portions: "6",
     ingredientsCategories: null,
@@ -712,6 +715,7 @@ const testData = [
     tags: ["kasvis", "K-Ruoka"],
   },
   {
+    category: 2,
     name: "Sitruunainen katkarapu-pinaattipasta",
     portions: "4",
     ingredientsCategories: [{ id: 1, name: "Koristeeksi" }],
@@ -778,6 +782,40 @@ const testData = [
       "Kuori ja hienonna valkosipulinkynnet. Sekoita keskenään valkosipulit, soijakastike, hoisin-kastike, vaahterasiirappi, seesamiöljy ja Liquid Inkivääri.",
       "Kuumenna rypsiöljy pannulla ja paista kukkaaleja kuumalla lämmöllä pari minuuttia, jotta ne saavat väriä. Lisää kastike pannulle ja anna kiehahtaa.",
       "Hienonna kevätsipuli ja sekoita kukkakaalien joukkoon. Viimeistele kukkakaali kung pao chiihiutaleilla ja rouhituilla suolapähkinöillä. Tarjoile riisin kanssa.",
+    ],
+  },
+  {
+    category: 2,
+    name: "feta-pinaattikiusaus",
+    tags: ["kasvis"],
+    portions: 4,
+    ingredients: [
+      {
+        amount: 1,
+        unit: "pss",
+        name: "Apetit Peruna - sipulisekoitusta(1 kg)",
+      },
+      {
+        amount: 200,
+        unit: "g",
+        name: "fetajuustoa",
+      },
+      { amount: 5, unit: "dl", name: "ruokakermaa" },
+      {
+        amount: 80,
+        unit: "g",
+        name: "tuoretta pinaattia(tai ½ pss Apetit Kotimainen pinaattia)",
+      },
+      { amount: 1, unit: "tl", name: "suolaa" },
+      { amount: 0.5, unit: "tl", name: "mustapippuria" },
+      { name: "muskottipähkinää" },
+      { name: "kevätsipulia" },
+    ],
+    steps: [
+      "Kaada peruna-sipulisekoitus uunivuokaan.",
+      "Murustele feta ja sekoita joukkoon.",
+      "Mittaa tehosekoittimeen ruokakerma, pinaatti (sulata pakastepinaatti ensin, jos käytät sitä), suola, mustapippuri ja muskottipähkinä. Surauttele sekaisin ja kaada vuokaan.",
+      "Paista kiusausta 200 asteessa 50-60 minuuttia. Anna vetäytyä 15 minuuttia ennen tarjoilua. Ripottele pinnalle runsaasti hienonnettua kevätsipulia ennen tarjoilua.",
     ],
   },
 ];
