@@ -737,6 +737,49 @@ const testData = [
     ],
     tags: ["K-Ruoka", "äyriäiset"],
   },
+  {
+    category: 2,
+    name: "kukkakaali kung pao",
+    tags: ["kasvis", "kukkakaali"],
+    portions: 4,
+    ingredientsCategories: [
+      { id: 1, name: "kastike" },
+      { id: 2, name: "lisäksi" },
+    ],
+    ingredients: [
+      { amount: 1, unit: "kpl", name: "iso kukkakaali" },
+      { amount: 2, unit: "rkl", name: "maizenaa" },
+      { amount: 2, unit: "rkl", name: "riisiviinietikkaa" },
+      { amount: 2, unit: "rkl", name: "soijakastiketta" },
+      { amount: 2, unit: "rkl", name: "rypsiöljyä" },
+      { category: 1, amount: 3, unit: "kpl", name: "valkosipulinkynttä" },
+      { category: 1, amount: 0.5, unit: "dl", name: "soijakastiketta" },
+      { category: 1, amount: 2, unit: "rkl", name: "hoisin-kastiketta" },
+      { category: 1, amount: 2, unit: "rkl", name: "vaahterasiirappia" },
+      { category: 1, amount: 1, unit: "rkl", name: "seesamiöljyä" },
+      {
+        category: 1,
+        amount: 1,
+        unit: "rkl",
+        name: "rajamäen liquid inkivääriä",
+      },
+      { category: 2, amount: 4, unit: "kpl", name: "kevätsipulia" },
+      { category: 2, amount: 0.5, unit: "tl", name: "chilihiutaleita" },
+      {
+        category: 2,
+        amount: 2,
+        unit: "rkl",
+        name: "suolapähkinöitä rouhittuna",
+      },
+      { name: "tarjoiluun keitettyä riisiä" },
+    ],
+    steps: [
+      "Leikkaa kukkakaali suupaloiksi. Kuumenna kattilallinen vettä kiehuvaksi ja ryöppää kukkakaaleja viitisen minuuttia. Valuta siivilässä ja anna jäähtyä. Sekoita maizena, riisiviinietikka ja soijakastike keskenään ja sekoita seos sitten kukkakaalien joukkoon.",
+      "Kuori ja hienonna valkosipulinkynnet. Sekoita keskenään valkosipulit, soijakastike, hoisin-kastike, vaahterasiirappi, seesamiöljy ja Liquid Inkivääri.",
+      "Kuumenna rypsiöljy pannulla ja paista kukkaaleja kuumalla lämmöllä pari minuuttia, jotta ne saavat väriä. Lisää kastike pannulle ja anna kiehahtaa.",
+      "Hienonna kevätsipuli ja sekoita kukkakaalien joukkoon. Viimeistele kukkakaali kung pao chiihiutaleilla ja rouhituilla suolapähkinöillä. Tarjoile riisin kanssa.",
+    ],
+  },
 ];
 
 export default testData;
