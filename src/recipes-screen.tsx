@@ -484,6 +484,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   : true
               )
               .filter((r) => r.category === id)
+              .sort((a, b) => a.name?.localeCompare(b.name))
               .map((recipe, i) => (
                 <ListItem key={`list-item-${i}`}>
                   <Link
