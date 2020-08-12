@@ -27,15 +27,12 @@ import {
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import {
-  getSavedRecipes,
-  IngredientRowProps,
-  RecipeScreenProps,
-} from "./recipe-screen";
+import { getSavedRecipes, IngredientRowProps } from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
 import KRuokaApi from "./api/KRuokaApi";
 import { convertAmount } from "./utils";
+import { RecipeScreenProps } from "./recipe-screen.props";
 
 export interface CategoryProps {
   id: number;
