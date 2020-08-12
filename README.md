@@ -10,6 +10,8 @@ https://tapioteras.github.io/recipe-multiplier/
 
 ## Deploy
 - `yarn deliver`
-
+  - builds prod assets
+  - pushes the assets to gh-pages branch
+  - result can be seen from the link above
 ## Visuals
 - using Chakra-ui
