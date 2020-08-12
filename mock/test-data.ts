@@ -1,5 +1,6 @@
 const testData = [
   {
+    tags: ["avokado", "kasvis"],
     category: 2,
     name: "Avokado-linssipasta",
     description:
@@ -109,7 +110,6 @@ const testData = [
     ],
   },
   {
-    category: 1,
     name: "Pehmeät sämpylät",
     ingredients: [
       {
@@ -271,6 +271,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kala"],
     category: 2,
     name: "Tillipestolla kuorrutettu uunikala",
     portions: 4,
@@ -431,6 +432,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kasvis", "soija"],
     portions: 6,
     category: 2,
     name: "Soijamakaronilaatikko",
@@ -491,7 +493,7 @@ const testData = [
   },
   {
     category: 2,
-    tags: ["kala"],
+    tags: ["kala", "lohi"],
     name: "lohipastagratiini",
     portions: 6,
     ingredientsCategories: [{ id: 1, name: "valkokastike" }],
@@ -544,6 +546,7 @@ const testData = [
     ],
   },
   {
+    tags: ["kasvis"],
     category: 2,
     name: "hernekeitto",
     portions: 2,
@@ -575,7 +578,6 @@ const testData = [
     name: "parhaat ruisleipäset",
     tags: ["leipä"],
     portions: 13,
-    category: 2,
     ingredients: [
       {
         name: "tuorehiivaa (25 g) / tai ps kuivahiivaa",
@@ -592,6 +594,148 @@ const testData = [
       "Älä vaivaa taikinaa, vaan ota suoraan kulhosta lusikalla nokareita pellille leivinpaperin päälle. Muotoile jauhoja apuna käyttäen noin 1 cm paksuiksi leipäsiksi / ohuiksi ruissämpylöiksi. Leivät menevät hieman kasaan paistuessaan. Vältä turhaa painelua, jotta taikina ei menetä ilmavuuttaan. Anna kohota ilman liinaa noin tunnin ajan. Leipäsiä ei voidella.",
       "Paista 225 asteessa 35 minuuttia. Älä peitä leipiä liinalla paistamisen jälkeen. Leivät kannattaa leikata kahtia leipomispäivänä, sillä kuori kovettuu pikku hiljaa. Leivän pohjaosan voi leikata hieman kantta ohuemmaksi, niin sisus jakautuu tasaisesti.",
     ],
+  },
+  {
+    name: "Kukkakaalipihvit",
+    portions: "8",
+    ingredientsCategories: null,
+    ingredients: [
+      { amount: "250", unit: "g", name: "kukkakaalia" },
+      { amount: "2", unit: "", name: "kananmunaa" },
+      { amount: "1", unit: "", name: "valkosipulinkynsi hienonnettuna" },
+      {
+        amount: "1",
+        unit: "dl",
+        name: "Valio mustaleima emmentalia raastettuna",
+      },
+      { amount: 0.25, unit: "tl", name: "suolaa" },
+      { amount: null, unit: "ripaus", name: "mustapippuria" },
+      { amount: null, unit: "", name: "öljyä paistamiseen" },
+    ],
+    steps: [
+      "Raasta kukkakaali pieneksi muruksi. Sekoita kukkakaalimurun joukkoon kananmuna, valkosipuli, juustoraaste ja mausteet.",
+      "Kuumenna rasva paistinpannussa. Nostele massasta kasoja kuumalle pannulle. Painele litteämmiksi paistinlastan avulla. Paista pihvejä noin 2 minuuttia per puoli. Tarjoa raikkaan salaatin ja esimerkiksi tsatsikin kanssa.",
+    ],
+    tags: ["K-Ruoka", "kukkakaali", "kasvis"],
+  },
+  {
+    name: "Jonin katkarapupiirakka",
+    portions: "8",
+    ingredientsCategories: [
+      { id: 0, name: "Pohja" },
+      { id: 1, name: "Täyte" },
+      { id: 2, name: "Pinnalle" },
+      { id: 3, name: "Koristeluun" },
+    ],
+    ingredients: [
+      {
+        amount: "100",
+        unit: "g",
+        name: "Pirkka leivontamargariinia",
+        category: 0,
+      },
+      { amount: "2", unit: "dl", name: "Pirkka vehnäjauhoja", category: 0 },
+      {
+        amount: "1",
+        unit: "dl",
+        name: "Pirkka emmental-mozzarellajuustoraastetta",
+        category: 0,
+      },
+      { amount: null, unit: "rkl", name: "vettä", category: 0 },
+      { amount: null, unit: "", name: "kesäkurpitsaa", category: 1 },
+      { amount: "1", unit: "rkl", name: "öljyä", category: 1 },
+      { amount: null, unit: "", name: "suolaa", category: 1 },
+      {
+        amount: null,
+        unit: "",
+        name: "Pirkka valkosipuli-pippurisekoitusta",
+        category: 1,
+      },
+      {
+        amount: "2",
+        unit: "ps",
+        name: "Pirkka katkarapuja (pakaste)",
+        category: 1,
+      },
+      { amount: "1", unit: "rkl", name: "sitruunanmehua", category: 1 },
+      { amount: null, unit: "", name: "tilliä", category: 1 },
+      { amount: "2", unit: "", name: "valkuaista", category: 2 },
+      { amount: "150", unit: "g", name: "Pirkka kevytmajoneesia", category: 2 },
+      {
+        amount: null,
+        unit: "",
+        name: "tuoretta korianteria hienonnettuna",
+        category: 2,
+      },
+      { amount: null, unit: "", name: "tuoretta korianteria", category: 3 },
+    ],
+    steps: [
+      "Nypi margariini ja vehnäjauhot murumaiseksi seokseksi. Lisää juustoraaste ja vesi ja sekoita taikina tasaiseksi.",
+      "Painele taikina vuokaan ja aseta taikinaa myötäilemään leivinpaperi jotta reunat eivät valuisi paistettaessa.",
+      "Paista pohjaa 200-asteisessa uunissa 10-15 minuuttia.",
+      "Viipaloi kesäkurpitsa ja kypsennä viipaleita öljyssä pannulla. Mausta suolalla ja pippurisekoituksella.",
+      "Sulata katkaravut juoksevan kylmän veden alla ja valuta hyvin.",
+      "Levitä esipaistetun piiraspohjan päälle katkaravut ja mausta sitruunanmehulla. Lisää kesäkurpitsaviipaleet ja hienonnettu tilli.",
+      "Vatkaa valkuaiset kovaksi vaahdoksi ja sekoita joukkoon varovasti majoneesi ja hienonnettu korianteri. Levitä seos piirakan päälle.",
+      "Paista 200-asteisessa uunissa vielä 15-20 minuuttia, kunnes piiras on saanut kauniin värin.",
+    ],
+    tags: ["äyriäiset", "K-Ruoka"],
+  },
+  {
+    name: "Värikäs kesäkeitto",
+    portions: "6",
+    ingredientsCategories: null,
+    ingredients: [
+      { amount: "3", unit: "", name: "Pirkka porkkanaa" },
+      { amount: "1", unit: "", name: "kukkakaali" },
+      { amount: "4", unit: "", name: "uutta perunaa" },
+      { amount: "125", unit: "g", name: "retiisejä" },
+      { amount: "1", unit: "", name: "nippusipuli varsineen" },
+      { amount: "1", unit: "", name: "valkosipulinkynsi" },
+      { amount: "1", unit: "rkl", name: "voita" },
+      { amount: "1", unit: "l", name: "vettä" },
+      { amount: "1", unit: "", name: "kasvisliemikuutio" },
+      {
+        amount: null,
+        unit: "dl",
+        name: "pakasteherneitä tai tuoreita riivittyjä",
+      },
+      { amount: 0.5, unit: "rs", name: "Pirkka maustamatonta sulatejuustoa" },
+      { amount: null, unit: "ripaus", name: "mustapippuria" },
+    ],
+    steps: [
+      "Kuori ja viipaloi porkkanat. Paloittele kukkakaali kukinnoiksi ja kuutioi varsi. Lohko pestyt perunat. Lohko retiisit neljään osaan. Hienonna sipuli ja valkosipuli, säästä sipulinvarret koristeeksi.",
+      "Kuullota porkkanoita, sipulia ja valkosipulia voissa kattilassa pari minuuttia. Lisää kukkakaalit, perunat, vesi ja kasvisliemikuutio. Kuumenna kiehuvaksi ja keitä noin 10 minuuttia.",
+      "Lisää keittoon herneet ja anna keiton kiehua vielä muutaman minuutin ajan, kunnes vihannekset ovat kypsiä. Sekoita keiton joukkoon sulatejuusto. Mausta pippurilla.",
+      "Ripottele keiton pinnalle sipulinvarret ja retiisilohkot juuri ennen tarjoamista, jotta retiisien väri säilyy.",
+    ],
+    tags: ["kasvis", "K-Ruoka"],
+  },
+  {
+    name: "Sitruunainen katkarapu-pinaattipasta",
+    portions: "4",
+    ingredientsCategories: [{ id: 1, name: "Koristeeksi" }],
+    ingredients: [
+      { amount: 300, unit: "g", name: "Pirkka tagliatelle-pastaa" },
+      { amount: 1, unit: "dl", name: "Pirkka cashewpähkinöitä" },
+      { amount: 1, unit: "tlk", name: "kookoskermaa" },
+      { amount: 3, unit: "rkl", name: "sitruunanmehua" },
+      { amount: 1, unit: "", name: "valkosipulinkynsi" },
+      { amount: 1, unit: "rkl", name: "vaaleaa suurustetta" },
+      { amount: 1, unit: "ps", name: "Pirkka katkarapuja (pakaste)" },
+      { amount: 150, unit: "g", name: "tuoretta pinaattia" },
+      { amount: 0.5, unit: "tl", name: "suolaa" },
+      { amount: null, unit: "ripaus", name: "mustapippuria" },
+      { amount: 1, unit: "dl", name: "kevätsipulia", category: 1 },
+      { amount: 1, unit: "", name: "sitruunan raastettu kuori", category: 1 },
+    ],
+    steps: [
+      "Keitä pasta pussin ohjeen mukaan.",
+      "Paahda cashewpähkinöitä pannulla ilman rasvaa. Kaada joukkoon kookoskerma ja sitruunanmehu. Mausta puristetulla valkosipulinkynnellä, suolalla ja mustapippurilla.",
+      "Mittaa joukkoon suuruste ja kuumenna. Sekoita kastikkeen joukkoon sulatetut katkaravut ja huuhdotut, hieman hienonnetut pinaatinlehdet.",
+      "Nosta pasta tarjoilukulhoon ja kaada kastike päälle. Koristele hienonnetulla kevätsipulilla ja sitruunankuoriraasteella.",
+    ],
+    tags: ["K-Ruoka", "äyriäiset"],
   },
 ];
 
