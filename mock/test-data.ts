@@ -547,7 +547,9 @@ const testData = [
     category: 2,
     name: "hernekeitto",
     portions: 2,
-    ingredients: [{ name: "hernekeittopurkki", amount: 2, unit: "kpl (500g)" }],
+    ingredients: [
+      { name: "hernekeittopurkki", amount: 2, unit: "kpl (500 g)" },
+    ],
   },
   {
     category: 2,
@@ -568,6 +570,28 @@ const testData = [
     category: 2,
     name: "tortillat",
     ingredients: [],
+  },
+  {
+    name: "parhaat ruisleipäset",
+    tags: ["leipä"],
+    portions: 13,
+    category: 2,
+    ingredients: [
+      {
+        name: "tuorehiivaa (25 g) / tai ps kuivahiivaa",
+        amount: 0.5,
+        unit: "pkt",
+      },
+      { name: "vettä", unit: "dl", amount: 5 },
+      { name: "siirappia", unit: "rkl", amount: 1 },
+      { name: "suolaa", amount: 1.5, unit: "tl" },
+      { name: "ruisjauhoja", amount: 7.5, unit: "dl" },
+    ],
+    steps: [
+      "Liuota hiiva kädenlämpöiseen veteen. Sekoita joukkoon loput ainekset esimerkiksi puuhaarukan avulla. Anna taikinan kohota lämpimässä paikassa noin 45 minuuttia.",
+      "Älä vaivaa taikinaa, vaan ota suoraan kulhosta lusikalla nokareita pellille leivinpaperin päälle. Muotoile jauhoja apuna käyttäen noin 1 cm paksuiksi leipäsiksi / ohuiksi ruissämpylöiksi. Leivät menevät hieman kasaan paistuessaan. Vältä turhaa painelua, jotta taikina ei menetä ilmavuuttaan. Anna kohota ilman liinaa noin tunnin ajan. Leipäsiä ei voidella.",
+      "Paista 225 asteessa 35 minuuttia. Älä peitä leipiä liinalla paistamisen jälkeen. Leivät kannattaa leikata kahtia leipomispäivänä, sillä kuori kovettuu pikku hiljaa. Leivän pohjaosan voi leikata hieman kantta ohuemmaksi, niin sisus jakautuu tasaisesti.",
+    ],
   },
 ];
 
