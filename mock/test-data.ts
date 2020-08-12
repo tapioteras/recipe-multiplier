@@ -547,7 +547,7 @@ const testData = [
     category: 2,
     name: "hernekeitto",
     portions: 2,
-    ingredients: [{ name: "hernekeittopurkki", unit: 500, amount: "g" }],
+    ingredients: [{ name: "hernekeittopurkki", amount: 2, unit: "kpl (500g)" }],
   },
   {
     category: 2,
