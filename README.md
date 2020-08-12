@@ -15,3 +15,7 @@ https://tapioteras.github.io/recipe-multiplier/
   - result can be seen from the link above
 ## Visuals
 - using Chakra-ui
+
+## Todo
+- [ ] separate components to different files
+- [ ] clean spaghetti code
