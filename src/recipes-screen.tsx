@@ -409,13 +409,13 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         kRuokaFetchStatus === LOADING_STATUS.LOADED && (
           <Heading>Ei hakutuloksia hakusanalla "{kRuokaSearch}"</Heading>
         )}
-      <Stack spacing={4} isInline>
+      <Flex flexWrap="wrap">
         {[...recipes]
           .flatMap(({ tags = [] }) => tags)
           .filter((value, index, self) => self.indexOf(value) === index)
           .reduce((a, b) => [...a, b], [])
           .map((tag, i) => (
-            <Tag size="md" key={`filter-${i}`}>
+            <Tag margin={2} size="md" key={`filter-${i}`}>
               <Button
                 variantColor={
                   filters.find((f) => f === tag) ? "black" : undefined
@@ -434,7 +434,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
             </Tag>
           ))}
         {filters.length > 0 && (
-          <Tag size="md" key={`filter-reset`}>
+          <Tag margin={2} size="md" key="filter-reset">
             <Button
               variant="link"
               variantColor="red"
@@ -446,7 +446,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
             </Button>
           </Tag>
         )}
-      </Stack>
+      </Flex>
       <Scale in={isWhatToDoNextDialogOpen}>
         {(styles) => (
           <AlertDialog
