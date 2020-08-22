@@ -283,6 +283,16 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         <Button color="black" onClick={() => setIsWhatToDoNextDialogOpen(true)}>
           Mitä ruokaa voisi tehdä seuraavaksi?
         </Button>
+        <Button
+          color="black"
+          onClick={() => {
+            history.push({
+              pathname: "/recipe/new",
+            });
+          }}
+        >
+          Luo uusi resepti
+        </Button>
         <Stack spacing={4} padding={4} bg="gray.600">
           <Heading>Hae K-Ruoasta</Heading>
           <InputGroup>

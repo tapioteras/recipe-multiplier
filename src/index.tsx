@@ -6,6 +6,7 @@ import { CSSReset, ThemeProvider, theme, ITheme } from "@chakra-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RecipeScreen from "./recipe-screen";
 import RecipesScreen from "./recipes-screen";
+import NewRecipeScreen from "./new-recipe-screen";
 
 const themeOverrides = {
   ...theme,
@@ -31,6 +32,9 @@ ReactDOM.render(
     />
     <Router>
       <Switch>
+        <Route path="/recipe/new">
+          <NewRecipeScreen />
+        </Route>
         <Route path="/recipe/:id">
           <RecipeScreen />
         </Route>
