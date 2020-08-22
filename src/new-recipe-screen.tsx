@@ -14,8 +14,10 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/core";
+import { useHistory } from "react-router-dom";
 import ScreenContainer from "./ScreenContainer";
 import { IngredientRow, LOCAL_STORAGE_KEY } from "./recipe-screen";
+import { CATEGORY } from "../mock/categories";
 
 const IngredientInputRow = ({ onAdd = (ingredient) => {} }) => {
   const [amount, setAmount] = useState("");
@@ -134,6 +136,7 @@ const NewRecipeScreen = () => {
   const [steps, setSteps] = useState([]);
   const [portions, setPortions] = useState(4);
   const [name, setName] = useState("");
+  let history = useHistory();
   return (
     <ScreenContainer>
       <Stack spacing={6}>
@@ -187,8 +190,27 @@ const NewRecipeScreen = () => {
         ))}
       </List>
       <Button
+        isDisabled={!name}
         onClick={() => {
-          // todo
+          const recipes = JSON.parse(
+            localStorage.getItem(LOCAL_STORAGE_KEY.CREATED_RECIPES) || "[]"
+          );
+          localStorage.setItem(
+            LOCAL_STORAGE_KEY.CREATED_RECIPES,
+            JSON.stringify([
+              ...recipes,
+              {
+                name,
+                ingredients,
+                steps,
+                tags: ["itse luodut reseptit"],
+                category: CATEGORY.CREATED,
+              },
+            ])
+          );
+          history.push({
+            pathname: "/",
+          });
         }}
         color="black"
       >
