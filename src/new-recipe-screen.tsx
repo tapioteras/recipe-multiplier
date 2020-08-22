@@ -201,6 +201,7 @@ const NewRecipeScreen = () => {
               ...recipes,
               {
                 name,
+                portions,
                 ingredients,
                 steps,
                 tags: ["itse luodut reseptit"],
