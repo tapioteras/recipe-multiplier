@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Alert,
+  Button,
   Flex,
   Heading,
   IconButton,
@@ -13,7 +14,7 @@ import {
   Textarea,
 } from "@chakra-ui/core";
 import ScreenContainer from "./ScreenContainer";
-import { IngredientRow } from "./recipe-screen";
+import { IngredientRow, LOCAL_STORAGE_KEY } from "./recipe-screen";
 
 const IngredientInputRow = ({ onAdd = (ingredient) => {} }) => {
   const [amount, setAmount] = useState("");
@@ -170,6 +171,14 @@ const NewRecipeScreen = () => {
           </ListItem>
         ))}
       </List>
+      <Button
+        onClick={() => {
+          // todo
+        }}
+        color="black"
+      >
+        Luo resepti
+      </Button>
     </ScreenContainer>
   );
 };
