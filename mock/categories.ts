@@ -3,6 +3,7 @@ export enum CATEGORY {
   CAKES = 1,
   OTHER = 3,
   IMPORTED = 123,
+  CREATED = 124,
 }
 
 const categories = [
@@ -10,6 +11,7 @@ const categories = [
   { id: CATEGORY.CAKES, name: "Leivonnaiset" },
   { id: CATEGORY.OTHER, name: "Muut" },
   { id: CATEGORY.IMPORTED, name: "Tallennettu laitteelle K-Ruoasta" },
+  { id: CATEGORY.CREATED, name: "Itse tehdyt reseptit" },
 ];
 
 export default categories;
