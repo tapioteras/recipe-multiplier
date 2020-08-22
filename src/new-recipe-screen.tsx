@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   Flex,
@@ -7,7 +7,9 @@ import {
   Input,
   List,
   ListItem,
+  NumberInput,
   Stack,
+  Text,
   Textarea,
 } from "@chakra-ui/core";
 import ScreenContainer from "./ScreenContainer";
@@ -18,7 +20,7 @@ const IngredientInputRow = ({ onAdd = (ingredient) => {} }) => {
   const [unit, setUnit] = useState("");
   const [name, setName] = useState("");
   return (
-    <Flex flexDirection="column">
+    <Flex marginTop={3} flexDirection="column">
       <Stack spacing={3} direction="row">
         <Input
           errorBorderColor="red.600"
@@ -106,12 +108,33 @@ const StepInputRow = ({ onAdd = (step) => {} }) => {
   );
 };
 
+const PortionsInputRow = ({ onChange = (portions) => {} }) => {
+  const [portions, setPortions] = useState(4);
+  useEffect(() => {
+    onChange(portions);
+  }, [portions]);
+  return (
+    <Stack spacing={3}>
+      <NumberInput
+        color="black"
+        borderColor="white"
+        placeholder="annoksia"
+        value={portions}
+        min={0}
+        onChange={(value: number) => setPortions(value)}
+      />
+    </Stack>
+  );
+};
+
 const NewRecipeScreen = () => {
   const [ingredients, setIngredients] = useState([]);
   const [steps, setSteps] = useState([]);
+  const [portions, setPortions] = useState(4);
   return (
     <ScreenContainer>
       <Stack spacing={6}>
+        <PortionsInputRow onChange={(value) => setPortions(value)} />
         <IngredientInputRow
           onAdd={(ingredient) => {
             setIngredients([...ingredients, ingredient]);
@@ -119,6 +142,11 @@ const NewRecipeScreen = () => {
         />
         <StepInputRow onAdd={(step) => setSteps([...steps, step])} />
       </Stack>
+      {portions && (
+        <Text fontSize="2xl">{`${portions} ${
+          portions === 1 ? "annos" : "annosta"
+        }`}</Text>
+      )}
       <Heading paddingTop={4} fontSize="2xl">
         Ainekset
       </Heading>
