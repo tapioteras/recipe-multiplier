@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   Heading,
+  Icon,
   IconButton,
   Input,
   List,
@@ -132,9 +133,17 @@ const NewRecipeScreen = () => {
   const [ingredients, setIngredients] = useState([]);
   const [steps, setSteps] = useState([]);
   const [portions, setPortions] = useState(4);
+  const [name, setName] = useState("");
   return (
     <ScreenContainer>
       <Stack spacing={6}>
+        <Input
+          color="black"
+          borderColor="white"
+          placeholder="Reseptin nimi"
+          onChange={(event) => setName(event.target.value)}
+          value={name}
+        />
         <PortionsInputRow onChange={(value) => setPortions(value)} />
         <IngredientInputRow
           onAdd={(ingredient) => {
@@ -143,6 +152,12 @@ const NewRecipeScreen = () => {
         />
         <StepInputRow onAdd={(step) => setSteps([...steps, step])} />
       </Stack>
+      <Flex alignItems="center">
+        <Heading fontSize="2xl" paddingTop={3}>
+          {!name && "<Uusi resepti>"}
+          {name}
+        </Heading>
+      </Flex>
       {portions && (
         <Text fontSize="2xl">{`${portions} ${
           portions === 1 ? "annos" : "annosta"
