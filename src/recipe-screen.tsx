@@ -54,7 +54,7 @@ const ContentBox: React.FC = ({ children }) => (
   </Box>
 );
 
-const IngredientRow: React.FC<IngredientRowProps> = ({
+export const IngredientRow: React.FC<IngredientRowProps> = ({
   name,
   unit,
   amount,
