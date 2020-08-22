@@ -30,6 +30,7 @@ import moment from "moment";
 export enum LOCAL_STORAGE_KEY {
   RECIPE_MADE_TODAY = "itemsMadeToday",
   IMPORTED_RECIPES = "importedRecipes",
+  CREATED_RECIPES = "createdRecipes",
 }
 
 export const INGREDIENT_CATEGORY_OTHER = 999;
