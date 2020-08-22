@@ -818,6 +818,51 @@ const testData = [
       "Paista kiusausta 200 asteessa 50-60 minuuttia. Anna vetäytyä 15 minuuttia ennen tarjoilua. Ripottele pinnalle runsaasti hienonnettua kevätsipulia ennen tarjoilua.",
     ],
   },
+  {
+    name: "Härkäpapupyörykät",
+    portions: 1,
+    ingredientsCategories: null,
+    ingredients: [
+      { amount: 2, unit: "dl", name: "kaurakermaa" },
+      { amount: 0.5, unit: "dl", name: "korppujauhoja" },
+      { amount: 50, unit: "g", name: "punaista paprikaa" },
+      {
+        amount: 1,
+        unit: "rs",
+        name: "Beanit Härkis Original kypsää härkäpapuvalmistetta",
+      },
+      { amount: 0.5, unit: "tl", name: "timjamia" },
+      { amount: 0.5, unit: "tl", name: "suolaa" },
+      { amount: null, unit: "ripaus", name: "mustapippuria" },
+    ],
+    steps: [
+      "Sekoita korppujauhot ja kaurakerma ja anna seoksen turvota hetki.",
+      "Hienonna paprika pieniksi kuutioiksi. Lisää paprikakuutiot, härkäpapuvalmiste ja mausteet turvotettujen korppujauhojen joukkoon ja sekoita massa tasaiseksi.",
+      "Muotoile massa pyöryköiksi leivinpaperilla vuoratulle pellille. Paista 225 asteessa 10-15 minuuttia.",
+    ],
+    tags: ["K-Ruoka", "kasvis", "härkis"],
+    category: 2,
+  },
+  {
+    name: "Yrttinen kermaviilikastike",
+    portions: "4",
+    ingredientsCategories: null,
+    ingredients: [
+      { amount: 1, unit: "tlk", name: "Pirkka Kevyt kermaviiliä" },
+      { amount: 0.5, unit: "dl", name: "Pirkka Kevyt majoneesia" },
+      { amount: 0.5, unit: "dl", name: "tilliä" },
+      { amount: 0.5, unit: "dl", name: "ruohosipulia hienonnettuna" },
+      { amount: 0.5, unit: "dl", name: "basilikaa hienonnettuna" },
+      { amount: 0.25, unit: "tl", name: "suolaa" },
+      { amount: 0.25, unit: "tl", name: "sokeria" },
+      { amount: null, unit: "ripaus", name: "mustapippuria" },
+    ],
+    steps: [
+      "Sekoita kastikkeen ainekset. Tarjoa salaatti- tai dippikastikkeena.",
+    ],
+    tags: ["K-Ruoka", "kastike"],
+    category: 2,
+  },
 ];
 
 export default testData;
