@@ -204,7 +204,7 @@ const NewRecipeScreen = () => {
                 portions,
                 ingredients,
                 steps,
-                tags: ["itse luodut reseptit"],
+                tags: [],
                 category: CATEGORY.CREATED,
               },
             ])

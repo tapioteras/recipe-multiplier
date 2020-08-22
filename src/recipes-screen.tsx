@@ -27,7 +27,11 @@ import {
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { getSavedRecipes, IngredientRowProps } from "./recipe-screen";
+import {
+  getSavedRecipes,
+  IngredientRowProps,
+  LOCAL_STORAGE_KEY,
+} from "./recipe-screen";
 import ScreenContainer from "./ScreenContainer";
 import { CATEGORY } from "../mock/categories";
 import KRuokaApi from "./api/KRuokaApi";
@@ -64,6 +68,9 @@ export interface RecipesScreenProps {
   recipes: RecipeScreenProps[];
   categories: CategoryProps[];
 }
+
+export const getCreatedRecipes = () =>
+  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.CREATED_RECIPES) || "[]");
 
 const parseIngredient = (elem: HTMLElement): IngredientRowProps => {
   let amount = elem.querySelector(
@@ -273,6 +280,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   const recipesWithCategories = [
     ...recipes,
     ...getSavedRecipes(),
+    ...getCreatedRecipes(),
   ].map(({ category = CATEGORY.OTHER, ...rest }) => ({ category, ...rest }));
   const onClose = () => setIsWhatToDoNextDialogOpen(false);
   const toast = useToast();
