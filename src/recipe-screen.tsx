@@ -24,7 +24,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { calculatePortion } from "./utils";
 import ScreenContainer from "./ScreenContainer";
-import categories from "../mock/categories";
+import categories, { CATEGORY } from "../mock/categories";
 import moment from "moment";
 
 export enum LOCAL_STORAGE_KEY {
@@ -138,6 +138,7 @@ const RecipeScreen: React.FC = () => {
       ?.name;
 
   const [isSaved, setIsSaved] = useState(getLatestSaveStatus());
+  const isOwnRecipe = category === CATEGORY.CREATED;
   useEffect(() => {
     setIsSaved(getLatestSaveStatus());
   }, [isSaved]);
@@ -244,25 +245,26 @@ const RecipeScreen: React.FC = () => {
             {isSaved ? "Poista tallennettu resepti" : "Tallenna resepti"}
           </Button>
         )}
-        {isSaved && (
-          <Button
-            marginY={[2, 0, 0, 0]}
-            marginLeft={[0, 5, 5, 5]}
-            outline="link"
-            color="black"
-            onClick={() => {
-              setExportedJson(
-                JSON.stringify(
-                  getSavedRecipes().find(
-                    ({ name: nameToFind }) => name === nameToFind
+        {isSaved ||
+          (isOwnRecipe && (
+            <Button
+              marginY={[2, 0, 0, 0]}
+              marginLeft={[0, 5, 5, 5]}
+              outline="link"
+              color="black"
+              onClick={() => {
+                setExportedJson(
+                  JSON.stringify(
+                    getSavedRecipes().find(
+                      ({ name: nameToFind }) => name === nameToFind
+                    )
                   )
-                )
-              );
-            }}
-          >
-            Export JSON
-          </Button>
-        )}
+                );
+              }}
+            >
+              Export JSON
+            </Button>
+          ))}
         <Box marginY={[2, 0, 0, 0]} marginLeft={[0, 5, 5, 5]}>
           <label>
             <VisuallyHidden
