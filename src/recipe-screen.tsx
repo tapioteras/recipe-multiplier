@@ -102,6 +102,9 @@ const sliderDefaultProps: SliderProps = {
   max: 15,
 };
 
+export const getOwnRecipes = () =>
+  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.CREATED_RECIPES) || "[]");
+
 export const getSavedRecipes = () =>
   JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.IMPORTED_RECIPES) || "[]");
 
@@ -245,26 +248,24 @@ const RecipeScreen: React.FC = () => {
             {isSaved ? "Poista tallennettu resepti" : "Tallenna resepti"}
           </Button>
         )}
-        {isSaved ||
-          (isOwnRecipe && (
-            <Button
-              marginY={[2, 0, 0, 0]}
-              marginLeft={[0, 5, 5, 5]}
-              outline="link"
-              color="black"
-              onClick={() => {
-                setExportedJson(
-                  JSON.stringify(
-                    getSavedRecipes().find(
-                      ({ name: nameToFind }) => name === nameToFind
-                    )
-                  )
-                );
-              }}
-            >
-              Export JSON
-            </Button>
-          ))}
+        {(isSaved || isOwnRecipe) && (
+          <Button
+            marginY={[2, 0, 0, 0]}
+            marginLeft={[0, 5, 5, 5]}
+            outline="link"
+            color="black"
+            onClick={() => {
+              const source = isOwnRecipe ? getOwnRecipes() : getSavedRecipes();
+              setExportedJson(
+                JSON.stringify(
+                  source.find(({ name: nameToFind }) => name === nameToFind)
+                )
+              );
+            }}
+          >
+            Export JSON
+          </Button>
+        )}
         <Box marginY={[2, 0, 0, 0]} marginLeft={[0, 5, 5, 5]}>
           <label>
             <VisuallyHidden
