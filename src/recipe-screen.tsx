@@ -214,28 +214,40 @@ const RecipeScreen: React.FC = () => {
         )}
       </Flex>
       <Flex flexDirection={["column", "row", "row", "row"]}>
-        {isFromKRuoka && (
+        {(isFromKRuoka || isOwnRecipe) && (
           <Button
             marginY={[2, 0, 0, 0]}
             marginLeft={[0, 5, 5, 5]}
             whiteSpace="normal"
             color="black"
             onClick={() => {
-              if (isSaved) {
+              if (isOwnRecipe || isSaved) {
+                const recipesKey = isOwnRecipe
+                  ? LOCAL_STORAGE_KEY.CREATED_RECIPES
+                  : LOCAL_STORAGE_KEY.IMPORTED_RECIPES;
+                const recipes = isOwnRecipe
+                  ? getOwnRecipes()
+                  : getSavedRecipes();
                 localStorage.setItem(
-                  LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+                  recipesKey,
                   JSON.stringify([
-                    ...getSavedRecipes().filter(
+                    ...recipes.filter(
                       ({ name: nameToFind }) => nameToFind !== name
                     ),
                   ])
                 );
                 setIsSaved(false);
               } else {
+                const recipesKey = isOwnRecipe
+                  ? LOCAL_STORAGE_KEY.CREATED_RECIPES
+                  : LOCAL_STORAGE_KEY.IMPORTED_RECIPES;
+                const recipes = isOwnRecipe
+                  ? getOwnRecipes()
+                  : getSavedRecipes();
                 localStorage.setItem(
-                  LOCAL_STORAGE_KEY.IMPORTED_RECIPES,
+                  recipesKey,
                   JSON.stringify([
-                    ...getSavedRecipes().filter(
+                    ...recipes.filter(
                       ({ name: nameToFind }) => nameToFind !== name
                     ),
                     recipe,
@@ -245,7 +257,9 @@ const RecipeScreen: React.FC = () => {
               }
             }}
           >
-            {isSaved ? "Poista tallennettu resepti" : "Tallenna resepti"}
+            {isSaved || isOwnRecipe
+              ? "Poista tallennettu resepti"
+              : "Tallenna resepti"}
           </Button>
         )}
         {(isSaved || isOwnRecipe) && (
