@@ -13,7 +13,7 @@
     "prebuild": "shx rm -rf dist/*",
     "build": "parcel build index.html --public-url ./",
     "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --force --cleanup --verbose",
-    "test": "jest --watch",
+    "test": "jest",
     "deliver": "yarn prebuild && yarn build && yarn push-gh-pages"
   },
   "devDependencies": {
