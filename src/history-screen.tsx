@@ -3,6 +3,7 @@ import React from "react";
 import {Text, Flex, Heading, List, ListItem, Stack} from "@chakra-ui/core";
 import {LOCAL_STORAGE_KEY} from "./recipe-screen";
 import moment from "moment"
+import {resolveDay} from "./utils";
 
 const HistoryScreen: React.FC = () => {
   const recipeHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.RECIPE_MADE_TODAY) || "[]");
@@ -18,9 +19,10 @@ const HistoryScreen: React.FC = () => {
           const diff = moment.duration(today.diff(madeAt))
           const months = diff.months()
           const days = diff.days()
+            const resolvedDays = resolveDay(months, days)
           return <ListItem key={`history-item-${i}`} paddingLeft={5}>
             <Text fontSize="2xl">{name}</Text>
-            <Text>Tehty {months && `${months} kk`} {days} pv sitten</Text>
+            <Text>Tehty {months ? `${months} kk` : ""} {resolvedDays}</Text>
           </ListItem>
         })}
       </List>
