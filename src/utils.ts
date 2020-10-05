@@ -61,3 +61,18 @@ export const convertAmount = (amount: string): number | string => {
 
   return newAmount;
 };
+
+export const resolveDay = (months: number, days: number): string => {
+  const defaultDays = `${days} pv sitten`
+  if (months) {
+    return defaultDays
+  } else {
+    switch (days) {
+      case 0:
+        return "24 tunnin sisällä"
+      case 1: return "eilen"
+      case 2: return "toissapäivänä"
+      default: return defaultDays
+    }
+  }
+}
