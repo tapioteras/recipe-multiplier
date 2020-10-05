@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RecipeScreen from "./recipe-screen";
 import RecipesScreen from "./recipes-screen";
 import NewRecipeScreen from "./new-recipe-screen";
+import HistoryScreen from "./history-screen";
 
 const themeOverrides = {
   ...theme,
@@ -37,6 +38,9 @@ ReactDOM.render(
         </Route>
         <Route path="/recipe/:id">
           <RecipeScreen />
+        </Route>
+        <Route path="/history">
+          <HistoryScreen />
         </Route>
         <Route path="/">
           <RecipesScreen {...{ recipes, categories }} />
