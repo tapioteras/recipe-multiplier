@@ -1,4 +1,4 @@
-import { calculatePortion, convertAmount } from "../src/utils";
+import {calculatePortion, convertAmount, resolveDay} from "../src/utils";
 
 describe("calculate portion", () => {
   it("should calculate without difference", () =>
@@ -72,3 +72,14 @@ describe("convert amount", () => {
     expect(convertAmount("n. 3")).toEqual(3);
   });
 });
+
+describe("resolve days", () => {
+  it("should resolve today", () => {
+    expect(resolveDay(0, 0)).toEqual("24 tunnin sisällä")
+    expect(resolveDay(0, 1)).toEqual("eilen")
+    expect(resolveDay(0, 2)).toEqual("toissapäivänä")
+    expect(resolveDay(0, 12)).toEqual("12 pv sitten")
+  })
+  it("should pass days as is if there're some months", () =>
+    expect(resolveDay(1, 0)).toEqual("0 pv sitten"))
+})
