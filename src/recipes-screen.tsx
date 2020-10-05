@@ -291,6 +291,13 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         <Button color="black" onClick={() => setIsWhatToDoNextDialogOpen(true)}>
           Mitä ruokaa voisi tehdä seuraavaksi?
         </Button>
+        <Button color="black" onClick={() => {
+          history.push({
+            pathname: "/history",
+          });
+        }}>
+          Tekemäni reseptit
+        </Button>
         <Button
           color="black"
           onClick={() => {
