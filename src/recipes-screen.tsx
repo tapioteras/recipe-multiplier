@@ -271,6 +271,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
     }
   }, [isWhatToDoNextDialogOpen]);
   const [filters, setFilters] = useState([]);
+  const [search, setSearch] = useState("");
   const [kRuokaRecipeLoadingStatus, setKRuokaRecipeLoadingStatus] = useState(
     LOADING_STATUS.INIT
   );
@@ -308,6 +309,29 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         >
           Luo uusi resepti
         </Button>
+        <Stack spacing={4} padding={4} bg="gray.300">
+          <Heading color="gray.600">Hae Resepteistä</Heading>
+          <InputGroup>
+            <Input
+              color="gray.600"
+              border="transparent"
+              placeholder="kirjoita hakusana..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <InputRightElement
+              children={
+                <CloseButton
+                  visibility={search.length === 0 ? "hidden" : "visible"}
+                  color="black"
+                  onClick={() => {
+                    setSearch("");
+                  }}
+                />
+              }
+            />
+          </InputGroup>
+        </Stack>
         <Stack spacing={4} padding={4} bg="gray.600">
           <Heading>Hae K-Ruoasta</Heading>
           <InputGroup>
@@ -321,7 +345,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
             <InputRightElement
               children={
                 <CloseButton
-                  visibility={kRuokaSearch.length === 0 && "hidden"}
+                  visibility={kRuokaSearch.length === 0 ? "hidden" : "visible"}
                   color="gray.600"
                   onClick={() => {
                     setKRuokaFetchStatus(LOADING_STATUS.INIT);
@@ -509,6 +533,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                   : true
               )
               .filter((r) => r.category === id)
+              .filter(r => search ? r.name.toLowerCase().includes(search.toLowerCase()) : true)
               .sort((a, b) => a.name?.localeCompare(b.name))
               .map((recipe, i) => (
                 <ListItem key={`list-item-${i}`}>
