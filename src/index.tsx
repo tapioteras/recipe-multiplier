@@ -27,7 +27,7 @@ ReactDOM.render(
     <CSSReset
       config={(theme: ITheme) => ({
         light: {
-          bg: theme.colors.red[400],
+          bg: theme.colors.gray[800],
         },
       })}
     />
