@@ -1097,7 +1097,7 @@ const testData = [
       { amount: "1", unit: "tl", name: "suolaa" },
     ],
     steps: [
-      "sekoita vesi ja maito sekä suola kattilan",
+      "sekoita vesi ja maito sekä suola kattilaan",
       "lisää mannasuurimot vasta, kun seos kiehuu selvästi",
       "keitä n. 8 min ja anna vetäytyä kattilassa pari minuuttia ennen tarjoilua",
     ],
@@ -1208,6 +1208,103 @@ const testData = [
     ],
     tags: ["kasvis"],
     category: 2,
+  },
+  {
+    name: "Raikas kurkkukastike",
+    category: 2,
+    portions: 6,
+    tags: ["kastike"],
+    ingredients: [
+      {
+        unit: "dl", amount: "2", name: "kermaviiliä",
+      },
+      {
+        unit: "kpl", amount: "0.5", name: "sirtruuna",
+      },
+      {
+        unit: "kpl", amount: "0.5", name: "kurkku",
+      },
+      {
+        unit: "tl", amount: "0.5", name: "suolaa",
+      },
+      { name: "mustapippuria"},
+      { name: "tuoretta tilliä tai minttua"}
+    ],
+    steps: [
+      "sekoita ainekset keskenään ja laita jääkaappiin maustumaan hetkeksi ennen tarjoilua."
+    ]
+  },
+  {
+    name: "Leivitetty kalafilee",
+    category: 2,
+    portions: 4,
+    tags: ["kala"],
+    description: "resepti haettu osoitteesta https://www.meillakotona.fi/reseptit/leivitetty-kalafilee-ja-raikas-kurkkukastike",
+    ingredients: [
+      {
+        unit: "g", amount: "700", name: "siikaa",
+      },
+      {
+        name: "vehnäjauhoja",
+      },
+      {
+        unit: "kpl", amount: 1, name: "kananmuna"
+      },
+      {
+        name: "korppujauhoja / ruiskorppujauhoja",
+      },
+      {
+        unit: "tl", amount: 1, name: "suolaa"
+      },
+      {
+        name: "voita"
+      },
+      {
+        name: "rypsiöljyä"
+      }
+    ],
+    steps: [
+      "Nypi kalafileistä ruodot pois. Leikkaa suuret fileet kahteen osaan. Mausta fileet molemmin puolin suolalla ja pippurilla.",
+      "Ota kolme laakeaa lautasta. Laita yhteen vehnäjauhot, riko toiseen kananmuna ja kaada korppujauhot kolmanteen.",
+      "Pyörittele fileitä ensin vehnäjauhoissa, sitten kananmunassa ja lopuksi korppujauhoissa. Nosta leivitetyt kalafileet leivinpaperille tai työlaudalle kuivahtamaan. Kuorruta samalla tavalla kaikki palat.",
+      "Kuumenna voin ja öljyn seos paistinpannulla. Kun voi sulaa ja vaalea vaahto alkaa laskeutua, nosta palat pannulle. Paista molemmin puolin, koosta riippuen keskilämmöllä 1–2 minuuttia. Nosta palat talouspaperin päälle. Tarjoa leivitetyt kalafileet kurkkukastikkeen ja hyvän perunamuusin kanssa."
+    ]
+  },
+  {
+    name: "Perunamuusi",
+    portions: 6,
+    description: "resepti haettu osoitteesta https://www.meillakotona.fi/reseptit/leivitetty-kalafilee-ja-raikas-kurkkukastike",
+    category: 2,
+    tags: ["muusi", "kasvis"],
+    ingredients: [
+      {
+        unit: "kpl", amount: "10", name: "perunaa"
+      },
+      {
+        name: "kasvirasvasekoitetta tai voita"
+      },
+      {
+        name: "suolaa"
+      },
+      {
+        name: "valkosipulia (valinnainen)"
+      },
+      {
+        name: "maitoa"
+      },
+      {
+        name: "sipulia (valinnainen)"
+      },
+    ],
+    steps: [
+      "keitä pottuja (ja sipuleita, ei valkosipulia) n. 20 min",
+      "muussaa potut (ja sipulit) survimella",
+      "murksaa raaka valkosipuli sekaan",
+      "lisää suolaa maun mukaan",
+      "lisää juoksevaa rasvaa maun mukaan",
+      "lisää vähän maitoa ja sekoita",
+      "lisäile maitoa ja sekoittele/muussaa muusia survimella siihen asti, että muusi näyttää omaan makuun sopivalta"
+    ]
   },
 ];
 
