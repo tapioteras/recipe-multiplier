@@ -206,7 +206,7 @@ const getDialogTextContents = (recipes = [], forceRandom = false) => {
         <Button>
           <Link
             to={{
-              pathname: `/recipe/${oldestRecipe.name}`,
+              pathname: `/#recipe-${oldestRecipe.name}`,
               state: { recipe: oldestRecipe },
             }}
           >
@@ -234,7 +234,7 @@ const getDialogTextContents = (recipes = [], forceRandom = false) => {
           <Button marginBottom={4}>
             <Link
               to={{
-                pathname: `/recipe/${randomRecipe.name}`,
+                pathname: `/#recipe-${randomRecipe.name}`,
                 state: { recipe: randomRecipe },
               }}
             >
@@ -294,7 +294,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         </Button>
         <Button color="black" onClick={() => {
           history.push({
-            pathname: "/history",
+            pathname: "/#history",
           });
         }}>
           Tekemäni reseptit
@@ -303,7 +303,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           color="black"
           onClick={() => {
             history.push({
-              pathname: "/recipe/new",
+              pathname: "/#recipe-new",
             });
           }}
         >
@@ -424,7 +424,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                           (html) => {
                             const recipe = parseKRuokaRecipe(html, name);
                             history.push({
-                              pathname: `/recipe/${recipe.name}`,
+                              pathname: `/#recipe-${recipe.name}`,
                               state: { recipe },
                             });
                           },
@@ -539,7 +539,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
                 <ListItem key={`list-item-${i}`}>
                   <Link
                     to={{
-                      pathname: `/recipe/${recipe.name}`,
+                      pathname: `/#recipe-${recipe.name}`,
                       state: { recipe },
                     }}
                   >

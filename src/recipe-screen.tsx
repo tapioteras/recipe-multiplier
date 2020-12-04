@@ -181,7 +181,7 @@ const RecipeScreen: React.FC = () => {
   return (
     <ScreenContainer>
       <Flex alignItems="center" flexWrap="wrap" paddingBottom={5}>
-        <Link to="/recipes">
+        <Link to="/#recipe-all">
           <Flex alignItems="center">
             <Icon fontSize={50} name="chevron-left" />
             <Heading fontSize={["md", "2xl", "2xl", "2xl"]} paddingX={5}>

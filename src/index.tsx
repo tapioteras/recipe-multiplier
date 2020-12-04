@@ -33,16 +33,16 @@ ReactDOM.render(
     />
     <Router>
       <Switch>
-        <Route path="/recipe/new">
+        <Route path="/#recipe-new">
           <NewRecipeScreen />
         </Route>
-        <Route path="/recipe/:id">
+        <Route path="/#recipe-:id">
           <RecipeScreen />
         </Route>
-        <Route path="/history">
+        <Route path="/#history">
           <HistoryScreen />
         </Route>
-        <Route path="/">
+        <Route path={["/", "/#recipe-all"]}>
           <RecipesScreen {...{ recipes, categories }} />
         </Route>
       </Switch>
