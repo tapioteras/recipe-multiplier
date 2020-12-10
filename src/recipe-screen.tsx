@@ -19,7 +19,7 @@ import {
   Slider,
   SliderTrack,
   SliderFilledTrack,
-  SliderThumb,
+  SliderThumb, Textarea, IconButton,
 } from "@chakra-ui/core";
 import { Link, useLocation } from "react-router-dom";
 import { calculatePortion } from "./utils";
@@ -31,6 +31,7 @@ export enum LOCAL_STORAGE_KEY {
   RECIPE_MADE_TODAY = "itemsMadeToday",
   IMPORTED_RECIPES = "importedRecipes",
   CREATED_RECIPES = "createdRecipes",
+  RECIPE_OVERRIDES = "recipeOverrides"
 }
 
 export const INGREDIENT_CATEGORY_OTHER = 999;
@@ -114,7 +115,7 @@ const RecipeScreen: React.FC = () => {
       recipe,
       recipe: {
         name,
-        description,
+        description = "",
         portions = 1,
         ingredients,
         ingredientsCategories,
@@ -178,6 +179,29 @@ const RecipeScreen: React.FC = () => {
   }, [isMadeToday]);
   const { onCopy, hasCopied } = useClipboard(exportedJson);
   const isFromKRuoka = tags.find((t) => t === "K-Ruoka");
+  const [isEdit, setIsEdit] = useState(false)
+  const getMaybeOverrideField = (name, field) =>
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.RECIPE_OVERRIDES) || "[]")
+      ?.find((recipe) => recipe?.name === name)
+      ?.[field];
+  const [descriptionOverride, setDescriptionOverride] = useState(null)
+  const saveDescriptionOverride = () => {
+    const oldOverrides = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY.RECIPE_OVERRIDES) || "[]");
+    const existingOverride = oldOverrides.find(override => override.name === name)
+    if (existingOverride) {
+      localStorage.setItem(LOCAL_STORAGE_KEY.RECIPE_OVERRIDES, JSON.stringify([...oldOverrides.map(o => {
+        if (o.name === name) {
+          return {...o, description: descriptionOverride}
+        } else {
+          return o
+        }
+      })]))
+    } else {
+      localStorage.setItem(LOCAL_STORAGE_KEY.RECIPE_OVERRIDES, JSON.stringify([...oldOverrides, { name, description: descriptionOverride}]))
+    }
+    setDescriptionOverride(null)
+  }
+  const finalDescription = descriptionOverride !== null || descriptionOverride === "" ? descriptionOverride : getMaybeOverrideField(name, "description") || description
   return (
     <ScreenContainer>
       <Flex alignItems="center" flexWrap="wrap" paddingBottom={5}>
@@ -324,6 +348,16 @@ const RecipeScreen: React.FC = () => {
         >
           {!isToggleCheckbox ? "Ostoslista" : "Resepti"}
         </Button>
+        <Button marginY={[2, 0, 0, 0]}
+                marginLeft={[0, 5, 5, 5]}
+                whiteSpace="normal"
+                color="black"
+                onClick={() => {
+                  if (isEdit) {
+                    saveDescriptionOverride()
+                  }
+                  setIsEdit(!isEdit)
+                }}>{isEdit ? "Tallenna" : "Muokkaa"}</Button>
       </Flex>
       {madeLatest && (
         <Box>
@@ -332,9 +366,15 @@ const RecipeScreen: React.FC = () => {
           ).diff(moment(), "days")} päivää sitten)`}
         </Box>
       )}
-      {description && (
-        <ContentBox>
-          <Text fontSize="xl">{description}</Text>
+      {(
+        isEdit ? <Flex><Textarea color="black"
+                           borderColor="white" placeholder="Lisää kuvaus..."
+                           onChange={(event) => setDescriptionOverride(event.target.value)}
+                                 value={finalDescription}/><IconButton variantColor="grey"
+                                                                          aria-label="Add new step"
+                                                                          size="md" icon="close" onClick={() => setDescriptionOverride("")} /></Flex> :
+          finalDescription && <ContentBox>
+          <Text whiteSpace="pre-line" fontSize="xl">{finalDescription}</Text>
         </ContentBox>
       )}
       {exportedJson && (
