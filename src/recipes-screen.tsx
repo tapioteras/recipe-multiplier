@@ -4,7 +4,6 @@ import {
   AlertDialogCloseButton,
   AlertDialogContent,
   AlertDialogHeader,
-  AlertDialogOverlay,
   Box,
   Button,
   CloseButton,
@@ -17,7 +16,6 @@ import {
   List,
   ListIcon,
   ListItem,
-  Scale,
   Spinner,
   Stack,
   Tag,
@@ -497,16 +495,13 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           </Tag>
         )}
       </Flex>
-      <Scale in={isWhatToDoNextDialogOpen}>
-        {(styles) => (
           <AlertDialog
             leastDestructiveRef={cancelRef}
             finalFocusRef={btnRef}
             {...{ onClose }}
             isOpen={isWhatToDoNextDialogOpen}
           >
-            <AlertDialogOverlay opacity={styles.opacity} />
-            <AlertDialogContent {...styles}>
+            <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 Mitä tekisi seuraavaksi?
               </AlertDialogHeader>
@@ -519,8 +514,6 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
               </AlertDialogBody>
             </AlertDialogContent>
           </AlertDialog>
-        )}
-      </Scale>
       {[...categories].map(({ id, name }, i) => (
         <Box paddingBottom={5} key={`category-${i}`}>
           <Heading>{name}</Heading>
