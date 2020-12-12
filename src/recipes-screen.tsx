@@ -9,9 +9,10 @@ import {
   CloseButton,
   Divider,
   Flex,
-  Heading,
+  Heading, Icon,
   Input,
   InputGroup,
+  InputLeftElement,
   InputRightElement,
   List,
   ListIcon,
@@ -307,29 +308,6 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         >
           Luo uusi resepti
         </Button>
-        <Stack spacing={4} padding={4} bg="gray.300">
-          <Heading color="gray.600">Hae Resepteistä</Heading>
-          <InputGroup>
-            <Input
-              color="gray.600"
-              border="transparent"
-              placeholder="kirjoita hakusana..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <InputRightElement
-              children={
-                <CloseButton
-                  visibility={search.length === 0 ? "hidden" : "visible"}
-                  color="black"
-                  onClick={() => {
-                    setSearch("");
-                  }}
-                />
-              }
-            />
-          </InputGroup>
-        </Stack>
         <Stack spacing={4} padding={4} bg="gray.600">
           <Heading>Hae K-Ruoasta</Heading>
           <InputGroup>
@@ -514,6 +492,30 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
               </AlertDialogBody>
             </AlertDialogContent>
           </AlertDialog>
+      <Stack spacing={4} padding={4}>
+        <InputGroup>
+          <InputLeftElement pointerEvents="none"
+                            children={<Icon name="search" color="gray.600" />} />
+          <Input
+            color="gray.600"
+            border="transparent"
+            placeholder="Hae omista resepteistä..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <InputRightElement
+            children={
+              <CloseButton
+                visibility={search.length === 0 ? "hidden" : "visible"}
+                color="black"
+                onClick={() => {
+                  setSearch("");
+                }}
+              />
+            }
+          />
+        </InputGroup>
+      </Stack>
       {[...categories].map(({ id, name }, i) => (
         <Box paddingBottom={5} key={`category-${i}`}>
           <Heading>{name}</Heading>
