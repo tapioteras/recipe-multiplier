@@ -461,6 +461,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       <Flex flexWrap="wrap">
         {[...recipes]
           .flatMap(({ tags = [] }) => tags)
+          .map(tag => tag.toLowerCase())
           .filter((value, index, self) => self.indexOf(value) === index)
           .reduce((a, b) => [...a, b], [])
           .map((tag, i) => (
@@ -525,6 +526,10 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           <Heading>{name}</Heading>
           <List spacing={5}>
             {[...recipesWithCategories]
+              .map(recipe => ({
+                ...recipe,
+                tags: [...recipe?.tags || []].map(t => t.toLowerCase())
+              }))
               .filter((recipe) =>
                 filters.length > 0
                   ? [...(recipe?.tags || [])].find((t) =>
