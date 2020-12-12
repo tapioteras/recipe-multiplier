@@ -497,7 +497,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
               </AlertDialogBody>
             </AlertDialogContent>
           </AlertDialog>
-      <Stack spacing={4} padding={4}>
+      <Stack paddingY={4}>
         <InputGroup>
           <InputLeftElement pointerEvents="none"
                             children={<Icon name="search" color="gray.600" />} />
