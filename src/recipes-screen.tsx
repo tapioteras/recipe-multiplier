@@ -288,10 +288,14 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   return (
     <ScreenContainer>
       <Stack spacing={5} maxWidth={["100%", "100%", 500, 500]}>
-        <Button color="black" onClick={() => setIsWhatToDoNextDialogOpen(true)}>
+        <Button
+          leftIcon="repeat"
+          color="black" onClick={() => setIsWhatToDoNextDialogOpen(true)}>
           Mitä ruokaa voisi tehdä seuraavaksi?
         </Button>
-        <Button color="black" onClick={() => {
+        <Button
+          leftIcon="calendar"
+          color="black" onClick={() => {
           history.push({
             pathname: "/#history",
           });
@@ -299,6 +303,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           Tekemäni reseptit
         </Button>
         <Button
+          leftIcon="add"
           color="black"
           onClick={() => {
             history.push({
