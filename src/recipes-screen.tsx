@@ -313,13 +313,12 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         >
           Luo uusi resepti
         </Button>
-        <Stack spacing={4} padding={4} bg="gray.600">
-          <Heading>Hae K-Ruoasta</Heading>
+        <Stack padding={4} bg="gray.700">
           <InputGroup>
             <Input
               isDisabled={kRuokaFetchStatus === LOADING_STATUS.LOADING}
               color="black"
-              placeholder="kirjoita hakusana..."
+              placeholder="Hae K-Ruoasta..."
               value={kRuokaSearch}
               onChange={(e) => setKRuokaSearch(e.target.value)}
             />
