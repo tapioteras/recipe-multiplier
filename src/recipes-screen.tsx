@@ -522,7 +522,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
       </Stack>
       {[...categories].map(({ id, name }, i) => (
         <Box paddingBottom={5} key={`category-${i}`}>
-          <Heading>{name}</Heading>
+          {!search && <Heading>{name}</Heading>}
           <List spacing={5}>
             {[...recipesWithCategories]
               .map(recipe => ({
