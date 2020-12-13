@@ -287,13 +287,15 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
   const [kRuokaSearch, setKRuokaSearch] = useState("");
   return (
     <ScreenContainer>
-      <Stack spacing={5} maxWidth={["100%", "100%", 500, 500]}>
+      <Stack direction="row" spacing={4} shouldWrapChildren flexWrap="wrap">
         <Button
+          marginBottom={4}
           leftIcon="repeat"
           color="black" onClick={() => setIsWhatToDoNextDialogOpen(true)}>
           Mitä ruokaa voisi tehdä seuraavaksi?
         </Button>
         <Button
+          marginBottom={4}
           leftIcon="calendar"
           color="black" onClick={() => {
           history.push({
@@ -303,6 +305,7 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
           Tekemäni reseptit
         </Button>
         <Button
+          marginBottom={4}
           leftIcon="add"
           color="black"
           onClick={() => {
@@ -313,6 +316,8 @@ const RecipesScreen: React.FC<RecipesScreenProps> = ({
         >
           Luo uusi resepti
         </Button>
+      </Stack>
+      <Stack spacing={5} maxWidth={["100%", "100%", 500, 500]}>
         <Stack padding={4} bg="gray.700">
           <InputGroup>
             <Input
