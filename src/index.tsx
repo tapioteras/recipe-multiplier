@@ -40,7 +40,7 @@ ReactDOM.render(
           <RecipeScreen />
         </Route>
         <Route path="/#history">
-          <HistoryScreen />
+          <HistoryScreen {...{ recipes }} />
         </Route>
         <Route path={["/", "/#recipe-all"]}>
           <RecipesScreen {...{ recipes, categories }} />
