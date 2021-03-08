@@ -5,7 +5,7 @@ class KRuokaApi {
     onFailure: (error) => void
   ) {
     fetch(
-      // TODO cors-anywhere is meant to be used only for DEBUGGING purposes! plz remove cors at some point
+      // TODO cors is meant to be used only for DEBUGGING purposes! plz remove cors at some point
       `https://thingproxy.freeboard.io/fetch/https://www.k-ruoka.fi/kr-api/search?offset=0&q=${search}`,
       {
         mode: "cors",
@@ -16,6 +16,7 @@ class KRuokaApi {
       .catch(onFailure);
   }
   fetchRecipe(url, onSuccess: (data) => void, onFailure: (error) => void) {
+    // TODO cors is meant to be used only for DEBUGGING purposes! plz remove cors at some point
     fetch(`https://thingproxy.freeboard.io/fetch/${url}`)
       .then((response) => response.text())
       .then(onSuccess)
