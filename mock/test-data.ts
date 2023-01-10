@@ -2096,7 +2096,118 @@ const testData = [
       "kasvis"
     ],
     "category": 2
-  }
+  },
+  {
+    "name": "Nopea linssicurry",
+    "portions": 4,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "kpl",
+            "name": "sipuli"
+        },
+        {
+            "amount": "3",
+            "unit": "kpl",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "raastettua inkivääriä"
+        },
+        {
+            "amount": "2,5",
+            "unit": "dl",
+            "name": "kuivattuja punaisia linssejä"
+        },
+        {
+            "amount": "3",
+            "unit": "rkl",
+            "name": "rypsiöljyä"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "curryjauhetta"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "paprikajauhetta"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "kurkumaa"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "juustokuminaa"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "jauhettua korianteria"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "chilirouhetta tai maun mukaan"
+        },
+        {
+            "amount": "0,25",
+            "unit": "tl",
+            "name": "kanelia"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "sokeria"
+        },
+        {
+            "amount": "100",
+            "unit": "g",
+            "name": "vihreitä papuja (pakaste)"
+        },
+        {
+            "amount": "500",
+            "unit": "g",
+            "name": "tomaattimurskaa"
+        },
+        {
+            "amount": "1",
+            "unit": "tlk (400 ml)",
+            "name": "kookosmaitoa (tai 2 dl kaurakermaa ja 2 dl vettä)"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "riisiä, ohraa tai kaurasuurimoita"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "tuoretta korianteria päälle"
+        }
+    ],
+    "steps":
+    [
+        "Silppua sipuli ja valkosipulinkynnet. Raasta inkivääri. Huuhtele linssit. \nKuumenna rypsiöljy paistokasarin pohjalla. Lisää mausteet suolaa ja sokeria lukuun ottamatta ja kuullota, kunnes mausteista alkaa irrota tuoksua. Lisää pannulle sipuli ja jatka kuullottamista, kunnes ne hiukan pehmenevät. Lisää vielä raastettu inkivääri ja kuumenna. ",
+        "Lisää kasariin huuhdellut linssit, tomaattimurska ja kookosmaito sekä vihreät pavut. Mausta suolalla sekä sokerilla ja keittele miedolla lämmöllä noin 10 minuuttia tai kunnes linssit ovat kypsiä eli pehmenneet. Lisää tarvittaessa vettä.\n",
+        "Viimeistele curry lopuksi tuoreella korianterilla, jos haluat. Tarjoa riisin, ohran tai kaurasuurimoiden kanssa. "
+    ],
+    "tags":
+    ["kasvis", "linssi", "vegaanihaaste"],
+    "category": 2
+}
 ];
 
 export default testData;
