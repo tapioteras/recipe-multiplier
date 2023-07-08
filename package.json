@@ -1,7 +1,6 @@
 {
   "name": "recipe-multiplier",
   "version": "1.0.0",
-  "main": "index.js",
   "homepage": "https://tapioteras.github.io/recipe-multiplier/",
   "repository": "https://github.com/tapioteras/recipe-multiplier.git",
   "author": "Tapio Teras <tapio.teras@gmail.com>",
