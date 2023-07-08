@@ -2315,6 +2315,100 @@ const testData = [
       "tags":
       ["kasvis", "linssi", "vegaanihaaste"],
       "category": 2
+  },
+  {
+    "name": "Mehevä härkis-spagettivuoka",
+    "portions": 6,
+    "ingredientsCategories": [
+      {
+        "id": 1,
+        "name": "juustokastike"
+      },
+      {
+        "id": 2,
+        "name": "härkis-tomaattikastike"
+      },
+    ],
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "pkt",
+            "name": "härkistä",
+            "category": 2
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli",
+            "category": 2
+        },
+        {
+            "amount": "1",
+            "unit": "tlk",
+            "name": "Pirkka tomaattimurskaa",
+            "category": 2
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa",
+            "category": 1
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "mustapippuria",
+            "category": 1
+        },
+        {
+            "amount": "2",
+            "unit": "rkl",
+            "name": "voita tai margariinia",
+            "category": 1
+        },
+        {
+            "amount": "4",
+            "unit": "rkl",
+            "name": "vehnäjauhoja",
+            "category": 1
+        },
+        {
+            "amount": "6",
+            "unit": "dl",
+            "name": "maitoa",
+            "category": 1
+        },
+        {
+            "amount": "0,75",
+            "unit": "tl",
+            "name": "suolaa",
+            "category": 1
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "paprikajauhetta",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "dl",
+            "name": "Pirkka emmental-mozzarellajuustoraastetta",
+            "category": 1
+        }
+    ],
+    "steps":
+    [
+        "Keitä pätkittyä spagettia runsaassa, kiehuvassa ja suolalla maustetussa vedessä 6-7 minuuttia. Valuta, mutta ei aivan kuivaksi.",
+        "Ruskista jauheliha omassa rasvassaan. Lisää joukkoon hienonnettu sipuli kullottumaan. Kaada pannulle tomaattimurska ja mausta. Hauduta kastiketta noin 5 minuuttia.",
+        "Sulata juustokastiketta varten rasva kattilassa. Sekoita joukkoon jauhot ja kiehauta. Siirrä kattila pois levyltä ja lisää kylmä maito koko ajan sekoittaen. Siirrä kattila uudelleen levylle ja anna kiehua hiljalleen noin 5 minuuttia. Mausta suolalla ja paprikajauheella. Lisää juustoraaste.",
+        "Voitele noin 2 litran kokoinen vuoka ja kaada vuorotellen kerroksittain jauheliha-tomaattikastiketta ja spagettia vuokaan niin, että päällimmäiseksi tulee ohut spagettikerros. Kaada juustokastike vuokaan.",
+        "Kypsennä 200 asteessa 30-40 minuuttia, kunnes pinta on kauniin ruskea. Tarjoa lisäksi salaattia."
+    ],
+    "tags":
+    ["k-ruoka", "härkis"],
+     "category": 2
   }
 ];
 
