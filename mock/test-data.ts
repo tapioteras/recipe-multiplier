@@ -2409,6 +2409,112 @@ const testData = [
     "tags":
     ["k-ruoka", "härkis"],
      "category": 2
+  },
+  {
+    "name": "Kanattomat caesarburgerit",
+    "portions": 4,
+    "ingredientsCategories": [
+      {
+        "id": 1,
+        "name": "caesarsalaatti"
+      },
+      
+      
+      
+      
+    ],
+    "ingredients":
+    [
+        {
+            "amount": "",
+            "unit": "",
+            "name": "juures- bataatti- tai tavallisia ranskalaisia"
+        },
+        {
+            "amount": "4",
+            "unit": "kpl",
+            "name": "sämpylää"
+        },
+        {
+            "amount": "4",
+            "unit": "kpl",
+            "name": "Apetit Crispy Chick -kasvisjauhispihvejä tai muita vegepihvejä"
+        },
+        {
+            "amount": "0,5",
+            "unit": "kpl",
+            "name": "punasipulia"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "pihvitomaattia"
+        },
+        {
+            "amount": "150",
+            "unit": "g",
+            "name": "romanie-salaattia",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "dl",
+            "name": "vegemajoneesia",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "dl",
+            "name": "turkkilais- tai kreikkalaistyyppistä kaurajugurttia (Oatly tai Fazer Aito)",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "sitruunamehua",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "ravintohiivahiutaleita  (esim. Foodin, Makrobios tai Puhdas+)",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "dijon-sinappia",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "kapriksia hienonnettuna",
+            "category": 1
+        },
+        {
+            "amount": "3",
+            "unit": "rkl",
+            "name": "hienonnettua ruohosipulia",
+            "category": 1
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "mustapippuria (myllystä)",
+            "category": 1
+        }
+    ],
+    "steps":
+    [
+        "Paista juures-, bataatti- tai tavalliset ranskalaiset uunissa pakkauksen ohjeen mukaan.",
+        "Valmista sillä välin caesarsalaatti. Revi salaatinlehdet. Sekoita yhteen vegemajoneesi, vegejogurtti ja sitruunamehu. Lisää ravintohiivahiutaleet ja sinappi. Hienonna kaprikset sekä ruohosipuli ja lisää ne kastikkeeseen.\nMausta mustapippurilla. Sekoita kolme neljiäsosaan kastikkeesta yhteen salaatinlehtien kanssa. Säästä loput kastikkeesta sellaisenaan burgerin väliin.",
+        "Leikkaa punasipuli ohuiksi renkaiksi ja tomaatti viipaleiksi. Paista pihvit pakkauksen ohjeen mukaan. Paista pihvi sämpylää kohden. Lämmitä sämpylät paistinpannulla.",
+        "Kokoa burgerit ja herkuttele ne juuresranskalaisten kanssa."
+    ],
+    "tags":
+    ["vegaanihaaste", "kikherne", "burger"],
+    "category": 2
   }
 ];
 
