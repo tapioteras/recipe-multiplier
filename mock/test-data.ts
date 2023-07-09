@@ -2416,19 +2416,15 @@ const testData = [
     "ingredientsCategories": [
       {
         "id": 1,
-        "name": "caesarsalaatti"
+        "name": "Caesarsalaatti"
       },
-      
-      
-      
-      
     ],
     "ingredients":
     [
         {
             "amount": "",
             "unit": "",
-            "name": "juures- bataatti- tai tavallisia ranskalaisia"
+            "name": "juures-, bataatti- tai tavallisia ranskalaisia"
         },
         {
             "amount": "4",
@@ -2514,6 +2510,67 @@ const testData = [
     ],
     "tags":
     ["vegaanihaaste", "kikherne", "burger"],
+    "category": 2
+  },
+  {
+    "name": "Pinaatti-perunamunakas",
+    "portions": 2,
+    "ingredients":
+    [
+        {
+            "amount": "4",
+            "unit": "kpl",
+            "name": "perunaa (keltainen pussi)"
+        },
+        {
+            "amount": "1",
+            "unit": "kpl",
+            "name": "sipuli"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "valkosipulinkynsi"
+        },
+        {
+            "amount": "2",
+            "unit": "rkl",
+            "name": "ekstra-neitsytoliiviöljyä"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "",
+            "unit": "ripaus",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "5",
+            "unit": "kpl",
+            "name": "kananmunaa"
+        },
+        {
+            "amount": "0,5",
+            "unit": "dl",
+            "name": "vettä"
+        },
+        {
+            "amount": "0,5",
+            "unit": "ps",
+            "name": "Pirkka lehtipinaattia (pakaste)"
+        }
+    ],
+    "steps":
+    [
+        "Kuori perunat ja leikkaa ne ohuiksi viipaleiksi. Hienonna kuorittu sipuli ja valkosipuli.",
+        "Paista perunoita ja sipuleita pannulla öljyssä (1 rkl) noin 10 minuuttia käännellen. Mausta suolalla (1/2 tl). Lisää pinaatit, kuumenna ja kypsennä vielä 5 minuuttia, tai kunnes perunat ovat lähes kypsiä.",
+        "Sekoita munien joukkoon vesi ja loppu suoli Lisää pannulle 1 rkl öljyä, kaada munamassa kuumalle pannulle ja kypsennä perunamunakasta miedolla lämmöllä noin 11 minuuttia. Käännä munakas varovasti lautasen avulla ja kypsennä vielä noin 5 minuuttia, kunnes munakas on hyytynyt ja perunat kypsiä. Lisää tarvittaessa suolaa."
+    ],
+    "tags":
+    ["muna", "munakas", "pinaatti", "k-ruoka"],
     "category": 2
   }
 ];
