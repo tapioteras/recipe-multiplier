@@ -1,6 +1,6 @@
 const testData = [
   {
-    tags: ["avokado", "kasvis"],
+    tags: ["avokado", "kasvis", "linssi", "pasta"],
     category: 2,
     name: "Avokado-linssipasta",
     description:
@@ -493,7 +493,7 @@ const testData = [
   },
   {
     category: 2,
-    tags: ["kala", "lohi"],
+    tags: ["kala", "lohi", "pasta", "gratiini"],
     name: "lohipastagratiini",
     portions: 6,
     ingredientsCategories: [{ id: 1, name: "valkokastike" }],
@@ -739,7 +739,7 @@ const testData = [
       "Mittaa joukkoon suuruste ja kuumenna. Sekoita kastikkeen joukkoon sulatetut katkaravut ja huuhdotut, hieman hienonnetut pinaatinlehdet.",
       "Nosta pasta tarjoilukulhoon ja kaada kastike päälle. Koristele hienonnetulla kevätsipulilla ja sitruunankuoriraasteella.",
     ],
-    tags: ["K-Ruoka", "äyriäiset"],
+    tags: ["K-Ruoka", "äyriäiset", "pasta", "pinaatti"],
   },
   {
     category: 2,
@@ -911,7 +911,7 @@ const testData = [
       "Sulata ja valuta katkaravut. Suikaloi halkaistu ja huuhdeltu purjo. Kuori hienonna valkosipulinkynnet.",
       "Kuullota purjo ja valkosipuli öljyssä. Lisää tomaattipyree ja katkaravut. Kaada joukkoon kerma ja kuumenna kiehuvaksi, mutta älä enää keitä. Mausta mustapippurilla. Tarjoa lisäksi tagliatellea.",
     ],
-    tags: ["K-Ruoka", "äyriäiset"],
+    tags: ["K-Ruoka", "äyriäiset", "pasta"],
     category: 2,
   },
   {
@@ -1004,7 +1004,7 @@ const testData = [
       "Sekoita kasvikset valutetun pastan ja parsakaalien joukkoon. Kaada seos isoon voideltuun uunivuokaan.",
       "Sekoita munat, maito ja mausteet keskenään. Kaada seos vuokaan. Ripottele pinnalle juustoraastetta. Kypsennä 175 asteessa noin tunti. Tarjoa raikkaan salaatin kanssa.",
     ],
-    tags: ["K-Ruoka", "kasvis"],
+    tags: ["K-Ruoka", "kasvis", "pasta"],
     category: 2,
   },
   {
@@ -1505,7 +1505,8 @@ const testData = [
     ],
     "tags": [
       "härkis",
-      "kasvis"
+      "kasvis",
+      "pasta"
     ]
   },
   {
@@ -1589,7 +1590,8 @@ const testData = [
     ],
     "tags": [
       "härkis",
-      "kasvis"
+      "kasvis",
+      "lasagne"
     ]
   },
   {
@@ -1669,7 +1671,8 @@ const testData = [
     ],
     "tags": [
       "kala",
-      "lohi"
+      "lohi",
+      "pasta"
     ]
   },
   {
@@ -2571,6 +2574,69 @@ const testData = [
     ],
     "tags":
     ["muna", "munakas", "pinaatti", "k-ruoka"],
+    "category": 2
+  },
+  {
+    "name": "Halloumipasta",
+    "portions": 4,
+    "ingredients":
+    [
+        {
+            "amount": "2",
+            "unit": "rs",
+            "name": "Pirkka kirsikka- tai miniluumutomaatteja"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä hienonnettuna"
+        },
+        {
+            "amount": "3",
+            "unit": "rkl",
+            "name": "ekstra-neitystoliiviöljyä"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "balsamiviinietikkaa"
+        },
+        {
+            "amount": "0,25",
+            "unit": "rl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "",
+            "unit": "ripaus",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "1",
+            "unit": "pkt",
+            "name": "Pirkka Parhaat halloumijuustoa"
+        },
+        {
+            "amount": "300",
+            "unit": "g",
+            "name": "spiralipastaa"
+        },
+        {
+            "amount": "1",
+            "unit": "ruukku",
+            "name": "tuoretta basilikaa hienonnettuna"
+        }
+    ],
+    "steps":
+    [
+        "Pane pestyt tomaatit uunivuokaan. Pyörittele joukkoon valkosipuli, öljy, balsamico, suola ja pippuri. Pasta 225-asteisessa unissa 10 minuuttia.",
+        "Kuutioi halloumi. Levitä kuutiot leivinpaperin päälle uunipellille. Jätä toiseen reunaan tilaa uunivuoalle.",
+        "Nosta tomaatit vuoassa halloumien viereen pellille. Jatka paistamista vielä 15-20 minuuttia, kunnes justo on saanut väriä ja tomaatit pehmenneet.",
+        "Keitä pasta pakkauksen ohjeen mukaan suolalla maustetussa vedessä (2 | vettä + 1 tl suolaa). Valuta pasta.",
+        "Sekoita halloumikuutiot, pasta ja basilika vuoassa tomaattien joukkoon. Tarjoa heti."
+    ],
+    "tags":
+    ["k-ruoka", "halloumi", "pasta"],
     "category": 2
   }
 ];
