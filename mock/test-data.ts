@@ -2741,6 +2741,105 @@ const testData = [
     "tags":
     ["k-ruoka", "lasagne", "linssi", "pasta"],
     "category": 2
+  },
+  {
+    "name": "Nachopelti",
+    "portions": 6,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "rs",
+            "name": "härkis tms."
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "mieto punainen chili"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "tomaattia"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "0,25",
+            "unit": "tl",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "juustokuminaa"
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "paprikajauhetta"
+        },
+        {
+            "amount": "1",
+            "unit": "tlk",
+            "name": "Pirkka mustapauja suolaliemessä"
+        },
+        {
+            "amount": "1",
+            "unit": "ps",
+            "name": "Pirkka maissilastuja"
+        },
+        {
+            "amount": "1",
+            "unit": "prk",
+            "name": "Pirkka juustodippiä"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "avokado"
+        },
+        {
+            "amount": "0,5",
+            "unit": "prk",
+            "name": "Pirkka jalapenoja valutettuna"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "Pirkka salsadippiä"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "tuoretta korianteria"
+        }
+    ],
+    "steps":
+    [
+        "Kuori ja hienonna sipuli ja valkosipuli. Halkaise chili, poista siemenet ja hienonna.",
+        "Ruskista härkis pannussa ja lisää sipulit ja chili. Anna kullota hetki. Mausta suolalla, mustapippurilla, juustokuminalla ja paprikajauheella.",
+        "Kuutioi tomaatit. Lisää pannulle osa tomaateista (jätä noin puolet koristeluun) sekä huuhdotut ja valutetut mustapavut.",
+        "Levitä maissilastut leivinpaperin päälle pellille tai laakeaan uunivuokaan. Levitä maissilastujen päälle härkisseos ja juustodippi.",
+        "Kuumenna uunin ylätasossa 225 asteessa noin 5 minuuttia.",
+        "Halkaise avokado, poista kivi ja kuori ja kuutioi hedelmäliha. Levitä pinnalle kuutioidut tomaatit ja avokadot, jalapenot ja salsakastiketta nokareina. Hienonna pinnalle runsaasti tuoretta korianteria. Tarjoa heti."
+    ],
+    "tags":
+    ["k-ruoka", "härkis"],
+    "category": 2
   }
 ];
 
