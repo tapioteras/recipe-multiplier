@@ -2638,6 +2638,109 @@ const testData = [
     "tags":
     ["k-ruoka", "halloumi", "pasta"],
     "category": 2
+  },
+  {
+    "name": "Kasvislasagne",
+    "portions": 6,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "mieto punainen chili"
+        },
+        {
+            "amount": "400",
+            "unit": "g",
+            "name": "kesäkurpitsa"
+        },
+        {
+            "amount": "250",
+            "unit": "g",
+            "name": "miniluumutomaatteja"
+        },
+        {
+            "amount": "2",
+            "unit": "ps",
+            "name": "Pirkka Luomu babypinaattia"
+        },
+        {
+            "amount": "2",
+            "unit": "rkl",
+            "name": "oliiviöljyä"
+        },
+        {
+            "amount": "1,5",
+            "unit": "dl",
+            "name": "kuivattuja punaisia linssejä"
+        },
+        {
+            "amount": "2",
+            "unit": "prk",
+            "name": "Pirkka Luomu paseerattua tomaattia"
+        },
+        {
+            "amount": "2",
+            "unit": "kpl",
+            "name": "kasvisliemikuutiota"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "balsamiviinietikkaa"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "sokeria"
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "2",
+            "unit": "prk",
+            "name": "creme fraiche"
+        },
+        {
+          "amount": "2",
+          "unit": "ps",
+          "name": "mozzarellaa"
+        },
+        {
+            "amount": "12",
+            "unit": "kpl",
+            "name": "lasagnelevyjä"
+        },
+        {
+            "amount": "1",
+            "unit": "prk",
+            "name": "Urtekram Luomu basilikapestoa"
+        }
+    ],
+    "steps":
+    [
+        "Hienonna kuorittu sipuli ja valkosipulinkynnet. Hienonna chili siemenineen. Leikkaa kesäkurpitsa ohuiksi viipaleiksi. Säästä halutessasi pari viipaletta lasagne koristeluun. Halkaise puolet miniluumutomaateista.",
+        "Kuumenna öljy kattilassa. Kuullota sipuleita, chiliä, kesäkurpitsaa, puolitettuja tomaatteja ja pinaattia muutama minuutti. Lisää huuhdotut ja valutetut linssit, paseerattu tomaatti, murennetut kasvisliemikuutiot, etikka, sokeri ja pippuri. Kuumenna kiehuvaksi ja anna kastikkeen kiehua hilialleen kannen alla noin 20 minuuttia, kunnes linssit ovat kypsiä.",
+        "Kaavi ranskankermat kulhoon. Raasta valutetut mozzarellat raastimen karkealla terällä ja sekoita raaste ranskankerman joukkoon.",
+        "Lusikoi linssikastiketta voidellun lasagnevuoan (18 cm × 24 cm) pohjalle. Lado päälle kolme lasagnelevyä, linssikastiketta, juustoseosta ja muutama nokare pestoa. Toista neljä kertaa. Päällimmäiseksi tulee juustoseosta ja pesto. Koristele pinta parilla kesäkurpitsavipaleella ja miniluumutomaateilla.",
+        "Paista lasagnea 175-asteisessa uunissa tunnin ajan, kunnes lasagne pinta saa väriä."
+    ],
+    "tags":
+    ["k-ruoka", "lasagne", "linssi", "pasta"],
+    "category": 2
   }
 ];
 
