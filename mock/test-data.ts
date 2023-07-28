@@ -2840,6 +2840,51 @@ const testData = [
     "tags":
     ["k-ruoka", "härkis"],
     "category": 2
+  },
+  {
+    "name": "Uunipasta",
+    "portions": 3,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "pkt",
+            "name": "Pirkka tortelloneja, ricotta-pinaatti"
+        },
+        {
+            "amount": "1",
+            "unit": "tlk",
+            "name": "tomaattipastakastiketta"
+        },
+        {
+            "amount": "1,5",
+            "unit": "dl",
+            "name": "vettä"
+        },
+        {
+            "amount": "0,5",
+            "unit": "prk",
+            "name": "Kirsikkatomaatteja"
+        },
+        {
+            "amount": "1",
+            "unit": "ps",
+            "name": "babypinaattia"
+        },
+        {
+            "amount": "2",
+            "unit": "ps",
+            "name": "mozzarellaa"
+        }
+    ],
+    "steps":
+    [
+        "Pane tortellonit, pastakastike ja vesi uunivuokaan. Lisää tomaatit ja hieman öljyä sekä pinaatti, voit jättää kourallisen annosten päälle. Kääntele pasta sekaisin. Revi mozzarella pinnalle.",
+        "Kypsennä vuokaa 225-asteisessa unissa noin 20 minuuttia."
+    ],
+    "tags":
+    ["k-ruoka", "pinaatti", "pasta"],
+    "category": 2
   }
 ];
 
