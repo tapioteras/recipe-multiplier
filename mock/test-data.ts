@@ -2885,6 +2885,146 @@ const testData = [
     "tags":
     ["k-ruoka", "pinaatti", "pasta"],
     "category": 2
+  },
+  {
+    "name": "Mummin lasagneresepti",
+    "ingredientsCategories":
+    [
+        {
+            "id": 1,
+            "name": "Soijarouhekastike"
+        },
+        {
+            "id": 2,
+            "name": "Valkokastike"
+        }
+    ],
+    "tags":
+    [
+        "soija",
+        "lasagne",
+        "pasta"
+    ],
+    "portions": 4,
+    "ingredients":
+    [
+        {
+            "amount": "9",
+            "unit": "kpl",
+            "name": "lasagnelevyjä"
+        },
+        {
+            "category": 1,
+            "amount": "1",
+            "unit": "dl",
+            "name": "soijarouhetta"
+        },
+        {
+            "category": 1,
+            "amount": "2",
+            "unit": "dl",
+            "name": "vettä"
+        },
+        {
+            "category": 1,
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli"
+        },
+        {
+            "category": 1,
+            "amount": "400",
+            "unit": "g",
+            "name": "tomaattimurskaa"
+        },
+        {
+            "category": 1,
+            "amount": "2",
+            "unit": "rkl",
+            "name": "tomaattisosetta"
+        },
+        {
+            "category": 1,
+            "amount": "1",
+            "unit": "dl",
+            "name": "kasvislientä"
+        },
+        {
+            "category": 1,
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "category": 1,
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "category": 1,
+            "amount": "",
+            "unit": "",
+            "name": "mustapippuria"
+        },
+        {
+            "category": 1,
+            "amount": "",
+            "unit": "",
+            "name": "oreganoa"
+        },
+        {
+            "category": 1,
+            "amount": "",
+            "unit": "",
+            "name": "basilikaa"
+        },
+        {
+            "category": 2,
+            "amount": "2",
+            "unit": "rkl",
+            "name": "voita/margariinia"
+        },
+        {
+            "category": 2,
+            "amount": "2",
+            "unit": "rkl",
+            "name": "vehnäjauhoja"
+        },
+        {
+            "category": 2,
+            "amount": "0,5",
+            "unit": "l",
+            "name": "maitoa"
+        },
+        {
+            "category": 2,
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "category": 2,
+            "amount": "",
+            "unit": "",
+            "name": "valko- tai viherpippuria"
+        },
+        {
+            "category": 2,
+            "amount": "2",
+            "unit": "tl",
+            "name": "juustoraastetta"
+        }
+    ],
+    "steps":
+    [
+        "Keitä soijarouhetta vedessä 10 min",
+        "Soijarouhe- ja valkokastike valmistetaan liedellä, ruoka kypsennetään mikroaaltouunissa. Ruskista keitetty soijarouhe ja hienonnettu sipuli öliyssä. Lisää tomaattimurska sekä -sose, murskatut valkosipulin kynnet, kasvisliemi ja mausteet. Anna hautua noin puoli tuntia.",
+        "Valmista sillä välin valkokastike. Sulata voi kattilassa, lisää jauhot ja anna kiehahtaa. Lisää maito vähitellen koko ajan sekoittaen. Anna kastikkeen kiehua muutamia minuutteja. Mausta se suolalla ja valkopippurilla, lisää justoraaste. Molemmat kastikkeet voivat olla löysiä, sillä lasagnelevyt imevät kypsyessään runsaasti kosteutta.",
+        "Pane suorakaiteenmuotoisen univuoan pohjalle kerros soijarouhekastiketta. Aseta päälle 2 lasagnelevyä ja niiden päälle kerros soijarouhekastiketta ja valkokastiketta. Tee samanlaisia kerroksia vielä Kaks. Ripottele ruoan pinnalle juustoraastetta.",
+        "Kypsennä taydellä teholla 17 minuuttia, kännä vuokaa kypsennyksen puolivälissä. Anna ruoan vielä vetytyä 10 minuuttia ennen tarjoamista."
+    ],
+    "category": 2
   }
 ];
 
