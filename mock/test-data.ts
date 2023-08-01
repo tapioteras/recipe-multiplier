@@ -1,6 +1,6 @@
 const testData = [
   {
-    tags: ["avokado", "kasvis"],
+    tags: ["avokado", "kasvis", "linssi", "pasta"],
     category: 2,
     name: "Avokado-linssipasta",
     description:
@@ -493,7 +493,7 @@ const testData = [
   },
   {
     category: 2,
-    tags: ["kala", "lohi"],
+    tags: ["kala", "lohi", "pasta", "gratiini"],
     name: "lohipastagratiini",
     portions: 6,
     ingredientsCategories: [{ id: 1, name: "valkokastike" }],
@@ -739,7 +739,7 @@ const testData = [
       "Mittaa joukkoon suuruste ja kuumenna. Sekoita kastikkeen joukkoon sulatetut katkaravut ja huuhdotut, hieman hienonnetut pinaatinlehdet.",
       "Nosta pasta tarjoilukulhoon ja kaada kastike päälle. Koristele hienonnetulla kevätsipulilla ja sitruunankuoriraasteella.",
     ],
-    tags: ["K-Ruoka", "äyriäiset"],
+    tags: ["K-Ruoka", "äyriäiset", "pasta", "pinaatti"],
   },
   {
     category: 2,
@@ -911,7 +911,7 @@ const testData = [
       "Sulata ja valuta katkaravut. Suikaloi halkaistu ja huuhdeltu purjo. Kuori hienonna valkosipulinkynnet.",
       "Kuullota purjo ja valkosipuli öljyssä. Lisää tomaattipyree ja katkaravut. Kaada joukkoon kerma ja kuumenna kiehuvaksi, mutta älä enää keitä. Mausta mustapippurilla. Tarjoa lisäksi tagliatellea.",
     ],
-    tags: ["K-Ruoka", "äyriäiset"],
+    tags: ["K-Ruoka", "äyriäiset", "pasta"],
     category: 2,
   },
   {
@@ -1004,7 +1004,7 @@ const testData = [
       "Sekoita kasvikset valutetun pastan ja parsakaalien joukkoon. Kaada seos isoon voideltuun uunivuokaan.",
       "Sekoita munat, maito ja mausteet keskenään. Kaada seos vuokaan. Ripottele pinnalle juustoraastetta. Kypsennä 175 asteessa noin tunti. Tarjoa raikkaan salaatin kanssa.",
     ],
-    tags: ["K-Ruoka", "kasvis"],
+    tags: ["K-Ruoka", "kasvis", "pasta"],
     category: 2,
   },
   {
@@ -1505,7 +1505,8 @@ const testData = [
     ],
     "tags": [
       "härkis",
-      "kasvis"
+      "kasvis",
+      "pasta"
     ]
   },
   {
@@ -1589,7 +1590,8 @@ const testData = [
     ],
     "tags": [
       "härkis",
-      "kasvis"
+      "kasvis",
+      "lasagne"
     ]
   },
   {
@@ -1669,7 +1671,8 @@ const testData = [
     ],
     "tags": [
       "kala",
-      "lohi"
+      "lohi",
+      "pasta"
     ]
   },
   {
@@ -2207,7 +2210,822 @@ const testData = [
     "tags":
     ["kasvis", "linssi", "vegaanihaaste"],
     "category": 2
-}
+},
+
+  {
+      "name": "Nopea linssicurry",
+      "portions": 4,
+      "ingredients":
+      [
+          {
+              "amount": "1",
+              "name": "Sipuli"
+          },
+          {
+              "amount": "3",
+              "unit": "kpl",
+              "name": "Valkosipulinkynttä"
+          },
+          {
+              "amount": "1",
+              "unit": "rkl",
+              "name": "raastettua inkivääriä"
+          },
+          {
+              "amount": "2,5",
+              "unit": "dl",
+              "name": "kuivattuja punaisia linssejä"
+          },
+          {
+              "amount": "3",
+              "unit": "rkl",
+              "name": "rypsiöljyä"
+          },
+          {
+              "amount": "1",
+              "unit": "rkl",
+              "name": "curryjauhetta"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "paprikajauhetta"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "kurkumaa"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "juustokuminaa"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "jauhettua korianteria"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "chilirouhetta"
+          },
+          {
+              "amount": "0,25",
+              "unit": "tl",
+              "name": "kanelia"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "suolaa"
+          },
+          {
+              "amount": "100",
+              "unit": "g",
+              "name": "vihreitä papuja (pakaste)"
+          },
+          {
+              "amount": "1",
+              "unit": "tl",
+              "name": "sokeria"
+          },
+          {
+              "amount": "500",
+              "unit": "g",
+              "name": "tomaattimurskaa"
+          },
+          {
+              "amount": "1",
+              "unit": "tlk",
+              "name": "kookosmaitoa"
+          },
+          {
+              "amount": "",
+              "unit": "",
+              "name": "tarjoiluun riisiä"
+          }
+      ],
+      "steps":
+      [
+          "Silppua sipuli ja valkosipulinkynnet. Raasta inkivääri. Huuhtele linssit.",
+          "Kuumenna rypsiöljy paistokasarin pohjalla. Lisää mausteet suolaa ja sokeria lukuun ottamatta ja kuullota, kunnes mausteista alkaa irrota tuoksua. Lisää pannulle sipuli ja jatka Kuullottamista, kunnes ne hiukan pehmenevät. Lisãä vielä raastettu inkivääri ja kuumenna.",
+          "Lisää kasarin huuhdellut linssit, tomaattimurska ja kookosmaito sekä vihreät pavut. Mausta suolalla sekä sokerilla ja keittele miedolla lämmöllä noin 10 minuuttia tai kunnes linssit ovat kypsiä eli pehmenneet. Lisää tarvittaessa vettã.",
+          "Viimeistele curry lopuksi tuoreella korianterilla, jos haluat.",
+          "Tarjoa risin, ohran tai kaurasuurimoiden kanssa."
+      ],
+      "tags":
+      ["kasvis", "linssi", "vegaanihaaste"],
+      "category": 2
+  },
+  {
+    "name": "Mehevä härkis-spagettivuoka",
+    "portions": 6,
+    "ingredientsCategories": [
+      {
+        "id": 1,
+        "name": "juustokastike"
+      },
+      {
+        "id": 2,
+        "name": "härkis-tomaattikastike"
+      },
+    ],
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "pkt",
+            "name": "härkistä",
+            "category": 2
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli",
+            "category": 2
+        },
+        {
+            "amount": "1",
+            "unit": "tlk",
+            "name": "Pirkka tomaattimurskaa",
+            "category": 2
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa",
+            "category": 1
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "mustapippuria",
+            "category": 1
+        },
+        {
+            "amount": "2",
+            "unit": "rkl",
+            "name": "voita tai margariinia",
+            "category": 1
+        },
+        {
+            "amount": "4",
+            "unit": "rkl",
+            "name": "vehnäjauhoja",
+            "category": 1
+        },
+        {
+            "amount": "6",
+            "unit": "dl",
+            "name": "maitoa",
+            "category": 1
+        },
+        {
+            "amount": "0,75",
+            "unit": "tl",
+            "name": "suolaa",
+            "category": 1
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "paprikajauhetta",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "dl",
+            "name": "Pirkka emmental-mozzarellajuustoraastetta",
+            "category": 1
+        }
+    ],
+    "steps":
+    [
+        "Keitä pätkittyä spagettia runsaassa, kiehuvassa ja suolalla maustetussa vedessä 6-7 minuuttia. Valuta, mutta ei aivan kuivaksi.",
+        "Ruskista jauheliha omassa rasvassaan. Lisää joukkoon hienonnettu sipuli kullottumaan. Kaada pannulle tomaattimurska ja mausta. Hauduta kastiketta noin 5 minuuttia.",
+        "Sulata juustokastiketta varten rasva kattilassa. Sekoita joukkoon jauhot ja kiehauta. Siirrä kattila pois levyltä ja lisää kylmä maito koko ajan sekoittaen. Siirrä kattila uudelleen levylle ja anna kiehua hiljalleen noin 5 minuuttia. Mausta suolalla ja paprikajauheella. Lisää juustoraaste.",
+        "Voitele noin 2 litran kokoinen vuoka ja kaada vuorotellen kerroksittain jauheliha-tomaattikastiketta ja spagettia vuokaan niin, että päällimmäiseksi tulee ohut spagettikerros. Kaada juustokastike vuokaan.",
+        "Kypsennä 200 asteessa 30-40 minuuttia, kunnes pinta on kauniin ruskea. Tarjoa lisäksi salaattia."
+    ],
+    "tags":
+    ["k-ruoka", "härkis"],
+     "category": 2
+  },
+  {
+    "name": "Kanattomat caesarburgerit",
+    "portions": 4,
+    "ingredientsCategories": [
+      {
+        "id": 1,
+        "name": "Caesarsalaatti"
+      },
+    ],
+    "ingredients":
+    [
+        {
+            "amount": "",
+            "unit": "",
+            "name": "juures-, bataatti- tai tavallisia ranskalaisia"
+        },
+        {
+            "amount": "4",
+            "unit": "kpl",
+            "name": "sämpylää"
+        },
+        {
+            "amount": "4",
+            "unit": "kpl",
+            "name": "Apetit Crispy Chick -kasvisjauhispihvejä tai muita vegepihvejä"
+        },
+        {
+            "amount": "0,5",
+            "unit": "kpl",
+            "name": "punasipulia"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "pihvitomaattia"
+        },
+        {
+            "amount": "150",
+            "unit": "g",
+            "name": "romanie-salaattia",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "dl",
+            "name": "vegemajoneesia",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "dl",
+            "name": "turkkilais- tai kreikkalaistyyppistä kaurajugurttia (Oatly tai Fazer Aito)",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "sitruunamehua",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "ravintohiivahiutaleita  (esim. Foodin, Makrobios tai Puhdas+)",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "dijon-sinappia",
+            "category": 1
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "kapriksia hienonnettuna",
+            "category": 1
+        },
+        {
+            "amount": "3",
+            "unit": "rkl",
+            "name": "hienonnettua ruohosipulia",
+            "category": 1
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "mustapippuria (myllystä)",
+            "category": 1
+        }
+    ],
+    "steps":
+    [
+        "Paista juures-, bataatti- tai tavalliset ranskalaiset uunissa pakkauksen ohjeen mukaan.",
+        "Valmista sillä välin caesarsalaatti. Revi salaatinlehdet. Sekoita yhteen vegemajoneesi, vegejogurtti ja sitruunamehu. Lisää ravintohiivahiutaleet ja sinappi. Hienonna kaprikset sekä ruohosipuli ja lisää ne kastikkeeseen.\nMausta mustapippurilla. Sekoita kolme neljiäsosaan kastikkeesta yhteen salaatinlehtien kanssa. Säästä loput kastikkeesta sellaisenaan burgerin väliin.",
+        "Leikkaa punasipuli ohuiksi renkaiksi ja tomaatti viipaleiksi. Paista pihvit pakkauksen ohjeen mukaan. Paista pihvi sämpylää kohden. Lämmitä sämpylät paistinpannulla.",
+        "Kokoa burgerit ja herkuttele ne juuresranskalaisten kanssa."
+    ],
+    "tags":
+    ["vegaanihaaste", "kikherne", "burger"],
+    "category": 2
+  },
+  {
+    "name": "Pinaatti-perunamunakas",
+    "portions": 2,
+    "ingredients":
+    [
+        {
+            "amount": "4",
+            "unit": "kpl",
+            "name": "perunaa (keltainen pussi)"
+        },
+        {
+            "amount": "1",
+            "unit": "kpl",
+            "name": "sipuli"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "valkosipulinkynsi"
+        },
+        {
+            "amount": "2",
+            "unit": "rkl",
+            "name": "ekstra-neitsytoliiviöljyä"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "",
+            "unit": "ripaus",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "5",
+            "unit": "kpl",
+            "name": "kananmunaa"
+        },
+        {
+            "amount": "0,5",
+            "unit": "dl",
+            "name": "vettä"
+        },
+        {
+            "amount": "0,5",
+            "unit": "ps",
+            "name": "Pirkka lehtipinaattia (pakaste)"
+        }
+    ],
+    "steps":
+    [
+        "Kuori perunat ja leikkaa ne ohuiksi viipaleiksi. Hienonna kuorittu sipuli ja valkosipuli.",
+        "Paista perunoita ja sipuleita pannulla öljyssä (1 rkl) noin 10 minuuttia käännellen. Mausta suolalla (1/2 tl). Lisää pinaatit, kuumenna ja kypsennä vielä 5 minuuttia, tai kunnes perunat ovat lähes kypsiä.",
+        "Sekoita munien joukkoon vesi ja loppu suoli Lisää pannulle 1 rkl öljyä, kaada munamassa kuumalle pannulle ja kypsennä perunamunakasta miedolla lämmöllä noin 11 minuuttia. Käännä munakas varovasti lautasen avulla ja kypsennä vielä noin 5 minuuttia, kunnes munakas on hyytynyt ja perunat kypsiä. Lisää tarvittaessa suolaa."
+    ],
+    "tags":
+    ["muna", "munakas", "pinaatti", "k-ruoka"],
+    "category": 2
+  },
+  {
+    "name": "Halloumipasta",
+    "portions": 4,
+    "ingredients":
+    [
+        {
+            "amount": "2",
+            "unit": "rs",
+            "name": "Pirkka kirsikka- tai miniluumutomaatteja"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä hienonnettuna"
+        },
+        {
+            "amount": "3",
+            "unit": "rkl",
+            "name": "ekstra-neitystoliiviöljyä"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "balsamiviinietikkaa"
+        },
+        {
+            "amount": "0,25",
+            "unit": "rl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "",
+            "unit": "ripaus",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "1",
+            "unit": "pkt",
+            "name": "Pirkka Parhaat halloumijuustoa"
+        },
+        {
+            "amount": "300",
+            "unit": "g",
+            "name": "spiralipastaa"
+        },
+        {
+            "amount": "1",
+            "unit": "ruukku",
+            "name": "tuoretta basilikaa hienonnettuna"
+        }
+    ],
+    "steps":
+    [
+        "Pane pestyt tomaatit uunivuokaan. Pyörittele joukkoon valkosipuli, öljy, balsamico, suola ja pippuri. Pasta 225-asteisessa unissa 10 minuuttia.",
+        "Kuutioi halloumi. Levitä kuutiot leivinpaperin päälle uunipellille. Jätä toiseen reunaan tilaa uunivuoalle.",
+        "Nosta tomaatit vuoassa halloumien viereen pellille. Jatka paistamista vielä 15-20 minuuttia, kunnes justo on saanut väriä ja tomaatit pehmenneet.",
+        "Keitä pasta pakkauksen ohjeen mukaan suolalla maustetussa vedessä (2 | vettä + 1 tl suolaa). Valuta pasta.",
+        "Sekoita halloumikuutiot, pasta ja basilika vuoassa tomaattien joukkoon. Tarjoa heti."
+    ],
+    "tags":
+    ["k-ruoka", "halloumi", "pasta"],
+    "category": 2
+  },
+  {
+    "name": "Kasvislasagne",
+    "portions": 6,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "mieto punainen chili"
+        },
+        {
+            "amount": "400",
+            "unit": "g",
+            "name": "kesäkurpitsa"
+        },
+        {
+            "amount": "250",
+            "unit": "g",
+            "name": "miniluumutomaatteja"
+        },
+        {
+            "amount": "2",
+            "unit": "ps",
+            "name": "Pirkka Luomu babypinaattia"
+        },
+        {
+            "amount": "2",
+            "unit": "rkl",
+            "name": "oliiviöljyä"
+        },
+        {
+            "amount": "1,5",
+            "unit": "dl",
+            "name": "kuivattuja punaisia linssejä"
+        },
+        {
+            "amount": "2",
+            "unit": "prk",
+            "name": "Pirkka Luomu paseerattua tomaattia"
+        },
+        {
+            "amount": "2",
+            "unit": "kpl",
+            "name": "kasvisliemikuutiota"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "balsamiviinietikkaa"
+        },
+        {
+            "amount": "1",
+            "unit": "rkl",
+            "name": "sokeria"
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "2",
+            "unit": "prk",
+            "name": "creme fraiche"
+        },
+        {
+          "amount": "2",
+          "unit": "ps",
+          "name": "mozzarellaa"
+        },
+        {
+            "amount": "12",
+            "unit": "kpl",
+            "name": "lasagnelevyjä"
+        },
+        {
+            "amount": "1",
+            "unit": "prk",
+            "name": "Urtekram Luomu basilikapestoa"
+        }
+    ],
+    "steps":
+    [
+        "Hienonna kuorittu sipuli ja valkosipulinkynnet. Hienonna chili siemenineen. Leikkaa kesäkurpitsa ohuiksi viipaleiksi. Säästä halutessasi pari viipaletta lasagne koristeluun. Halkaise puolet miniluumutomaateista.",
+        "Kuumenna öljy kattilassa. Kuullota sipuleita, chiliä, kesäkurpitsaa, puolitettuja tomaatteja ja pinaattia muutama minuutti. Lisää huuhdotut ja valutetut linssit, paseerattu tomaatti, murennetut kasvisliemikuutiot, etikka, sokeri ja pippuri. Kuumenna kiehuvaksi ja anna kastikkeen kiehua hilialleen kannen alla noin 20 minuuttia, kunnes linssit ovat kypsiä.",
+        "Kaavi ranskankermat kulhoon. Raasta valutetut mozzarellat raastimen karkealla terällä ja sekoita raaste ranskankerman joukkoon.",
+        "Lusikoi linssikastiketta voidellun lasagnevuoan (18 cm × 24 cm) pohjalle. Lado päälle kolme lasagnelevyä, linssikastiketta, juustoseosta ja muutama nokare pestoa. Toista neljä kertaa. Päällimmäiseksi tulee juustoseosta ja pesto. Koristele pinta parilla kesäkurpitsavipaleella ja miniluumutomaateilla.",
+        "Paista lasagnea 175-asteisessa uunissa tunnin ajan, kunnes lasagne pinta saa väriä."
+    ],
+    "tags":
+    ["k-ruoka", "lasagne", "linssi", "pasta"],
+    "category": 2
+  },
+  {
+    "name": "Nachopelti",
+    "portions": 6,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "rs",
+            "name": "härkis tms."
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "mieto punainen chili"
+        },
+        {
+            "amount": "2",
+            "unit": "",
+            "name": "tomaattia"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "amount": "0,25",
+            "unit": "tl",
+            "name": "mustapippuria"
+        },
+        {
+            "amount": "1",
+            "unit": "tl",
+            "name": "juustokuminaa"
+        },
+        {
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "paprikajauhetta"
+        },
+        {
+            "amount": "1",
+            "unit": "tlk",
+            "name": "Pirkka mustapauja suolaliemessä"
+        },
+        {
+            "amount": "1",
+            "unit": "ps",
+            "name": "Pirkka maissilastuja"
+        },
+        {
+            "amount": "1",
+            "unit": "prk",
+            "name": "Pirkka juustodippiä"
+        },
+        {
+            "amount": "1",
+            "unit": "",
+            "name": "avokado"
+        },
+        {
+            "amount": "0,5",
+            "unit": "prk",
+            "name": "Pirkka jalapenoja valutettuna"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "Pirkka salsadippiä"
+        },
+        {
+            "amount": "",
+            "unit": "",
+            "name": "tuoretta korianteria"
+        }
+    ],
+    "steps":
+    [
+        "Kuori ja hienonna sipuli ja valkosipuli. Halkaise chili, poista siemenet ja hienonna.",
+        "Ruskista härkis pannussa ja lisää sipulit ja chili. Anna kullota hetki. Mausta suolalla, mustapippurilla, juustokuminalla ja paprikajauheella.",
+        "Kuutioi tomaatit. Lisää pannulle osa tomaateista (jätä noin puolet koristeluun) sekä huuhdotut ja valutetut mustapavut.",
+        "Levitä maissilastut leivinpaperin päälle pellille tai laakeaan uunivuokaan. Levitä maissilastujen päälle härkisseos ja juustodippi.",
+        "Kuumenna uunin ylätasossa 225 asteessa noin 5 minuuttia.",
+        "Halkaise avokado, poista kivi ja kuori ja kuutioi hedelmäliha. Levitä pinnalle kuutioidut tomaatit ja avokadot, jalapenot ja salsakastiketta nokareina. Hienonna pinnalle runsaasti tuoretta korianteria. Tarjoa heti."
+    ],
+    "tags":
+    ["k-ruoka", "härkis"],
+    "category": 2
+  },
+  {
+    "name": "Uunipasta",
+    "portions": 3,
+    "ingredients":
+    [
+        {
+            "amount": "1",
+            "unit": "pkt",
+            "name": "Pirkka tortelloneja, ricotta-pinaatti"
+        },
+        {
+            "amount": "1",
+            "unit": "tlk",
+            "name": "tomaattipastakastiketta"
+        },
+        {
+            "amount": "1,5",
+            "unit": "dl",
+            "name": "vettä"
+        },
+        {
+            "amount": "0,5",
+            "unit": "prk",
+            "name": "Kirsikkatomaatteja"
+        },
+        {
+            "amount": "1",
+            "unit": "ps",
+            "name": "babypinaattia"
+        },
+        {
+            "amount": "2",
+            "unit": "ps",
+            "name": "mozzarellaa"
+        }
+    ],
+    "steps":
+    [
+        "Pane tortellonit, pastakastike ja vesi uunivuokaan. Lisää tomaatit ja hieman öljyä sekä pinaatti, voit jättää kourallisen annosten päälle. Kääntele pasta sekaisin. Revi mozzarella pinnalle.",
+        "Kypsennä vuokaa 225-asteisessa unissa noin 20 minuuttia."
+    ],
+    "tags":
+    ["k-ruoka", "pinaatti", "pasta"],
+    "category": 2
+  },
+  {
+    "name": "Mummin lasagneresepti",
+    "ingredientsCategories":
+    [
+        {
+            "id": 1,
+            "name": "Soijarouhekastike"
+        },
+        {
+            "id": 2,
+            "name": "Valkokastike"
+        }
+    ],
+    "tags":
+    [
+        "soija",
+        "lasagne",
+        "pasta"
+    ],
+    "portions": 4,
+    "ingredients":
+    [
+        {
+            "amount": "9",
+            "unit": "kpl",
+            "name": "lasagnelevyjä"
+        },
+        {
+            "category": 1,
+            "amount": "1",
+            "unit": "dl",
+            "name": "soijarouhetta"
+        },
+        {
+            "category": 1,
+            "amount": "2",
+            "unit": "dl",
+            "name": "vettä"
+        },
+        {
+            "category": 1,
+            "amount": "1",
+            "unit": "",
+            "name": "sipuli"
+        },
+        {
+            "category": 1,
+            "amount": "400",
+            "unit": "g",
+            "name": "tomaattimurskaa"
+        },
+        {
+            "category": 1,
+            "amount": "2",
+            "unit": "rkl",
+            "name": "tomaattisosetta"
+        },
+        {
+            "category": 1,
+            "amount": "1",
+            "unit": "dl",
+            "name": "kasvislientä"
+        },
+        {
+            "category": 1,
+            "amount": "2",
+            "unit": "",
+            "name": "valkosipulinkynttä"
+        },
+        {
+            "category": 1,
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "category": 1,
+            "amount": "",
+            "unit": "",
+            "name": "mustapippuria"
+        },
+        {
+            "category": 1,
+            "amount": "",
+            "unit": "",
+            "name": "oreganoa"
+        },
+        {
+            "category": 1,
+            "amount": "",
+            "unit": "",
+            "name": "basilikaa"
+        },
+        {
+            "category": 2,
+            "amount": "2",
+            "unit": "rkl",
+            "name": "voita/margariinia"
+        },
+        {
+            "category": 2,
+            "amount": "2",
+            "unit": "rkl",
+            "name": "vehnäjauhoja"
+        },
+        {
+            "category": 2,
+            "amount": "0,5",
+            "unit": "l",
+            "name": "maitoa"
+        },
+        {
+            "category": 2,
+            "amount": "0,5",
+            "unit": "tl",
+            "name": "suolaa"
+        },
+        {
+            "category": 2,
+            "amount": "",
+            "unit": "",
+            "name": "valko- tai viherpippuria"
+        },
+        {
+            "category": 2,
+            "amount": "2",
+            "unit": "tl",
+            "name": "juustoraastetta"
+        }
+    ],
+    "steps":
+    [
+        "Keitä soijarouhetta vedessä 10 min",
+        "Soijarouhe- ja valkokastike valmistetaan liedellä, ruoka kypsennetään mikroaaltouunissa. Ruskista keitetty soijarouhe ja hienonnettu sipuli öliyssä. Lisää tomaattimurska sekä -sose, murskatut valkosipulin kynnet, kasvisliemi ja mausteet. Anna hautua noin puoli tuntia.",
+        "Valmista sillä välin valkokastike. Sulata voi kattilassa, lisää jauhot ja anna kiehahtaa. Lisää maito vähitellen koko ajan sekoittaen. Anna kastikkeen kiehua muutamia minuutteja. Mausta se suolalla ja valkopippurilla, lisää justoraaste. Molemmat kastikkeet voivat olla löysiä, sillä lasagnelevyt imevät kypsyessään runsaasti kosteutta.",
+        "Pane suorakaiteenmuotoisen univuoan pohjalle kerros soijarouhekastiketta. Aseta päälle 2 lasagnelevyä ja niiden päälle kerros soijarouhekastiketta ja valkokastiketta. Tee samanlaisia kerroksia vielä Kaks. Ripottele ruoan pinnalle juustoraastetta.",
+        "Kypsennä taydellä teholla 17 minuuttia, kännä vuokaa kypsennyksen puolivälissä. Anna ruoan vielä vetytyä 10 minuuttia ennen tarjoamista."
+    ],
+    "category": 2
+  }
 ];
 
 export default testData;
