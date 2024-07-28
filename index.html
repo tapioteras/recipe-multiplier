@@ -1,1 +1,101 @@
-<html><head><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.30f48ebc.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.b455cd6e.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.ac5e7362.png"><link rel="manifest" href="site.webmanifest"></head><body> <div id="root"></div> <script type="module" src="index.dcc194d0.js"></script> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="apple-touch-icon.30f48ebc.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon-32x32.b455cd6e.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon-16x16.ac5e7362.png"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        padding-top: 60px;
+      }
+      .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .modal-content p {
+        padding-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="index.dcc194d0.js"></script>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>
+          Uusi versio sovelluksesta löytyy täältä:<br />
+          <strong
+            ><a href="https://recipes.steellabs.io" target="_blank"
+              >recipes.steellabs.io</a
+            ></strong
+          >
+        </p>
+      </div>
+    </div>
+
+    <script>
+      var modal = document.getElementById("myModal");
+      var span = document.getElementsByClassName("close")[0];
+
+      window.onload = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
